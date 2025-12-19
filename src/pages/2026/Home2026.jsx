@@ -61,7 +61,7 @@ export default function Home2026() {
                     </section>
                     {/* Entrepreneurship */}
                     <section
-                        className="pt-16 p-10 bg-black/50 overflow-hidden border-t-8 border-b-8 border-[#c593e9]"
+                        className="pt-16 p-10 bg-black/50 overflow-hidden border-b-8 border-[#c593e9]"
                         id="entrepreneurship"
                     >
                         <Entrepreneurship year={selectedYear} />
