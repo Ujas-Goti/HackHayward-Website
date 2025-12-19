@@ -16,12 +16,13 @@ function NavButtons() {
     
     // Base links without Live
     const baseLinks = [{ text: 'About' }, { text: 'FAQ' }, { text: 'Teams' }, { text: 'Sponsors' }];
+    const baseLinks2026 = [{ text: 'About' }, { text: 'Entrepreneurship' }, { text: 'FAQ' }, { text: 'Teams' }, { text: 'Sponsors' }];
     
     // Determine which links to show based on current page
     let links = [];
     if (is2026Page) {
-        // On 2026 page: always show Live and Past Year
-        links = [...baseLinks, { text: 'Live', path: '/live-2026' }, { text: 'Past Year', path: '/past-years' }];
+        // On 2026 page: always show Live and Past Year, include Entrepreneurship link
+        links = [...baseLinks2026, { text: 'Live', path: '/live-2026' }, { text: 'Past Year', path: '/past-years' }];
     } else if (is2025Page) {
         // On 2025 page: show Live (if countdown ended) and 2026
         links = hasCountdownEnded ? 

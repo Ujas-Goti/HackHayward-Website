@@ -4,10 +4,12 @@ import PropTypes from 'prop-types';
 FaqAccordion.propTypes = {
     register: PropTypes.string.isRequired,
     yearData: PropTypes.object.isRequired,
+    year: PropTypes.number,
 };
 
 
 function FaqAccordion(props) {
+    const is2026 = props.year === 2026;
     const handleClick = (platform) => {
         ReactGA.event({
             category: 'hackathon',
@@ -75,6 +77,29 @@ function FaqAccordion(props) {
             question: 'Where will the Hackathon take place?',
             answer: 'We are taking place in Hayward, CA at the CSU East Bay campus. ',
         },
+        // Entrepreneurship-related FAQs for 2026
+        ...(is2026 ? [
+            {
+                question: 'What is the Entrepreneurship component at HackHayward 2.0?',
+                answer: 'HackHayward 2.0 introduces an innovative model where each hackathon team is paired with a trained Entrepreneur Ambassador. These ambassadors, recruited from the Smith Center, the Up-Club, and the College of Business and Economics, guide teams in opportunity discovery, value creation, customer needs, and pitch development.',
+            },
+            {
+                question: 'What is an Entrepreneur Ambassador?',
+                answer: 'Entrepreneur Ambassadors are trained mentors who work directly with hackathon teams to help them develop entrepreneurial skills alongside their technical projects. They provide guidance on creating pitch decks, identifying market opportunities, understanding customer needs, and building a roadmap for taking your project beyond the hackathon.',
+            },
+            {
+                question: 'Do I need business experience to participate?',
+                answer: 'Not at all! The Entrepreneur Ambassadors are here to help teams of all backgrounds. Whether you\'re a technical wizard or new to entrepreneurship, the ambassadors will guide you through the process of developing your idea into a viable venture. This is a learning opportunity for everyone!',
+            },
+            {
+                question: 'What will teams learn in the entrepreneurship workshop?',
+                answer: 'During the dedicated entrepreneurship workshop, teams will learn how to develop a pitch deck and project roadmap. You\'ll explore opportunity discovery, value creation, customer needs analysis, and how to present your solution effectively. The goal is to match technical innovation with thoughtful entrepreneurial strategy.',
+            },
+            {
+                question: 'Will there be technical workshops as well?',
+                answer: 'Yes! HackHayward includes both pre-event and on-site technical workshops covering AI tools, frameworks, and prototyping strategies. You\'ll receive both technical mentorship and entrepreneurial coaching throughout the event.',
+            },
+        ] : []),
     ];
 
     return (
@@ -127,7 +152,7 @@ export default function FAQ(props) {
                         </a>
                     </p>
                 </div>
-                <FaqAccordion register={props.register} yearData={props.yearData} />
+                <FaqAccordion register={props.register} yearData={props.yearData} year={props.year} />
                 
             </div>
         </>

@@ -8,6 +8,7 @@ import AboutUs from '../../Components/AboutUs';
 import Footer from '../../Components/Footer';
 import PilotFalcon from '../../Components/PilotFalcon';
 import Teams from '../../Components/Teams';
+import Entrepreneurship from '../../Components/Entrepreneurship';
 
 import ReactGA from 'react-ga4';
 import { useEffect } from 'react';
@@ -57,6 +58,13 @@ export default function Home2026() {
                 <div className="relative z-10">
                     <section className="border-b-8 border-[#c593e9]">
                         <Hero register={register} year={selectedYear} yearData={currentYearData} />
+                    </section>
+                    {/* Entrepreneurship */}
+                    <section
+                        className="pt-16 p-10 bg-black/50 overflow-hidden border-t-8 border-b-8 border-[#c593e9]"
+                        id="entrepreneurship"
+                    >
+                        <Entrepreneurship year={selectedYear} />
                     </section>
                     {/* about us */}
                     <section
