@@ -108,7 +108,7 @@ const CountdownTimer = ({ targetDate }) => {
                 </div>
             </div>
             <p className="text-white lg:text-3xl sm:text-xl font-exo2 px-6">
-                Until HackHayward!
+                Until HackHayward 2.0!
             </p>
         </div>
     );

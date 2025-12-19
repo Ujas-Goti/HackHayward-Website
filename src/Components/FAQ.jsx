@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 FaqAccordion.propTypes = {
     register: PropTypes.string.isRequired,
+    yearData: PropTypes.object.isRequired,
 };
 
 
@@ -43,7 +44,7 @@ function FaqAccordion(props) {
         },
         {
             question: 'How long will HackHayward last?',
-            answer: 'We will be hacking on March 1st and 2nd with submission in the AM on March 2nd. Plenty of time to work on your project! Some workshops planned.',
+            answer: props.yearData.faqDates,
         },
         {
             question: 'What does it cost to join?',
@@ -67,7 +68,7 @@ function FaqAccordion(props) {
         },
         {
             question: 'What is HackHayward?',
-            answer: 'The first hackathon in Hayward, organized by CSU East Bay Students for all students in the Bay Area about to take place this coming March 1st and 2nd! Aimed towards spreading awareness for marginalized communities, we are open to everyone!',
+            answer: props.yearData.faqDescription,
         },
 
         {
@@ -98,6 +99,8 @@ function FaqAccordion(props) {
 
 FAQ.propTypes = {
     register: PropTypes.string.isRequired,
+    year: PropTypes.number.isRequired,
+    yearData: PropTypes.object.isRequired,
 };
 
 export default function FAQ(props) {
@@ -124,7 +127,7 @@ export default function FAQ(props) {
                         </a>
                     </p>
                 </div>
-                <FaqAccordion register={props.register} />
+                <FaqAccordion register={props.register} yearData={props.yearData} />
                 
             </div>
         </>

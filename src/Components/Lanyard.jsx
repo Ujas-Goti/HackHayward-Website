@@ -1,8 +1,8 @@
 /* eslint-disable react/no-unknown-property */
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, Suspense } from 'react';
 import { Canvas, extend, useThree, useFrame } from '@react-three/fiber';
-import { useGLTF, useTexture, Environment, Lightformer } from '@react-three/drei';
+import { useGLTF, useTexture, Environment, Lightformer, Text } from '@react-three/drei';
 import { BallCollider, CuboidCollider, Physics, RigidBody, useRopeJoint, useSphericalJoint } from '@react-three/rapier';
 import { MeshLineGeometry, MeshLineMaterial } from 'meshline';
 import PropTypes from 'prop-types';
@@ -20,10 +20,11 @@ Lanyard.propTypes = {
   position: PropTypes.arrayOf(PropTypes.number),
   gravity: PropTypes.arrayOf(PropTypes.number),
   fov: PropTypes.number,
-  transparent: PropTypes.bool
+  transparent: PropTypes.bool,
+  year: PropTypes.number,
 };
 
-export default function Lanyard({ position = [0, 0, 10], gravity = [0, -40, 0], fov = 20, transparent = true }) {
+export default function Lanyard({ position = [0, 0, 10], gravity = [0, -40, 0], fov = 20, transparent = true, year = 2025 }) {
   return (
     <div className="relative z-0 w-full h-full flex justify-center items-center">
       <Canvas
@@ -33,7 +34,7 @@ export default function Lanyard({ position = [0, 0, 10], gravity = [0, -40, 0], 
       >
         <ambientLight intensity={Math.PI} />
         <Physics interpolate gravity={gravity} timeStep={1 / 60}>
-          <Band />
+          <Band year={year} />
         </Physics>
         <Environment blur={0.75}>
           <Lightformer intensity={2} color="white" position={[0, -1, 5]} rotation={[0, 0, Math.PI / 3]} scale={[100, 0.1, 1]} />
@@ -49,10 +50,12 @@ export default function Lanyard({ position = [0, 0, 10], gravity = [0, -40, 0], 
 // PropTypes for Band component
 Band.propTypes = {
   maxSpeed: PropTypes.number,
-  minSpeed: PropTypes.number
+  minSpeed: PropTypes.number,
+  year: PropTypes.number,
 };
 
-function Band({ maxSpeed = 50, minSpeed = 10 }) {
+function Band({ maxSpeed = 50, minSpeed = 10, year = 2025 }) {
+  const is2026 = year === 2026;
   const band = useRef(), fixed = useRef(), j1 = useRef(), j2 = useRef(), j3 = useRef(), card = useRef();
   const vec = new THREE.Vector3(), ang = new THREE.Vector3(), rot = new THREE.Vector3(), dir = new THREE.Vector3();
   const segmentProps = { type: 'dynamic', canSleep: true, colliders: false, angularDamping: 4, linearDamping: 4 };

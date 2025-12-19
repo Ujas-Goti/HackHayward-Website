@@ -10,13 +10,29 @@ import ShinyText from './ShinyText';
 
 function NavButtons() {
     const { hasCountdownEnded } = useCountdown();
+    const location = useLocation();
+    const is2026Page = location.pathname === '/' || location.pathname === '/live-2026';
+    const is2025Page = location.pathname === '/past-years' || location.pathname === '/live';
+    
     // Base links without Live
     const baseLinks = [{ text: 'About' }, { text: 'FAQ' }, { text: 'Teams' }, { text: 'Sponsors' }];
     
-    // Conditionally add Live link only if countdown has ended
-    const links = hasCountdownEnded ? 
-        [...baseLinks, { text: 'Live', path: '/live' }] : 
-        baseLinks;
+    // Determine which links to show based on current page
+    let links = [];
+    if (is2026Page) {
+        // On 2026 page: always show Live and Past Year
+        links = [...baseLinks, { text: 'Live', path: '/live-2026' }, { text: 'Past Year', path: '/past-years' }];
+    } else if (is2025Page) {
+        // On 2025 page: show Live (if countdown ended) and 2026
+        links = hasCountdownEnded ? 
+            [...baseLinks, { text: 'Live', path: '/live' }, { text: '2026', path: '/' }] : 
+            [...baseLinks, { text: '2026', path: '/' }];
+    } else {
+        // Default fallback
+        links = hasCountdownEnded ? 
+            [...baseLinks, { text: 'Live', path: '/live' }, { text: 'Past Year', path: '/past-years' }] : 
+            [...baseLinks, { text: 'Past Year', path: '/past-years' }];
+    }
 
     return (
         <>
@@ -68,10 +84,14 @@ function NavButtons() {
 }
 
 function BackButton({ isMobile = false }) {
+    const location = useLocation();
+    // Determine which home page to go back to based on current dashboard
+    const homePath = location.pathname === '/live-2026' ? '/' : '/past-years';
+    
     return (
         <li className={`px-2 transition ${isMobile ? 'w-full' : ''}`}>
             <Link
-                to="/"
+                to={homePath}
                 className={`text-white font-['Roboto'] font-medium flex items-center gap-2 
                 ${isMobile ? 'text-base py-2 px-3' : 'text-xl bg-[#c593e9] hover:bg-[#cfb0e8] transition-colors py-2 px-4 rounded-full'}`}
             >
@@ -87,7 +107,7 @@ BackButton.propTypes = {
 
 export default function NavBar() {
     const location = useLocation();
-    const isLivePage = location.pathname === '/live';
+    const isLivePage = location.pathname === '/live' || location.pathname === '/live-2026';
 
     return (
         <>

@@ -1,42 +1,28 @@
-import './App.css';
-
-// Components
-import NavBar from './Components/NavBar';
-import Hero from './Components/Hero';
-import FAQ from './Components/FAQ';
-import AboutUs from './Components/AboutUs';
-import Footer from './Components/Footer';
-import PilotFalcon from './Components/PilotFalcon';
-import Teams from './Components/Teams';
-import Sponsor from './Components/Sponsor';
-
-import ReactGA from 'react-ga4';
+// Common Components
+import NavBar from '../../Components/NavBar';
+import Hero from '../../Components/Hero';
+import FAQ from '../../Components/FAQ';
+import AboutUs from '../../Components/AboutUs';
+import Footer from '../../Components/Footer';
+import PilotFalcon from '../../Components/PilotFalcon';
+import Teams from '../../Components/Teams';
+import Sponsor from '../../Components/Sponsor';
+import { yearData } from '../../data/yearData';
 import { useEffect } from 'react';
+import { useCountdown } from '../../context/CountdownContext';
 
-function App() {
-    //Scroll to top on load
-    useEffect(()=>{
-        setTimeout(()=>{
-            window.scrollTo(0, 0);
-        }, 100) // Timeout due to images/announcements not loading right away
-    }, []);
+export default function Home2025() {
+    const selectedYear = 2025;
+    const currentYearData = yearData[selectedYear];
+    const register = currentYearData.register;
+    const { setHasCountdownEnded } = useCountdown();
 
+    // Reset countdown state when navigating to 2025 page
     useEffect(() => {
-        const measurementId = import.meta.env.VITE_MEASUREMENT_ID;
-        if (measurementId) {
-            ReactGA.initialize(measurementId);
-            ReactGA.send({
-                hitType: 'pageview',
-                page: '/',
-                title: 'Home Page',
-            });
-        } else {
-            console.error('Google Analytics Measurement ID not found.');
-        }
-    }, []);
-    // Notification Display
-    // Links
-    const register = "https://gdg.community.dev/events/details/google-gdg-on-campus-california-state-university-east-bay-hayward-united-states-presents-build-with-ai-hackhayward/";
+        const targetDate = new Date(currentYearData.countdownDate);
+        const now = new Date();
+        setHasCountdownEnded(now >= targetDate);
+    }, [currentYearData.countdownDate, setHasCountdownEnded]);
 
     return (
         <>
@@ -45,25 +31,25 @@ function App() {
             </header>
             <main className="mainBackground bg-contain bg-repeat-y overflow-x-hidden">
                 <section className="border-b-8 border-[#c593e9]">
-                    <Hero register={register} />
+                    <Hero register={register} year={selectedYear} yearData={currentYearData} />
                 </section>
                 {/* about us */}
                 <section
                     className="pt-16 p-10 bg-black/50 max-w-screen-2xl:overflow-hidden"
                     id="about"
                 >
-                    <AboutUs />
+                    <AboutUs year={selectedYear} yearData={currentYearData} />
                 </section>
                 {/* FAQ */}
                 <section className="p-10 bg-black/50 overflow-hidden" id="faq">
-                    <FAQ register={register}/>
+                    <FAQ register={register} year={selectedYear} yearData={currentYearData} />
                 </section>
                 {/* Teams (orgs, speakers, judges, etc.) */}
                 <section
                     className="pb-16 p-10 bg-black/50 overflow-hidden"
                     id="teams"
                 >
-                    <Teams title="Meet the Teams" />
+                    <Teams title="Meet the Teams" year={selectedYear} showSpeakers={true} />
                 </section>
                 {/* sponsor */}
                 <section
@@ -85,4 +71,3 @@ function App() {
     );
 }
 
-export default App;

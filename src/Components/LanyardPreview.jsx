@@ -1,14 +1,24 @@
 // src/Components/LanyardPreview.jsx
 /* eslint-disable react/no-unknown-property */
 import { Suspense } from 'react';
+import PropTypes from 'prop-types';
 import Lanyard from './Lanyard';
 
-export default function LanyardPreview() {
+LanyardPreview.propTypes = {
+  year: PropTypes.number,
+};
+
+export default function LanyardPreview({ year = 2025 }) {
+  const is2026 = year === 2026;
+  const badgeText = is2026 ? "HackHayward 2.0" : "HackHayward";
+  
   return (
     <div>
-      <h2 className="text-xl sm:text-2xl font-bold font-exo2 mb-4">Your HackHayward Virtual Badge</h2>
+      <h2 className="text-xl sm:text-2xl font-bold font-exo2 mb-4">
+        Your {badgeText} Virtual Badge
+      </h2>
       <p className="text-white/80 mb-4 font-grotesk">
-        Here&apos;s a preview of your event badge. Drag to interact.
+        Here&apos;s a preview of your {badgeText} event badge. Drag to interact.
       </p>
       
       <div className="h-[400px] bg-gradient-to-b from-[#30252d]/50 to-[#261e24]/50 rounded-lg">

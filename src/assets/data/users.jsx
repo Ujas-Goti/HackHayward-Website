@@ -122,7 +122,7 @@ export const users = [
         desc: "CSU East Bay",
         pos: "Faculty Avisor and Professor",
         img: Lynne,
-        badge: "",
+        badge: "Faculty Advisor",
         flair: {
             spk: false,
             jud: false,

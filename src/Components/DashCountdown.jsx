@@ -97,7 +97,7 @@ const DashCountdown = ({ targetDate, eventStartDate = "2025-03-01T08:00:00" }) =
         } else if (hasEventStarted) {
             return "Time Remaining for Submissions";
         } else {
-            return "Time Until HackHayward";
+            return "Time Until HackHayward 2.0";
         }
     };
 

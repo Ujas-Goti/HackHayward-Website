@@ -2,8 +2,14 @@ import mars from '/src/assets/imgs/Background/Mars.webp';
 import scene2 from '/src/assets/imgs/Scene2/s2Full.webp';
 import scene3 from '/src/assets/imgs/Scene3/s3Full.webp';
 import jupiter from '/src/assets/imgs/Background/Jupiter.webp';
+import PropTypes from 'prop-types';
 
-export default function AboutUs() {
+AboutUs.propTypes = {
+    year: PropTypes.number.isRequired,
+    yearData: PropTypes.object.isRequired,
+};
+
+export default function AboutUs({ yearData }) {
     return (
         <>
             <div className="grid place-content-center gap-3 relative shadow-text-sm">
@@ -13,15 +19,7 @@ export default function AboutUs() {
                             About Us
                         </h2>
                         <p className="lg:text-xl sm:text-lg max-w-xl	font-grotesk mt-4">
-                            HackHayward, hosted at California State University,
-                            East Bay, is the first collegiate hackathon in the
-                            Hayward, California area. We challenge students to
-                            work collaboratively within a limited timeframe to
-                            ideate, create, and pitch their solutions to tackle
-                            real-world issues within the hackathon&apos;s timeframe. Our
-                            hackathon will be hosted in person at California
-                            State University, East Bay during March 2025, and
-                            we are expecting over 200 participants.
+                            {yearData.aboutText}
                         </p>
                     </article>
                     <div className="z-20">

@@ -1,4 +1,4 @@
-// src/pages/Dashboard.jsx
+// src/pages/Dashboard2025.jsx
 import { useEffect, Suspense } from 'react';
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -32,7 +32,7 @@ const LanyardFallback = () => (
   </div>
 );
 
-export default function Dashboard() {
+export default function Dashboard2025() {
   // const { hasCountdownEnded } = useCountdown();
   const register = "https://gdg.community.dev/events/details/google-gdg-on-campus-california-state-university-east-bay-hayward-united-states-presents-build-with-ai-hackhayward/";
   const eventStartDate = "2025-03-01T08:00:00"; // Event start date
@@ -114,7 +114,7 @@ export default function Dashboard() {
                 <div className="bg-black/85 backdrop-blur-md p-6 rounded-lg border border-gray-800 shadow-[0_15px_30px_-10px_rgba(0,0,0,0.7)] hover:shadow-[0_20px_35px_-5px_rgba(197,147,233,0.3)] transition-shadow duration-300">
                   <Suspense fallback={<LanyardFallback />}>
                     <ErrorBoundary FallbackComponent={LanyardFallback}>
-                      <LanyardPreview />
+                      <LanyardPreview year={2025} />
                     </ErrorBoundary>
                   </Suspense>
                 </div>
@@ -123,7 +123,7 @@ export default function Dashboard() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-6">
                   {/* Left Column - Event Schedule (wider) */}
                   <div className="bg-black/85 backdrop-blur-md p-6 rounded-lg border border-gray-800 shadow-[0_15px_30px_-10px_rgba(0,0,0,0.7)] hover:shadow-[0_20px_35px_-5px_rgba(197,147,233,0.3)] transition-shadow duration-300 h-full order-2 md:order-1">
-                    <EventSchedule />
+                    <EventSchedule year={2025} />
                   </div>
                   
                   {/* Right Column - Next Event and Countdown stacked */}
@@ -138,7 +138,7 @@ export default function Dashboard() {
                       
                       {/* Next Event - Increased min-height to prevent shadow cutoff */}
                       <div className="bg-black/85 backdrop-blur-md p-6 rounded-lg border border-gray-800 shadow-[0_15px_30px_-10px_rgba(0,0,0,0.7)] hover:shadow-[0_20px_35px_-5px_rgba(197,147,233,0.3)] transition-shadow duration-300 min-h-[200px] overflow-hidden">
-                        <NextEvent />
+                        <NextEvent year={2025} />
                       </div>
                       {/* Hacker Devpost */}{/* Devpost Submission - Link to submit projects */}
                       <div className="bg-black/85 backdrop-blur-md p-6 rounded-lg border border-gray-800 shadow-[0_15px_30px_-10px_rgba(0,0,0,0.7)] hover:shadow-[0_20px_35px_-5px_rgba(197,147,233,0.3)] transition-shadow duration-300 min-h-[200px] overflow-hidden">

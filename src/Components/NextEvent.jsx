@@ -2,7 +2,19 @@
 
 import { scheduleData } from '../assets/data/scheduleData';
 
-export default function NextEvent() {
+export default function NextEvent({ year = 2025 }) {
+  // For 2026, show "To Be Decided" message
+  if (year === 2026) {
+    return (
+      <div className="h-full flex flex-col justify-center">
+        <h2 className="text-xl sm:text-2xl font-bold font-exo2 mb-3 shadow-text">Next Up</h2>
+        <div className="bg-black/20 p-6 rounded-md text-center">
+          <p className="text-white/80 drop-shadow-sm">Event details to be announced soon!</p>
+        </div>
+      </div>
+    );
+  }
+
   // Logic to find the next upcoming event
   const findNextEvent = () => {
     const now = new Date();
