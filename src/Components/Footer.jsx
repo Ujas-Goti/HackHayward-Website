@@ -114,10 +114,10 @@ export default function Footer(props) {
                         <p className="lg:text-lg font-grotesk font-thin text-pretty text-white lg:text-end text-center">
                             Reach out to us at{' '}
                             <a
-                                href="mailto:hacker@hackhayward.com"
+                                href="mailto:csueastbaygdsc@gmail.com"
                                 className="font-bold text-[#c593e9] underline"
                             >
-                                hacker@hackhayward.com
+                                csueastbaygdsc@gmail.com
                             </a>
                         </p>
                     </div>
