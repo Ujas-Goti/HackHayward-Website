@@ -9,6 +9,7 @@ import Footer from '../../Components/Footer';
 import PilotFalcon from '../../Components/PilotFalcon';
 import Teams from '../../Components/Teams';
 import Entrepreneurship from '../../Components/Entrepreneurship';
+import Sponsor from '../../Components/Sponsor';
 
 import ReactGA from 'react-ga4';
 import { useEffect } from 'react';
@@ -83,6 +84,13 @@ export default function Home2026() {
                         id="teams"
                     >
                         <Teams title="Meet the Teams" year={selectedYear} showSpeakers={false} />
+                    </section>
+                    {/* sponsor */}
+                    <section
+                        className="pb-16 p-10 bg-black/50 overflow-hidden"
+                        id="sponsors"
+                    >
+                        <Sponsor year={selectedYear} />
                     </section>
                     {/* Scene */}
                     <section className="overflow-hidden">

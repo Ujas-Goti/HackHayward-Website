@@ -1,8 +1,11 @@
 import uranus from '/src/assets/imgs/Background/Uranus.webp';
 import { useCountdown } from '../context/CountdownContext';
+import { yearData } from '../data/yearData';
+import PropTypes from 'prop-types';
 
 // import sponsors
 import csueb_docs from '/src/assets/imgs/sponsors/CSUEB_DOCS.svg';
+import csueb_docs_2026 from '/src/assets/imgs/sponsors/cseb-docs-o_2.png';
 import csueb_soe from '/src/assets/imgs/sponsors/CSUEB_SOE.svg';
 import aws from '/src/assets/imgs/sponsors/Amazon_Web_Services_Logo.svg.png';
 import GCP from '/src/assets/imgs/sponsors/GCP_Cheat_Sheet.png';
@@ -10,6 +13,7 @@ import SCLogo from '/src/assets/imgs/sponsors/updated_smith_logo.png';
 import GroqLogo from '/src/assets/imgs/sponsors/GroqLogo_Black.svg';
 import PerplexityLogo from '/src/assets/imgs/sponsors/Perplexity-Logo.jpg';
 import redbull from '/src/assets/imgs/sponsors/redbull.webp';
+import ibm from '/src/assets/imgs/sponsors/ibm.png';
 
 import ReactGA from 'react-ga4';
 
@@ -22,11 +26,34 @@ const sponsorURLs = {
     'Smith Center': 'https://www.csueastbay.edu/smith-center/',
     'Groq': 'https://groq.com/',
     'Perplexity': 'https://www.perplexity.ai/',
-    'Redbull': 'https://www.redbull.com/'
+    'Redbull': 'https://www.redbull.com/',
+    'IBM': 'https://www.ibm.com/'
 }
 
-export default function Sponsor() {
+// Image mapping
+const sponsorImages = {
+    'GCP_Cheat_Sheet.png': GCP,
+    'Amazon_Web_Services_Logo.svg.png': aws,
+    'CSUEB_DOCS.svg': csueb_docs,
+    'cseb-docs-o_2.png': csueb_docs_2026,
+    'CSUEB_SOE.svg': csueb_soe,
+    'updated_smith_logo.png': SCLogo,
+    'GroqLogo_Black.svg': GroqLogo,
+    'Perplexity-Logo.jpg': PerplexityLogo,
+    'redbull.webp': redbull,
+    'ibm.png': ibm,
+}
+
+Sponsor.propTypes = {
+    year: PropTypes.number,
+};
+
+export default function Sponsor(props) {
     const { hasCountdownEnded } = useCountdown();
+    const year = props.year || 2025;
+    const currentYearData = yearData[year];
+    const sponsors = currentYearData.sponsors || [];
+
     const handleClick = (platform) => {
         ReactGA.event({
             category: 'hackathon',
@@ -47,151 +74,31 @@ export default function Sponsor() {
                         <div className="flex flex-col gap-8">
                             {/* Sponsor Logos */}
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center justify-items-center z-10">
-                                
-
-                                {/* GCP Logo */}
-                                <a 
-                                    href={sponsorURLs['GCP']} 
-                                    target="_blank" 
-                                    rel="noopener noreferrer"
-                                    onClick={() => handleClick('GCP')}
-                                    className="block w-full max-w-[300px] transform transition-all duration-200 active:scale-95 hover:scale-[0.98]"
-                                >
-                                    <div className="bg-white p-4 rounded-lg w-full h-[100px] flex items-center justify-center overflow-hidden hover:bg-gray-50 transition-colors">
-                                        <img 
-                                            src={GCP} 
-                                            alt="Powered by GCP" 
-                                            className="h-[95px] object-contain"
-                                        />
-                                    </div>
-                                </a>
-                                
-                                {/* AWS Logo */}
-                                <a 
-                                    href={sponsorURLs['AWS']} 
-                                    target="_blank" 
-                                    rel="noopener noreferrer"
-                                    onClick={() => handleClick('AWS')}
-                                    className="block w-full max-w-[299px] transform transition-all duration-200 active:scale-95 hover:scale-[0.98]"
-                                >
-                                    <div className="bg-white p-5 rounded-lg w-full h-[100px] flex items-center justify-center overflow-hidden hover:bg-gray-50 transition-colors">
-                                        <img 
-                                            src={aws} 
-                                            alt="Powered by AWS" 
-                                            className="h-[80px] object-contain"
-                                        />
-                                    </div>
-                                </a>
-                                {/* Perplexity Logo */}
-                                {<a 
-                                    href={sponsorURLs['Perplexity']} 
-                                    target="_blank" 
-                                    rel="noopener noreferrer"
-                                    onClick={() => handleClick('Perplexity')}
-                                    className="block w-full max-w-[300px] transform transition-all duration-200 active:scale-95 hover:scale-[0.98]"
-                                >
-                                    <div className="bg-white p-4 rounded-lg w-full h-[100px] flex items-center justify-center overflow-hidden hover:bg-gray-50 transition-colors">
-                                        <img 
-                                            src={PerplexityLogo} 
-                                            alt="Groq" 
-                                            className="h-[120px] object-contain mt-2"
-                                        />
-
-                                    </div>
-
-                                </a>}
-                                {/* Groq Logo */}
-                                <a 
-                                    href={sponsorURLs['Groq']} 
-                                    target="_blank" 
-                                    rel="noopener noreferrer"
-                                    onClick={() => handleClick('Groq')}
-                                    className="block w-full max-w-[300px] transform transition-all duration-200 active:scale-95 hover:scale-[0.98]"
-                                >
-                                    <div className="bg-white p-4 rounded-lg w-full h-[100px] flex items-center justify-center overflow-hidden hover:bg-gray-50 transition-colors">
-                                        <img 
-                                            src={GroqLogo} 
-                                            alt="Groq" 
-                                            className="h-[60px] object-contain mt-2"
-                                        />
-
-                                    </div>
-
-                                </a>
-                                {/* CSUEB SOE Logo */}
-                                <a 
-                                    href={sponsorURLs['CSUEB SOE']} 
-                                    target="_blank" 
-                                    rel="noopener noreferrer"
-                                    onClick={() => handleClick('CSUEB SOE')}
-                                    className="block w-full max-w-[300px] transform transition-all duration-200 active:scale-95 hover:scale-[0.98]"
-                                >
-                                    <div className="bg-white p-4 rounded-lg w-full h-[100px] flex items-center justify-center overflow-hidden hover:bg-gray-50 transition-colors">
-                                        <img 
-                                            src={csueb_soe} 
-                                            alt="CSUEB School of Engineering" 
-                                            className="h-16 object-contain select-none"
-                                        />
-                                    </div>
-                                </a>
-                                
-                                
-
-                                {/* CSUEB DOCS Logo */}
-                                <a 
-                                    href={sponsorURLs['CSUEB DOCS']} 
-                                    target="_blank" 
-                                    rel="noopener noreferrer"
-                                    onClick={() => handleClick('CSUEB DOCS')}
-                                    className="block w-full max-w-[300px] transform transition-all duration-200 active:scale-95 hover:scale-[0.98]"
-                                >
-                                    <div className="bg-white p-4 rounded-lg w-full h-[100px] flex items-center justify-center overflow-hidden hover:bg-gray-50 transition-colors">
-                                        <img 
-                                            src={csueb_docs} 
-                                            alt="CSUEB Department of Computer Science" 
-                                            className="h-16 object-contain"
-                                        />
-                                    </div>
-                                </a>
-                                
-                                {/* Smith Center Logo */}
-                                <a 
-                                    href={sponsorURLs['Smith Center']} 
-                                    target="_blank" 
-                                    rel="noopener noreferrer"
-                                    onClick={() => handleClick('Smith Center')}
-                                    className="block w-full max-w-[300px] transform transition-all duration-200 active:scale-95 hover:scale-[0.98]"
-                                >
-                                    <div className="bg-white p-4 rounded-lg w-full h-[100px] flex items-center justify-center overflow-hidden hover:bg-gray-50 transition-colors">
-                                        <img 
-                                            src={SCLogo} 
-                                            alt="Smith Center" 
-                                            className="h-[160px] object-contain mt-2"
-                                        />
-
-                                    </div>
-
-                                </a>
-
-                                {/* Redbull Logo */}
-                                <a 
-                                    href={sponsorURLs['Redbull']} 
-                                    target="_blank" 
-                                    rel="noopener noreferrer"
-                                    onClick={() => handleClick('Redbull')}
-                                    className="block w-full max-w-[300px] transform transition-all duration-200 active:scale-95 hover:scale-[0.98]"
-                                >
-                                    <div className="bg-white p-4 rounded-lg w-full h-[100px] flex items-center justify-center overflow-hidden hover:bg-gray-50 transition-colors">  
-                                        <img 
-                                            src={redbull} 
-                                            alt="Redbull" 
-                                            className="h-[100px] object-contain mt-2"
-                                        />
-                                    </div>
-                                </a>
-                                
-
-                                
+                                {sponsors.map((sponsor) => {
+                                    const imageSrc = sponsorImages[sponsor.image];
+                                    const url = sponsorURLs[sponsor.urlKey];
+                                    const padding = sponsor.padding || 'p-4';
+                                    const maxWidth = sponsor.key === 'AWS' ? 'max-w-[299px]' : 'max-w-[300px]';
+                                    
+                                    return (
+                                        <a 
+                                            key={sponsor.key}
+                                            href={url} 
+                                            target="_blank" 
+                                            rel="noopener noreferrer"
+                                            onClick={() => handleClick(sponsor.urlKey)}
+                                            className={`block w-full ${maxWidth} transform transition-all duration-200 active:scale-95 hover:scale-[0.98]`}
+                                        >
+                                            <div className={`bg-white ${padding} rounded-lg w-full h-[100px] flex items-center justify-center overflow-hidden hover:bg-gray-50 transition-colors`}>
+                                                <img 
+                                                    src={imageSrc} 
+                                                    alt={sponsor.alt} 
+                                                    className={`${sponsor.height} object-contain ${sponsor.key === 'Smith Center' || sponsor.key === 'Perplexity' || sponsor.key === 'Groq' || sponsor.key === 'Redbull' ? 'mt-2' : ''} ${sponsor.key === 'CSUEB SOE' ? 'select-none' : ''}`}
+                                                />
+                                            </div>
+                                        </a>
+                                    );
+                                })}
                             </div>
                         </div>
 

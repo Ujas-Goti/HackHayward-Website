@@ -56,7 +56,7 @@ export default function Home2025() {
                     className="pb-16 p-10 bg-black/50 overflow-hidden"
                     id="sponsors"
                 >
-                    <Sponsor />
+                    <Sponsor year={selectedYear} />
                 </section>
                 {/* Scene */}
                 <section className="overflow-hidden">
