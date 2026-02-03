@@ -114,6 +114,8 @@ export default function Teams({ title, year, showSpeakers = true }) {
                                 img={organizer.img}
                                 badge={organizer.badge}
                                 flair={organizer.flair}
+                                imageScale={organizer.imageScale}
+                                imagePosition={organizer.imagePosition}
                             />
                         </li>
                     ))}

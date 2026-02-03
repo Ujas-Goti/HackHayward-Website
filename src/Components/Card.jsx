@@ -11,9 +11,11 @@ Card.propTypes = {
         jud: PropTypes.bool,
         mnt: PropTypes.bool,
     }).isRequired,
+    imageScale: PropTypes.number,
+    imagePosition: PropTypes.string,
 };
 
-export default function Card({ name, desc, pos, img, badge, flair }) {
+export default function Card({ name, desc, pos, img, badge, flair, imageScale = 1, imagePosition = 'center' }) {
     return(
         <div className="card bg-white rounded-lg overflow-hidden shadow-md w-60 md:w-72 h-full">
             <figure className="w-full h-64">
@@ -21,7 +23,11 @@ export default function Card({ name, desc, pos, img, badge, flair }) {
                 src={img}
                 alt={name} 
                 loading="lazy"
-                className="w-full h-full object-cover object-center"
+                className="w-full h-full object-cover"
+                style={{ 
+                    transform: `scale(${imageScale})`,
+                    objectPosition: imagePosition
+                }}
                 />
             </figure>
             <div className="p-6 text-black font-grotesk flex flex-col">
