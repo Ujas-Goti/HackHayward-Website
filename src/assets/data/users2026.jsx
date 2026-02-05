@@ -48,7 +48,7 @@ export const users2026 = [
                 }
             },
             {
-                name: "Yash Kumars",
+                name: "Yash Kumar",
                 desc: "HackHayward - CSU East Bay",
                 pos: "Executive Board Advisor",
                 img: Yash,
