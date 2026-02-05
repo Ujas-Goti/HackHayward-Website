@@ -12,11 +12,11 @@ import Chanpreet from "/src/assets/imgs/users/CHANPREET.png";
 
 export const users2026 = [
             {
-                name: "Ujas Goti",
+                name: "Nidhi Prajapati",
                 desc: "HackHayward - CSU East Bay",
                 pos: "President",
-                img: Ujas,
-                badge: "Co-Founder",
+                img: Nidhi,
+                badge: "Director",
                 flair: {
                     spk: false,
                     jud: false,
@@ -24,11 +24,11 @@ export const users2026 = [
                 }
             },
             {
-                name: "Nidhi Prajapati",
+                name: "Ujas Goti",
                 desc: "HackHayward - CSU East Bay",
-                pos: "Vice President",
-                img: Nidhi,
-                badge: "Director",
+                pos: "Co-President",
+                img: Ujas,
+                badge: "Co-Founder",
                 flair: {
                     spk: false,
                     jud: false,
@@ -88,7 +88,7 @@ export const users2026 = [
                 desc: "HackHayward - CSU East Bay",
                 pos: "Logistics & Operations",
                 img: Monisha,
-                badge: "Lead",
+                badge: "Organizer",
                 flair: {
                     spk: false,
                     jud: false,
