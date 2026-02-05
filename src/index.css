@@ -20,4 +20,9 @@
                  0 0 20px rgba(197, 147, 233, 0.4),
                  0 0 30px rgba(197, 147, 233, 0.2);
   }
+
+  .perspective-1000 {
+    perspective: 1000px;
+    transform-style: preserve-3d;
+  }
 }

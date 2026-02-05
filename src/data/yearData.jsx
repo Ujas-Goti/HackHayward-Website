@@ -29,7 +29,7 @@ export const yearData = {
         register: "https://gdg.community.dev/events/details/google-gdg-on-campus-california-state-university-east-bay-hayward-united-states-presents-hackhayward-build-with-ai-an-entrepreneurial-eye/",
         sponsors: [
             { key: 'GCP', image: 'GCP_Cheat_Sheet.png', alt: 'Powered by GCP', urlKey: 'GCP', height: 'h-[95px]' },
-            { key: 'IBM', image: 'ibm.png', alt: 'IBM', urlKey: 'IBM', height: 'h-[80px]' },
+            { key: 'IBM', image: 'ibm.png', alt: 'IBM', urlKey: 'IBM', height: 'h-[115px]' },
             { key: 'AWS', image: 'Amazon_Web_Services_Logo.svg.png', alt: 'Powered by AWS', urlKey: 'AWS', height: 'h-[80px]', padding: 'p-5' },
             { key: 'CSUEB DOCS', image: 'cseb-docs-o_2.png', alt: 'CSUEB Department of Computer Science', urlKey: 'CSUEB DOCS', height: 'h-16' },
             { key: 'CSUEB SOE', image: 'CSUEB_SOE.svg', alt: 'CSUEB School of Engineering', urlKey: 'CSUEB SOE', height: 'h-16' },
