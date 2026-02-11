@@ -62,7 +62,7 @@ export default function Hero(props) {
 
                 {/* Main content */}
                 <div className="relative z-10 min-h-screen flex items-center">
-                    <div className="w-full max-w-7xl mx-auto px-6 lg:px-12 pt-40 pb-12">
+                    <div className="w-full max-w-7xl px-6 lg:px-16 pt-40 pb-12">
                         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                             {/* Left side - Text content */}
                             <div className="text-white space-y-5 text-center lg:text-left max-w-xl lg:max-w-2xl mx-auto lg:mx-0 order-2 lg:order-1">
