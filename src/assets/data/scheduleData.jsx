@@ -57,7 +57,7 @@ export const scheduleData = [
       title: "Hack Your Way into ML: Building Smart Web Apps with TensorFlow.js",
       location: "Core 178/179 Entrepreneurship Hub",
       duration: 60,
-      description: "Bring machine learning directly to your browser with TensorFlow.js! Join Deepa as she transforms ordinary web apps into intelligent systems through image recognition and real-time predictions—no backend required. Perfect for web developers and ML enthusiasts ready to code the future of AI.",
+      description: "Bring machine learning directly to your browser with TensorFlow.js! Join Deepa as she transforms ordinary web apps into intelligent systems through image recognition and real-time predictions - no backend required. Perfect for web developers and ML enthusiasts ready to code the future of AI.",
     },
     {
       id: 7,

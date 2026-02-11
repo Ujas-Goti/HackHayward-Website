@@ -4,9 +4,29 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  :root {
+    --hack-navy: #1A2773;
+    --hack-navy-dark: #131c54;
+    --hack-purple: #46166C;
+    --hack-purple-light: #c593e9;
+    --hack-lavender: #B794D4;
+    --hack-blue: #7B9ED9;
+    --hack-blue-light: #C5D4F0;
+  }
+}
+
 @layer utilities {
   .shadow-text {
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  .shadow-text-sm {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
   }
   
   .text-shadow-glow {
@@ -20,9 +40,40 @@
                  0 0 20px rgba(197, 147, 233, 0.4),
                  0 0 30px rgba(197, 147, 233, 0.2);
   }
+  
+  .text-shadow-navy-glow {
+    text-shadow: 0 0 10px rgba(26, 39, 115, 0.7),
+                 0 0 20px rgba(70, 22, 108, 0.4),
+                 0 0 30px rgba(123, 158, 217, 0.2);
+  }
 
   .perspective-1000 {
     perspective: 1000px;
     transform-style: preserve-3d;
+  }
+  
+  /* Modern gradient backgrounds */
+  .bg-hack-gradient {
+    background: linear-gradient(135deg, #1A2773 0%, #46166C 50%, #1A2773 100%);
+  }
+  
+  .bg-hack-gradient-radial {
+    background: radial-gradient(ellipse at 50% 0%, #46166C 0%, #1A2773 50%, #131c54 100%);
+  }
+  
+  /* Glass morphism effect */
+  .glass-card {
+    background: rgba(26, 39, 115, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(183, 148, 212, 0.2);
+  }
+  
+  /* Button styles */
+  .btn-primary-hack {
+    @apply bg-hack-lavender hover:bg-hack-purple-light text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl;
+  }
+  
+  .btn-outline-hack {
+    @apply bg-transparent border-2 border-white text-white hover:bg-white hover:text-hack-navy font-semibold py-3 px-8 rounded-full transition-all duration-300;
   }
 }

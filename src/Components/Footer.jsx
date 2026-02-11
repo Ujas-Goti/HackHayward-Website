@@ -76,7 +76,8 @@ function NavButtons() {
 export default function Footer(props) {
     const { hasCountdownEnded } = useCountdown();
     const location = useLocation();
-    const isLiveDashboard = location.pathname === '/live';
+    const isLiveDashboard = location.pathname === '/live' || location.pathname === '/live-2026';
+    const is2026 = location.pathname === '/' || location.pathname === '/live-2026';
     
     const handleClick = (platform) => {
         ReactGA.event({
@@ -88,7 +89,7 @@ export default function Footer(props) {
     };
 
     return (
-        <footer className="text-white">
+        <footer className={`text-white ${is2026 ? 'bg-hack-navy-dark' : ''}`}>
             {/* Top Section - Logo and Contact */}
             <section className="flex flex-row items-center justify-between p-8 max-lg:flex-col max-lg:gap-6">
                 {/* Logo */}
@@ -115,7 +116,7 @@ export default function Footer(props) {
                             Reach out to us at{' '}
                             <a
                                 href="mailto:csueastbaygdsc@gmail.com"
-                                className="font-bold text-[#c593e9] underline"
+                                className={`font-bold underline ${is2026 ? 'text-hack-lavender hover:text-hack-purple-light' : 'text-[#c593e9]'}`}
                             >
                                 csueastbaygdsc@gmail.com
                             </a>
@@ -129,7 +130,7 @@ export default function Footer(props) {
             </section>
             
             {/* Divider Line */}
-            <hr className="mx-8 border-white" />
+            <hr className={`mx-8 ${is2026 ? 'border-hack-lavender/30' : 'border-white'}`} />
             
             {/* Middle Section - MLH Code and Navigation */}
             <section className="flex flex-row items-center justify-between p-8 max-sm:flex-col max-sm:gap-4">
@@ -137,7 +138,7 @@ export default function Footer(props) {
                 <div>
                     <a
                         href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf"
-                        className="text-white lg:text-lg text-sm font-grotesk font-light underline"
+                        className={`lg:text-lg text-sm font-grotesk font-light underline ${is2026 ? 'text-hack-blue-light hover:text-white' : 'text-white'}`}
                         target="_blank"
                     >
                         MLH Code of Conduct
@@ -151,7 +152,11 @@ export default function Footer(props) {
                     {!hasCountdownEnded && !isLiveDashboard && (
                         <a
                             href={props.register}
-                            className="bg-[#c593e9] hover:bg-[#cfb0e8] rounded-full px-6 py-3 transition text-white lg:text-lg text-sm font-grotesk font-medium text-nowrap whitespace-nowrap"
+                            className={`rounded-full px-6 py-3 transition-all duration-200 lg:text-lg text-sm font-grotesk font-medium text-nowrap whitespace-nowrap hover:scale-105 ${
+                                is2026 
+                                    ? 'bg-hack-lavender hover:bg-hack-purple-light text-white' 
+                                    : 'bg-[#c593e9] hover:bg-[#cfb0e8] text-white'
+                            }`}
                             target="_blank"
                             onClick={() => handleClick('Register')}
                         >
@@ -162,11 +167,11 @@ export default function Footer(props) {
             </section>
             
             {/* Divider Line */}
-            <hr className="mx-8 border-white" />
+            <hr className={`mx-8 ${is2026 ? 'border-hack-lavender/30' : 'border-white'}`} />
             
             {/* Bottom Section - Credit */}
             <section className="flex justify-center py-4">
-                <p className="text-white font-medium font-grotesk flex flex-row gap-2">
+                <p className={`font-medium font-grotesk flex flex-row gap-2 ${is2026 ? 'text-hack-blue-light' : 'text-white'}`}>
                     Made with ❤️ by HackHayward
                 </p>
             </section>

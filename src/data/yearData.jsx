@@ -28,12 +28,17 @@ export const yearData = {
         faqDescription: "The first hackathon in Hayward, organized by CSU East Bay Students for all students in the Bay Area about to take place this coming March 21st and 22nd! Aimed towards spreading awareness for marginalized communities, we are open to everyone!",
         register: "https://gdg.community.dev/events/details/google-gdg-on-campus-california-state-university-east-bay-hayward-united-states-presents-hackhayward-build-with-ai-an-entrepreneurial-eye/",
         sponsors: [
+            // Row 1
             { key: 'GCP', image: 'GCP_Cheat_Sheet.png', alt: 'Powered by GCP', urlKey: 'GCP', height: 'h-[95px]' },
             { key: 'IBM', image: 'ibm.png', alt: 'IBM', urlKey: 'IBM', height: 'h-[115px]' },
             { key: 'AWS', image: 'Amazon_Web_Services_Logo.svg.png', alt: 'Powered by AWS', urlKey: 'AWS', height: 'h-[80px]', padding: 'p-5' },
+            // Row 2
+            { key: 'Toolhouse', image: 'Toolhouse.png', alt: 'Toolhouse', urlKey: 'Toolhouse', height: 'h-[80px]' },
+            { key: 'CAHSI', image: 'CAHSI.png', alt: 'CAHSI - Computing Alliance of Hispanic-Serving Institutions', urlKey: 'CAHSI', height: 'h-[110px]' },
+            { key: 'Smith Center', image: 'updated_smith_logo.png', alt: 'Smith Center', urlKey: 'Smith Center', height: 'h-[160px]' },
+            // Bottom center row
             { key: 'CSUEB DOCS', image: 'cseb-docs-o_2.png', alt: 'CSUEB Department of Computer Science', urlKey: 'CSUEB DOCS', height: 'h-16' },
             { key: 'CSUEB SOE', image: 'CSUEB_SOE.svg', alt: 'CSUEB School of Engineering', urlKey: 'CSUEB SOE', height: 'h-16' },
-            { key: 'Smith Center', image: 'updated_smith_logo.png', alt: 'Smith Center', urlKey: 'Smith Center', height: 'h-[160px]' },
         ],
     },
 };

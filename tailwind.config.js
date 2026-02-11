@@ -3,6 +3,19 @@ export default {
     content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
     theme: {
         extend: {
+            colors: {
+                // New Modern Color Palette
+                'hack-navy': '#1A2773',
+                'hack-navy-dark': '#131c54',
+                'hack-navy-light': '#243087',
+                'hack-purple': '#46166C',
+                'hack-purple-light': '#c593e9',
+                'hack-purple-dark': '#350f52',
+                'hack-lavender': '#B794D4',
+                'hack-blue': '#7B9ED9',
+                'hack-blue-light': '#C5D4F0',
+                'hack-text': '#E8EAF6',
+            },
             perspective: {
                 '1000': '1000px',
             },
@@ -16,6 +29,10 @@ export default {
                 shine: {
                     '0%': { 'background-position': '100%' },
                     '100%': { 'background-position': '-100%' },
+                },
+                float: {
+                    '0%, 100%': { transform: 'translateY(0px)' },
+                    '50%': { transform: 'translateY(-20px)' },
                 },
                 'neon-pulse': {
                     '0%, 100%': { opacity: '0.3', transform: 'scale(1)', filter: 'blur(150px)' },
@@ -51,6 +68,7 @@ export default {
             },
             animation: {
                 shine: 'shine 5s linear infinite',
+                float: 'float 6s ease-in-out infinite',
                 'neon-pulse': 'neon-pulse 4s ease-in-out infinite',
                 'neon-pulse-delayed': 'neon-pulse-delayed 5s ease-in-out infinite',
                 'neon-pulse-slow': 'neon-pulse-slow 6s ease-in-out infinite',
