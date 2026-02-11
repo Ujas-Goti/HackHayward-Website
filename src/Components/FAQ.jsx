@@ -1,5 +1,6 @@
 import ReactGA from 'react-ga4';
 import PropTypes from 'prop-types';
+import { useState } from 'react';
 
 FaqAccordion.propTypes = {
     register: PropTypes.string.isRequired,
@@ -10,6 +11,8 @@ FaqAccordion.propTypes = {
 
 function FaqAccordion(props) {
     const is2026 = props.year === 2026;
+    // Track open/closed state per question so multiple can stay open
+    const [openMap, setOpenMap] = useState({});
     const handleClick = (platform) => {
         ReactGA.event({
             category: 'hackathon',
@@ -66,7 +69,7 @@ function FaqAccordion(props) {
         },
         {
             question: 'What if I have no experience?',
-            answer: 'This event is still for you! No technical experience or not majoring in Computer Science? You are still invited! Create creative solutions to the problems in the Hackathon! Calling all Engineering, Business, Computer Science, and every creative mind in between—ignite your potential at our event! Not in a team yet? No worries—the kickoff networking session is your chance to spark connections and form your dream squad.',
+            answer: 'This event is still for you! No technical experience or not majoring in Computer Science? You are still invited! Create creative solutions to the problems in the Hackathon! Calling all Engineering, Business, Computer Science, and every creative mind in between - ignite your potential at our event! Not in a team yet? No worries - the kickoff networking session is your chance to spark connections and form your dream squad.',
         },
         {
             question: 'What is HackHayward?',
@@ -102,22 +105,87 @@ function FaqAccordion(props) {
         ] : []),
     ];
 
+    // Shared card styles for both mobile carousel and desktop grid
+    const baseCardClasses = is2026
+        ? 'bg-white/10 backdrop-blur-md text-hack-navy rounded-2xl border border-hack-lavender/30 shadow-lg shadow-hack-lavender/10'
+        : 'bg-white/5 backdrop-blur-md text-white rounded-2xl border border-white/10 shadow-md';
+
+    const questionClasses = 'text-white';
+
+    // Softer, readable body text on glass background
+    const answerClasses = is2026
+        ? 'text-white/80'
+        : 'text-white/80';
+
     return (
-        <section className="w-full flex flex-col justify-center items-center gap-4 font-grotesk mt-6">
-            {faqs.map((faq, index) => (
-                <article
-                    key={index}
-                    className="collapse collapse-plus max-w-screen-md bg-white text-black z-10"
-                >
-                    <input type="checkbox" aria-label="Open Accordian" />
-                    <h2 className="collapse-title md:text-xl font-bold text-balance">
-                        {faq.question}
-                    </h2>
-                    <div className="collapse-content text-pretty">
-                        <p>{faq.answer}</p>
-                    </div>
-                </article>
-            ))}
+        <section className="w-full font-grotesk mt-10">
+            {/* Mobile / tablet: horizontal gaming-style carousel */}
+            <div className="md:hidden flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 px-2 -mx-2">
+                {faqs.map((faq, index) => (
+                    <article
+                        key={index}
+                        className={`${baseCardClasses} snap-center min-w-[85%] px-5 py-6 flex flex-col gap-3 relative cursor-pointer`}
+                        onClick={() =>
+                            setOpenMap((prev) => ({
+                                ...prev,
+                                [index]: !prev[index],
+                            }))
+                        }
+                    >
+                        <div className="flex items-start justify-between gap-3">
+                            <h3 className={`text-lg font-bold text-balance ${questionClasses}`}>
+                                {faq.question}
+                            </h3>
+                            <span
+                                className={`text-xl font-bold transition-transform ${
+                                    openMap[index] ? 'rotate-45' : ''
+                                }`}
+                            >
+                                +
+                            </span>
+                        </div>
+                        {openMap[index] && (
+                            <p className={`text-sm text-pretty mt-1 ${answerClasses}`}>
+                                {faq.answer}
+                            </p>
+                        )}
+                    </article>
+                ))}
+            </div>
+
+            {/* Desktop: two-column grid, cards side by side */}
+            <div className="hidden md:grid md:grid-cols-2 gap-6 mt-4">
+                {faqs.map((faq, index) => (
+                    <article
+                        key={index}
+                        className={`${baseCardClasses} px-6 py-7 flex flex-col gap-3 relative cursor-pointer transition-colors`}
+                        onClick={() =>
+                            setOpenMap((prev) => ({
+                                ...prev,
+                                [index]: !prev[index],
+                            }))
+                        }
+                    >
+                        <div className="flex items-start justify-between gap-3">
+                            <h3 className={`text-lg font-bold text-balance ${questionClasses}`}>
+                                {faq.question}
+                            </h3>
+                            <span
+                                className={`text-xl font-bold transition-transform ${
+                                    openMap[index] ? 'rotate-45' : ''
+                                }`}
+                            >
+                                +
+                            </span>
+                        </div>
+                        {openMap[index] && (
+                            <p className={`text-sm text-pretty mt-1 ${answerClasses}`}>
+                                {faq.answer}
+                            </p>
+                        )}
+                    </article>
+                ))}
+            </div>
         </section>
     );
 }
@@ -129,26 +197,25 @@ FAQ.propTypes = {
 };
 
 export default function FAQ(props) {
+    const is2026 = props.year === 2026;
+    
     return (
         <>
             <div className="relative">
                 <div className="text-white text-center font-exo2 flex flex-col items-center gap-9 z-10 shadow-text-sm">
-                    <h2 className="hidden md:block text-5xl text-balance max-lg:mx-28 font-bold">
+                    <h2 className="hidden md:block text-5xl text-balance max-lg:mx-28 font-bold shadow-text-sm text-white">
                         Regulations and FAQs
                     </h2>
-                    <p className="md:hidden text-5xl font-bold">
+                    <p className="md:hidden text-5xl font-bold shadow-text-sm text-white">
                         FAQ
                     </p>
-                    <p className="lg:text-xl sm:text-lg font-grotesk font-light text-pretty z-40">
+                    <p className={`lg:text-xl sm:text-lg font-grotesk font-light text-pretty z-40 ${is2026 ? 'text-hack-blue-light/90' : ''}`}>
                         If we missed anything, please contact us at{' '}
                         <a
-
-                            href="mailto:hacker@hackhayward.com"
-
-  
-                            className="font-bold text-[#c593e9] underline"
+                            href="mailto:csueastbaygdsc@gmail.com"
+                            className={`font-bold underline ${is2026 ? 'text-hack-lavender hover:text-hack-purple-light' : 'text-[#c593e9]'}`}
                         >
-                            hacker@hackhayward.com
+                            csueastbaygdsc@gmail.com
                         </a>
                     </p>
                 </div>
