@@ -62,13 +62,13 @@ export default function Hero(props) {
 
                 {/* Main content */}
                 <div className="relative z-10 min-h-screen flex items-center">
-                    <div className="w-full px-6 lg:px-16 xl:px-24 pt-28 pb-12">
+                    <div className="w-full px-6 lg:px-16 xl:px-24 pt-20 lg:pt-16 pb-12">
                         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 xl:gap-24 items-center max-w-screen-2xl mx-auto">
                             {/* Left side - Text content */}
                             <div className="text-white space-y-5 text-center lg:text-left max-w-xl lg:max-w-2xl mx-auto lg:mx-0 order-2 lg:order-1">
                                 <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold font-exo2 leading-tight">
                                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#B794D4] via-[#c593e9] to-[#B794D4] whitespace-nowrap">
-                                        Hackhayward 2026
+                                        HackHayward 2026
                                     </span>
                                     <br />
                                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#B794D4] via-[#c593e9] to-[#B794D4] whitespace-nowrap">
@@ -111,7 +111,7 @@ export default function Hero(props) {
                                             href={props.register}
                                             onClick={() => handleClick('Register')}
                                         >
-                                            Apply Here
+                                            Register
                                         </a>
                                         <a
                                             className="bg-transparent border-2 border-[#B794D4] text-[#B794D4] hover:bg-[#B794D4] hover:text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 hover:scale-105"
