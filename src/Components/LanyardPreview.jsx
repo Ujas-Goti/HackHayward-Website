@@ -1,5 +1,4 @@
 // src/Components/LanyardPreview.jsx
-/* eslint-disable react/no-unknown-property */
 import { Suspense } from 'react';
 import PropTypes from 'prop-types';
 import Lanyard from './Lanyard';

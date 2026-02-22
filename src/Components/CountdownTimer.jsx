@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
-import PropTypes from 'prop-types';
 import { useCountdown } from '../context/CountdownContext';
 
 const CountdownTimer = ({ targetDate }) => {

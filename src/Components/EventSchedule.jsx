@@ -3,40 +3,20 @@ import { useState, useEffect } from 'react';
 import { scheduleData } from '../assets/data/scheduleData';
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { FaMapMarkerAlt } from "react-icons/fa";
+import PropTypes from 'prop-types';
+
+EventSchedule.propTypes = {
+  year: PropTypes.number,
+};
 
 export default function EventSchedule({ year = 2025 }) {
   const [selectedDay, setSelectedDay] = useState("March 1");
   const [currentEvent, setCurrentEvent] = useState(null);
   const [isHovered, setIsHovered] = useState(false);
-  
-  // For 2026, show "To Be Decided" message
-  if (year === 2026) {
-    return (
-      <div className="font-grotesk">
-        <h2 className="text-2xl sm:text-3xl font-bold font-exo2 mb-6" style={{ textShadow: '0 2px 4px rgba(0, 0, 0, 0.7), 0 1px 2px rgba(0, 0, 0, 0.5)' }}>Event Schedule</h2>
-        <div className="bg-black/20 p-8 rounded-md text-center">
-          <p className="text-xl text-white/80 drop-shadow-sm">Schedule details to be announced soon!</p>
-          <p className="text-sm text-white/60 mt-2 drop-shadow-sm">Stay tuned for updates.</p>
-        </div>
-      </div>
-    );
-  }
-  
-  // For 2025, show "Event ended" message
-  if (year === 2025) {
-    return (
-      <div className="font-grotesk">
-        <h2 className="text-2xl sm:text-3xl font-bold font-exo2 mb-6" style={{ textShadow: '0 2px 4px rgba(0, 0, 0, 0.7), 0 1px 2px rgba(0, 0, 0, 0.5)' }}>Event Schedule</h2>
-        <div className="bg-black/20 p-8 rounded-md text-center">
-          <p className="text-xl text-white/80 drop-shadow-sm">Event ended</p>
-        </div>
-      </div>
-    );
-  }
-  
+
   // Filter events for the selected day
   const dayEvents = scheduleData.filter(event => event.day === selectedDay);
-  
+
   // Find current event based on time
   useEffect(() => {
     const findCurrentEvent = () => {
@@ -104,6 +84,31 @@ export default function EventSchedule({ year = 2025 }) {
     
     return () => clearInterval(intervalId);
   }, [selectedDay, dayEvents]);
+
+  // For 2026, show "To Be Decided" message
+  if (year === 2026) {
+    return (
+      <div className="font-grotesk">
+        <h2 className="text-2xl sm:text-3xl font-bold font-exo2 mb-6" style={{ textShadow: '0 2px 4px rgba(0, 0, 0, 0.7), 0 1px 2px rgba(0, 0, 0, 0.5)' }}>Event Schedule</h2>
+        <div className="bg-black/20 p-8 rounded-md text-center">
+          <p className="text-xl text-white/80 drop-shadow-sm">Schedule details to be announced soon!</p>
+          <p className="text-sm text-white/60 mt-2 drop-shadow-sm">Stay tuned for updates.</p>
+        </div>
+      </div>
+    );
+  }
+
+  // For 2025, show "Event ended" message
+  if (year === 2025) {
+    return (
+      <div className="font-grotesk">
+        <h2 className="text-2xl sm:text-3xl font-bold font-exo2 mb-6" style={{ textShadow: '0 2px 4px rgba(0, 0, 0, 0.7), 0 1px 2px rgba(0, 0, 0, 0.5)' }}>Event Schedule</h2>
+        <div className="bg-black/20 p-8 rounded-md text-center">
+          <p className="text-xl text-white/80 drop-shadow-sm">Event ended</p>
+        </div>
+      </div>
+    );
+  }
 
   // Get display text for selected day
   const getDayDisplayText = (day) => {

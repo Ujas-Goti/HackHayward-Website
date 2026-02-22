@@ -21,7 +21,7 @@ export const CountdownProvider = ({ children }) => {
   );
 };
 
-// Create a custom hook for using the context
+// eslint-disable-next-line react-refresh/only-export-components
 export const useCountdown = () => {
   const context = useContext(CountdownContext);
   if (context === null) {

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useEffect } from 'react';
+import { useRef } from 'react';
 import heroMobile from '/src/assets/imgs/hero/HeroScene-mobile.webp';
 import heroDesktop from '/src/assets/imgs/hero/HeroScene.webp';
 import astro from '/src/assets/imgs/hero/Astro.webp';
@@ -11,6 +11,7 @@ import CountdownTimer from './CountdownTimer';
 import { useCountdown } from '../context/CountdownContext';
 import ShinyText from './ShinyText';
 import { Link } from 'react-router-dom';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 Hero.propTypes = {
     register: PropTypes.string.isRequired,
@@ -20,7 +21,7 @@ Hero.propTypes = {
 
 export default function Hero(props) {
     const { hasCountdownEnded } = useCountdown();
-    const { year, yearData } = props;
+    const { yearData } = props;
     
     const handleClick = (platform) => {
         ReactGA.event({
@@ -32,28 +33,38 @@ export default function Hero(props) {
     };
 
     const is2026 = props.year === 2026;
+    const heroRef = useRef(null);
+    const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
+    const saturnY = useTransform(scrollYProgress, [0, 1], [0, -120]);
+    const jupiterY = useTransform(scrollYProgress, [0, 1], [0, -80]);
+    const marsY = useTransform(scrollYProgress, [0, 1], [0, -60]);
+    const textOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+    const textY = useTransform(scrollYProgress, [0, 0.5], [0, 40]);
+    const astroY = useTransform(scrollYProgress, [0, 1], [0, -50]);
 
     // Modern 2026 Hero Design
     if (is2026) {
         return (
-            <div className="min-h-screen bg-gradient-to-br from-[#1A2773] via-[#46166C] to-[#1A2773] relative overflow-hidden">
+            <div ref={heroRef} className="min-h-screen bg-gradient-to-br from-[#1A2773] via-[#46166C] to-[#1A2773] relative overflow-hidden">
                 {/* Animated background elements */}
                 <div className="absolute inset-0 overflow-hidden pointer-events-none">
                     {/* Gradient orbs with accent purple */}
                     <div className="absolute top-[5%] right-[10%] w-[500px] h-[500px] bg-[#46166C]/50 rounded-full blur-[120px]"></div>
                     <div className="absolute bottom-[10%] left-[5%] w-[400px] h-[400px] bg-[#46166C]/40 rounded-full blur-[100px]"></div>
                     <div className="absolute top-[50%] left-[50%] w-[300px] h-[300px] bg-[#B794D4]/20 rounded-full blur-[80px]"></div>
-                    
-                    {/* Planet decorations */}
-                    <img 
-                        src={saturn} 
-                        alt="" 
+
+                    {/* Planet decorations — parallax */}
+                    <motion.img
+                        src={saturn}
+                        alt=""
                         className="absolute top-[15%] right-[-5%] w-[250px] opacity-60"
+                        style={{ y: saturnY }}
                     />
-                    <img 
-                        src={jupiter} 
-                        alt="" 
+                    <motion.img
+                        src={jupiter}
+                        alt=""
                         className="absolute bottom-[10%] left-[-8%] w-[350px] opacity-40"
+                        style={{ y: jupiterY }}
                     />
                     
                     {/* Star particles */}
@@ -65,7 +76,12 @@ export default function Hero(props) {
                     <div className="w-full px-6 lg:px-16 xl:px-24 pt-20 lg:pt-16 pb-12">
                         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 xl:gap-24 items-center max-w-screen-2xl mx-auto">
                             {/* Left side - Text content */}
-                            <div className="text-white space-y-5 text-center lg:text-left max-w-xl lg:max-w-2xl mx-auto lg:mx-0 order-2 lg:order-1">
+                            <motion.div
+                                className="text-white space-y-5 text-center lg:text-left max-w-xl lg:max-w-2xl mx-auto lg:mx-0 order-2 lg:order-1"
+                                style={{ opacity: textOpacity, y: textY }}
+                                initial={{ opacity: 0, y: 30 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.7, ease: 'easeOut' }}>
                                 <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold font-exo2 leading-tight">
                                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#B794D4] via-[#c593e9] to-[#B794D4] whitespace-nowrap">
                                         HackHayward 2026
@@ -130,10 +146,15 @@ export default function Hero(props) {
                                         Scroll to know more about us
                                     </p>
                                 </div>
-                            </div>
-                            
+                            </motion.div>
+
                             {/* Right side - Astro mascot with floating elements */}
-                            <div className="relative flex justify-center items-center order-1 lg:order-2">
+                            <motion.div
+                                className="relative flex justify-center items-center order-1 lg:order-2"
+                                style={{ y: astroY }}
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}>
                                 {/* Floating stars around the Astro */}
                                 <div className="absolute top-[5%] right-[10%] w-3 h-3 bg-yellow-300 rounded-full animate-pulse opacity-80" style={{ animationDuration: '2s' }}></div>
                                 <div className="absolute top-[15%] left-[5%] w-2 h-2 bg-yellow-400 rounded-full animate-pulse opacity-70" style={{ animationDuration: '3s' }}></div>
@@ -144,11 +165,11 @@ export default function Hero(props) {
                                 <div className="absolute bottom-[10%] left-[25%] w-2 h-2 bg-yellow-300 rounded-full animate-pulse opacity-70" style={{ animationDuration: '3s' }}></div>
                                 
                                 {/* Mars planet floating */}
-                                <img 
-                                    src={mars} 
-                                    alt="" 
+                                <motion.img
+                                    src={mars}
+                                    alt=""
                                     className="absolute bottom-[5%] right-[0%] w-[80px] lg:w-[120px] opacity-50 animate-float"
-                                    style={{ animationDuration: '10s' }}
+                                    style={{ animationDuration: '10s', y: marsY }}
                                 />
                                 
                                 {/* Extra glow orbs */}
@@ -169,7 +190,7 @@ export default function Hero(props) {
                                         className="relative z-10 w-[650px] sm:w-[750px] lg:w-[850px] xl:w-[950px] object-contain drop-shadow-2xl animate-wiggle animate-infinite animate-duration-[6000ms] animate-ease-in-out rotate-[22deg]"
                                     />
                                 </div>
-                            </div>
+                            </motion.div>
                         </div>
                     </div>
                 </div>
