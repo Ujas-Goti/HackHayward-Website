@@ -6,11 +6,11 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { fadeLeft, fadeRight, viewportOnce } from '../utils/scrollAnimations';
 
 // Slideshow images
-import hh1 from '/src/assets/imgs/about/hh1.webp';
-import hh2 from '/src/assets/imgs/about/hh2.webp';
-import hh3 from '/src/assets/imgs/about/hh3.webp';
-import hh5 from '/src/assets/imgs/about/hh5.webp';
-import hh6 from '/src/assets/imgs/about/hh6.webp';
+import hh1 from '../assets/imgs/about/hh1.png';
+import hh2 from '../assets/imgs/about/hh2.png';
+import hh3 from '../assets/imgs/about/hh3.png';
+import hh5 from '../assets/imgs/about/hh5.png';
+import hh6 from '../assets/imgs/about/hh6.png';
 
 const slideshowImages = [
     { src: hh1, alt: 'HackHayward participants with Red Bull energy drinks' },
