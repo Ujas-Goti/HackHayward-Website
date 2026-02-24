@@ -43,18 +43,18 @@ const sponsorURLs = {
 
 // Image mapping
 const sponsorImages = {
-    'GCP_Cheat_Sheet.webp': GCP,
-    'Amazon_Web_Services_Logo.webp': aws,
+    'GCP_Cheat_Sheet.png': GCP,
+    'Amazon_Web_Services_Logo.svg.png': aws,
     'CSUEB_DOCS.svg': csueb_docs,
-    'cseb-docs-o_2.webp': csueb_docs_2026,
+    'cseb-docs-o_2.png': csueb_docs_2026,
     'CSUEB_SOE.svg': csueb_soe,
-    'updated_smith_logo.webp': SCLogo,
+    'updated_smith_logo.png': SCLogo,
     'GroqLogo_Black.svg': GroqLogo,
-    'Perplexity-Logo.webp': PerplexityLogo,
+    'Perplexity-Logo.jpg': PerplexityLogo,
     'redbull.webp': redbull,
-    'ibm.webp': ibm,
-    'CAHSI.webp': cahsi,
-    'Toolhouse.webp': toolhouse,
+    'ibm.png': ibm,
+    'CAHSI.png': cahsi,
+    'Toolhouse.png': toolhouse,
 }
 
 Sponsor.propTypes = {
