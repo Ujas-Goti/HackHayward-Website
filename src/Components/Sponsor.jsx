@@ -5,18 +5,22 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 
 // import sponsors
-import csueb_docs from '/src/assets/imgs/sponsors/CSUEB_DOCS.svg';
-import csueb_docs_2026 from '/src/assets/imgs/sponsors/cseb-docs-o_2.webp';
-import csueb_soe from '/src/assets/imgs/sponsors/CSUEB_SOE.svg';
-import aws from '/src/assets/imgs/sponsors/Amazon_Web_Services_Logo.webp';
-import GCP from '/src/assets/imgs/sponsors/GCP_Cheat_Sheet.webp';
-import SCLogo from '/src/assets/imgs/sponsors/updated_smith_logo.webp';
-import GroqLogo from '/src/assets/imgs/sponsors/GroqLogo_Black.svg';
-import PerplexityLogo from '/src/assets/imgs/sponsors/Perplexity-Logo.webp';
-import redbull from '/src/assets/imgs/sponsors/redbull.webp';
-import ibm from '/src/assets/imgs/sponsors/ibm.webp';
-import cahsi from '/src/assets/imgs/sponsors/CAHSI.webp';
-import toolhouse from '/src/assets/imgs/sponsors/Toolhouse.webp';
+// import sponsors (fixed)
+import csueb_docs from '../assets/imgs/sponsors/CSUEB_DOCS.svg';
+import csueb_docs_2026 from '../assets/imgs/sponsors/Cseb-docs-o_2.png';
+import csueb_soe from '../assets/imgs/sponsors/CSUEB_SOE.svg';
+
+import aws from '../assets/imgs/sponsors/Amazon_Web_Services_Logo.svg.png';
+import GCP from '../assets/imgs/sponsors/GCP_Cheat_Sheet.png';
+import SCLogo from '../assets/imgs/sponsors/updated_smith_logo.png';
+
+import GroqLogo from '../assets/imgs/sponsors/GroqLogo_Black.svg';
+import PerplexityLogo from '../assets/imgs/sponsors/Perplexity-Logo.jpg';
+import redbull from '../assets/imgs/sponsors/redbull.webp';
+
+import ibm from '../assets/imgs/sponsors/ibm.png';
+import cahsi from '../assets/imgs/sponsors/CAHSI.png';
+import toolhouse from '../assets/imgs/sponsors/Toolhouse.png';
 
 import ReactGA from 'react-ga4';
 import { motion } from 'framer-motion';
