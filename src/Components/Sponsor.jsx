@@ -7,7 +7,7 @@ import { useState } from 'react';
 // import sponsors
 // import sponsors (fixed)
 import csueb_docs from '../assets/imgs/sponsors/CSUEB_DOCS.svg';
-import csueb_docs_2026 from '../assets/imgs/sponsors/cseb-docs-o-2.png';
+import csueb_docs_2026 from '../assets/imgs/sponsors/cseb-docs-o_2.png';
 import csueb_soe from '../assets/imgs/sponsors/CSUEB_SOE.svg';
 
 import aws from '../assets/imgs/sponsors/Amazon_Web_Services_Logo.svg.png';
