@@ -2,6 +2,8 @@ import { useState } from "react";
 import Card from "./Card.jsx";
 import PropTypes from 'prop-types';
 import saturn from '/src/assets/imgs/Background/Saturn.webp';
+import { motion } from 'framer-motion';
+import { springPop, staggerContainer, fadeUp, viewportOnce } from '../utils/scrollAnimations';
 
 // Data
 import { users } from '../assets/data/users.jsx';
@@ -58,7 +60,13 @@ export default function Teams({ title, year, showSpeakers = true }) {
     return (
         <div className="relative flex justify-center py-16">
             <section className={`flex flex-col items-center justify-items-center gap-10 text-white max-w-screen-lg z-10 ${is2026 ? 'bg-[#46166C]/30 backdrop-blur-sm border border-[#B794D4]/20' : 'bg-black/80'} rounded-2xl p-10 mx-4`}>
-                <div className="text-white text-center font-exo2 flex flex-col gap-4">
+                <motion.div
+                    className="text-white text-center font-exo2 flex flex-col gap-4"
+                    variants={fadeUp}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={viewportOnce}
+                >
                     <h2 className="text-5xl text-balance font-bold shadow-text-sm text-white">
                         {is2026 ? 'Meet The Team' : title}
                     </h2>
@@ -67,7 +75,7 @@ export default function Teams({ title, year, showSpeakers = true }) {
                             The passionate people behind HackHayward
                         </p>
                     )}
-                </div>
+                </motion.div>
 
                 {/* Desktop Style */}
                 <div className="hidden md:flex max-lg:justify-center font-mono">
@@ -122,10 +130,16 @@ export default function Teams({ title, year, showSpeakers = true }) {
                 </div>
 
                 {/* Display Cards */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <motion.div
+                    key={filter}
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+                    variants={staggerContainer(0.1)}
+                    initial="hidden"
+                    animate="visible"
+                >
                     {filteredUsers.map((organizer, index) => (
-                        <li key={index} className="list-none">
-                            <Card 
+                        <motion.li key={index} className="list-none" variants={springPop}>
+                            <Card
                                 name={organizer.name}
                                 desc={organizer.desc}
                                 pos={organizer.pos}
@@ -137,9 +151,9 @@ export default function Teams({ title, year, showSpeakers = true }) {
                                 year={year}
                                 linkedin={organizer.linkedin}
                             />
-                        </li>
+                        </motion.li>
                     ))}
-                </div>
+                </motion.div>
             </section>
             <div className={`opacity-50 absolute top-[0%] right-[-10%] max-h-[40%] max-w-[40%] ${is2026 ? 'animate-float' : ''}`} style={{ animationDuration: '10s' }}>
                 <img src={saturn} loading="lazy" alt="Saturn" className="object-cover" />

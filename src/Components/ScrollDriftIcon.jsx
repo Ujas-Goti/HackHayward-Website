@@ -1,5 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
+import PropTypes from 'prop-types';
+
+ScrollDriftIcon.propTypes = {
+    src: PropTypes.string,
+    size: PropTypes.number,
+};
 
 // Gentler left ↔ right (less zig-zag), smooth drift down with scroll
 const X_VW_LEFT = 18;

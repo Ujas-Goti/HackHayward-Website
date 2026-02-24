@@ -18,6 +18,7 @@ Card.propTypes = {
     linkedin: PropTypes.string,
 };
 
+// eslint-disable-next-line no-unused-vars
 export default function Card({ name, desc, pos, img, badge, flair, imageScale = 1, imagePosition = 'center', year, linkedin }) {
     const is2026 = year === 2026;
     const isHackHaywardOrganizer =

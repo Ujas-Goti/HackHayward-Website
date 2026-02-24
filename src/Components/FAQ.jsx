@@ -1,6 +1,8 @@
 import ReactGA from 'react-ga4';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
+import { motion } from 'framer-motion';
+import { fadeUp, staggerContainer, viewportOnce } from '../utils/scrollAnimations';
 
 FaqAccordion.propTypes = {
     register: PropTypes.string.isRequired,
@@ -154,10 +156,17 @@ function FaqAccordion(props) {
             </div>
 
             {/* Desktop: two-column grid, cards side by side */}
-            <div className="hidden md:grid md:grid-cols-2 gap-6 mt-4">
+            <motion.div
+                className="hidden md:grid md:grid-cols-2 gap-6 mt-4"
+                variants={staggerContainer(0.08)}
+                initial="hidden"
+                whileInView="visible"
+                viewport={viewportOnce}
+            >
                 {faqs.map((faq, index) => (
-                    <article
+                    <motion.article
                         key={index}
+                        variants={fadeUp}
                         className={`${baseCardClasses} px-6 py-7 flex flex-col gap-3 relative cursor-pointer transition-colors`}
                         onClick={() =>
                             setOpenMap((prev) => ({
@@ -183,9 +192,9 @@ function FaqAccordion(props) {
                                 {faq.answer}
                             </p>
                         )}
-                    </article>
+                    </motion.article>
                 ))}
-            </div>
+            </motion.div>
         </section>
     );
 }
@@ -202,7 +211,13 @@ export default function FAQ(props) {
     return (
         <>
             <div className="relative">
-                <div className="text-white text-center font-exo2 flex flex-col items-center gap-9 z-10 shadow-text-sm">
+                <motion.div
+                    className="text-white text-center font-exo2 flex flex-col items-center gap-9 z-10 shadow-text-sm"
+                    variants={fadeUp}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={viewportOnce}
+                >
                     <h2 className="hidden md:block text-5xl text-balance max-lg:mx-28 font-bold shadow-text-sm text-white">
                         Regulations and FAQs
                     </h2>
@@ -218,7 +233,7 @@ export default function FAQ(props) {
                             csueastbaygdsc@gmail.com
                         </a>
                     </p>
-                </div>
+                </motion.div>
                 <FaqAccordion register={props.register} yearData={props.yearData} year={props.year} />
                 
             </div>

@@ -10,8 +10,10 @@ import PilotFalcon from '../../Components/PilotFalcon';
 import Teams from '../../Components/Teams';
 import Entrepreneurship from '../../Components/Entrepreneurship';
 import Sponsor from '../../Components/Sponsor';
+import LazySection from '../../Components/LazySection';
 import ReactGA from 'react-ga4';
 import { useEffect } from 'react';
+import { MotionConfig } from 'framer-motion';
 import { yearData } from '../../data/yearData';
 import { useCountdown } from '../../context/CountdownContext';
 
@@ -54,6 +56,7 @@ export default function Home2026() {
             <header id="home" className="overflow-x-hidden">
                 <NavBar />
             </header>
+            <MotionConfig reducedMotion="user">
             <main className="bg-gradient-to-b from-[#1A2773] via-[#46166C]/30 to-[#1A2773] overflow-x-hidden relative">
                 {/* Background decorations with accent purple */}
                 <div className="fixed inset-0 pointer-events-none overflow-hidden">
@@ -67,6 +70,7 @@ export default function Home2026() {
                         <Hero register={register} year={selectedYear} yearData={currentYearData} />
                     </section>
                     {/* Entrepreneurship */}
+                    <LazySection>
                     <section
                         className="pt-16 p-10 bg-[#1A2773]/50 overflow-hidden border-b-4 border-[#46166C]/50"
                         id="entrepreneurship"
@@ -74,7 +78,9 @@ export default function Home2026() {
                     >
                         <Entrepreneurship year={selectedYear} />
                     </section>
+                    </LazySection>
                     {/* about us */}
+                    <LazySection>
                     <section
                         className="pt-16 p-10 bg-gradient-to-r from-[#1A2773]/30 via-[#46166C]/20 to-[#1A2773]/30 max-w-screen-2xl:overflow-hidden"
                         id="about"
@@ -82,11 +88,15 @@ export default function Home2026() {
                     >
                         <AboutUs year={selectedYear} yearData={currentYearData} />
                     </section>
+                    </LazySection>
                     {/* FAQ */}
+                    <LazySection>
                     <section className="p-10 bg-[#1A2773]/50 overflow-hidden" id="faq" data-scroll-section>
                         <FAQ register={register} year={selectedYear} yearData={currentYearData} />
                     </section>
+                    </LazySection>
                     {/* Teams (orgs, speakers, judges, etc.) */}
+                    <LazySection>
                     <section
                         className="border-t-4 border-[#46166C]/50 overflow-hidden relative bg-gradient-to-b from-[#1A2773]/30 to-[#46166C]/20"
                         id="teams"
@@ -94,7 +104,9 @@ export default function Home2026() {
                     >
                         <Teams title="Meet the Teams" year={selectedYear} showSpeakers={false} />
                     </section>
+                    </LazySection>
                     {/* sponsor */}
+                    <LazySection>
                     <section
                         className="pb-16 p-10 bg-[#1A2773]/50 overflow-hidden"
                         id="sponsors"
@@ -102,12 +114,16 @@ export default function Home2026() {
                     >
                         <Sponsor year={selectedYear} />
                     </section>
+                    </LazySection>
                     {/* Scene */}
+                    <LazySection>
                     <section className="overflow-hidden" data-scroll-section>
                         <PilotFalcon />
                     </section>
+                    </LazySection>
                 </div>
             </main>
+            </MotionConfig>
             {/* footer */}
             <footer className="bg-[#131c54] border-t-4 border-[#46166C] overflow-hidden">
                 <Footer register={register} />

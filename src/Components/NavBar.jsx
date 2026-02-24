@@ -1,7 +1,6 @@
 import MLH from './MLH';
 import logo from '/src/assets/imgs/others/Monotone Logo.webp';
 import hamburger from '/src/assets/imgs/others/hamburger_Icon.svg';
-import { useCountdown } from '../context/CountdownContext';
 import { useLocation, Link, useNavigate } from 'react-router-dom';
 import { FaArrowLeft } from 'react-icons/fa';
 import PropTypes from 'prop-types';
@@ -9,10 +8,8 @@ import ShinyText from './ShinyText';
 
 
 function NavButtons() {
-    const { hasCountdownEnded } = useCountdown();
     const location = useLocation();
     const navigate = useNavigate();
-    const isHomePage = location.pathname === '/';
     const is2026Page = location.pathname === '/' || location.pathname === '/live-2026' || location.pathname === '/sponsor-us';
     const is2025Page = location.pathname === '/past-years' || location.pathname === '/live';
     const isSponsorUsPage = location.pathname === '/sponsor-us';

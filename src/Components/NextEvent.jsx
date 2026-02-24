@@ -1,6 +1,11 @@
 // src/Components/NextEvent.jsx
 
 import { scheduleData } from '../assets/data/scheduleData';
+import PropTypes from 'prop-types';
+
+NextEvent.propTypes = {
+  year: PropTypes.number,
+};
 
 export default function NextEvent({ year = 2025 }) {
   // For 2026, show "To Be Decided" message
