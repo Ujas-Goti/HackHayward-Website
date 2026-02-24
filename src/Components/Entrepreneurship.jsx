@@ -26,7 +26,7 @@ export default function Entrepreneurship({ year }) {
                         What&apos;s New in HackHayward 2.0
                     </h2>
                     <p className="lg:text-xl sm:text-lg font-grotesk font-light text-pretty max-w-4xl text-[#C5D4F0]/90">
-                        This year introduces an innovative model: each hackathon team will be paired with a trained <span className="font-bold text-[#B794D4]">Entrepreneur Ambassador</span>, recruited from the Smith Center, the Up-Club, and the College of Business and Economics.
+                        This year introduces an enhanced entrepreneurship component: a dedicated <span className="font-bold text-[#B794D4]">pitch deck workshop</span> led by a Smith Center Fellow, plus advising time with trained <span className="font-bold text-[#B794D4]">Entrepreneur Ambassadors</span> who work with multiple teams—recruited from the Smith Center, the Up-Club, and the College of Business and Economics.
                     </p>
                 </motion.div>
 
@@ -39,7 +39,7 @@ export default function Entrepreneurship({ year }) {
                                     Entrepreneur Ambassadors
                                 </h3>
                                 <p className="lg:text-base sm:text-sm font-grotesk text-[#C5D4F0]/80">
-                                    These ambassadors will guide teams in <span className="font-semibold text-[#B794D4]">opportunity discovery</span>, <span className="font-semibold text-[#B794D4]">value creation</span>, <span className="font-semibold text-[#B794D4]">customer needs</span>, and <span className="font-semibold text-[#B794D4]">pitch development</span> - ensuring that technical innovation is matched with thoughtful entrepreneurial strategy.
+                                    These ambassadors work with multiple teams to provide guidance on refining pitches, clarifying the problem and solution, articulating impact, identifying customer needs, strengthening the value proposition, and improving presentation strategy—with a particular focus on pitch deck development.
                                 </p>
                             </div>
                         </div>
@@ -83,7 +83,7 @@ export default function Entrepreneurship({ year }) {
                                     Technical & Entrepreneurial Workshops
                                 </h3>
                                 <p className="lg:text-base sm:text-sm font-grotesk text-[#C5D4F0]/80">
-                                    HackHayward includes <span className="font-semibold text-[#B794D4]">pre-event and on-site technical workshops</span>, covering AI tools, frameworks, and prototyping strategies. During the 24-hour hackathon, each team will participate in a dedicated entrepreneurship workshop where they develop a <span className="font-semibold text-[#B794D4]">pitch deck</span> and <span className="font-semibold text-[#B794D4]">project roadmap</span>.
+                                    HackHayward includes <span className="font-semibold text-[#B794D4]">pre-event and on-site technical workshops</span>, covering AI tools, frameworks, and prototyping strategies. During the 24-hour hackathon, each team participates in a dedicated entrepreneurship workshop led by a Smith Center Fellow on <span className="font-semibold text-[#B794D4]">pitch deck development</span>, exploring opportunity discovery, value creation, and effectively presenting a solution.
                                 </p>
                             </div>
                         </div>

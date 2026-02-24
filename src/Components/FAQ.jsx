@@ -86,19 +86,19 @@ function FaqAccordion(props) {
         ...(is2026 ? [
             {
                 question: 'What is the Entrepreneurship component at HackHayward 2.0?',
-                answer: 'HackHayward 2.0 introduces an innovative model where each hackathon team is paired with a trained Entrepreneur Ambassador. These ambassadors, recruited from the Smith Center, the Up-Club, and the College of Business and Economics, guide teams in opportunity discovery, value creation, customer needs, and pitch development.',
+                answer: 'HackHayward 2.0 introduces an enhanced entrepreneurship component that begins with a dedicated workshop on pitch deck development led by a Smith Center Fellow. In addition, hackathon teams will have advising time with trained Entrepreneur Ambassadors. These ambassadors—recruited from the Smith Center, the Up-Club, and the College of Business and Economics—will work with multiple teams to provide guidance on refining pitches, clarifying the problem and solution, articulating impact, identifying customer needs, strengthening the value proposition, and improving overall presentation strategy.',
             },
             {
                 question: 'What is an Entrepreneur Ambassador?',
-                answer: 'Entrepreneur Ambassadors are trained mentors who work directly with hackathon teams to help them develop entrepreneurial skills alongside their technical projects. They provide guidance on creating pitch decks, identifying market opportunities, understanding customer needs, and building a roadmap for taking your project beyond the hackathon.',
+                answer: 'Entrepreneur Ambassadors are trained mentors who work directly with hackathon teams to help them strengthen their entrepreneurial skills alongside their technical projects, with a particular focus on advising for pitch deck development.',
             },
             {
                 question: 'Do I need business experience to participate?',
-                answer: 'Not at all! The Entrepreneur Ambassadors are here to help teams of all backgrounds. Whether you\'re a technical wizard or new to entrepreneurship, the ambassadors will guide you through the process of developing your idea into a viable venture. This is a learning opportunity for everyone!',
+                answer: 'Not at all! The Entrepreneur Ambassadors are here to help teams of all backgrounds. Whether you\'re a technical wizard or new to entrepreneurship, the ambassadors will be there for advice. This is a learning opportunity for everyone!',
             },
             {
                 question: 'What will teams learn in the entrepreneurship workshop?',
-                answer: 'During the dedicated entrepreneurship workshop, teams will learn how to develop a pitch deck and project roadmap. You\'ll explore opportunity discovery, value creation, customer needs analysis, and how to present your solution effectively. The goal is to match technical innovation with thoughtful entrepreneurial strategy.',
+                answer: 'During the dedicated entrepreneurship workshop, teams will explore key concepts that will guide the development of their pitch decks. A Smith Center Fellow will discuss topics such as opportunity discovery, value creation, understanding customer needs, and effectively presenting a solution. Teams can then apply these insights as they craft and refine their pitch decks. The goal is to align technical innovation with a thoughtful and strategic entrepreneurial approach.',
             },
             {
                 question: 'Will there be technical workshops as well?',
