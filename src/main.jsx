@@ -1,9 +1,10 @@
 /* eslint-disable react-refresh/only-export-components */
-import React, { Suspense, lazy } from 'react'
+import React, { Suspense, lazy, useState } from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './index.css'
 import { CountdownProvider } from './context/CountdownContext.jsx'
+import LoadingScreen from './Components/LoadingScreen.jsx'
 import Home2026 from './pages/2026/Home2026.jsx'
 
 const SponsorUs2026 = lazy(() => import('./pages/2026/SponsorUs2026.jsx'))
@@ -17,20 +18,31 @@ const PageLoader = () => (
   </div>
 )
 
+function App() {
+  const [isLoading, setIsLoading] = useState(true)
+
+  return (
+    <>
+      {isLoading && <LoadingScreen onFinished={() => setIsLoading(false)} />}
+      <CountdownProvider>
+        <BrowserRouter>
+          <Suspense fallback={<PageLoader />}>
+            <Routes>
+              <Route path="/" element={<Home2026 />} />
+              <Route path="/sponsor-us" element={<SponsorUs2026 />} />
+              <Route path="/live" element={<Dashboard2025 />} />
+              <Route path="/live-2026" element={<Dashboard2026 />} />
+              <Route path="/past-years" element={<Home2025 />} />
+            </Routes>
+          </Suspense>
+        </BrowserRouter>
+      </CountdownProvider>
+    </>
+  )
+}
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <CountdownProvider>
-      <BrowserRouter>
-        <Suspense fallback={<PageLoader />}>
-          <Routes>
-            <Route path="/" element={<Home2026 />} />
-            <Route path="/sponsor-us" element={<SponsorUs2026 />} />
-            <Route path="/live" element={<Dashboard2025 />} />
-            <Route path="/live-2026" element={<Dashboard2026 />} />
-            <Route path="/past-years" element={<Home2025 />} />
-          </Routes>
-        </Suspense>
-      </BrowserRouter>
-    </CountdownProvider>
+    <App />
   </React.StrictMode>,
 )
