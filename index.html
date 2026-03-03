@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="background:#1A2773;">
     <head>
         <meta charset="UTF-8" />
         <link
@@ -35,31 +35,79 @@
         />
         <meta property="og:type" content="hackathon.event" />
 
-        
         <title>HackHayward</title>
+
+        <!-- Fonts: loaded via <link> instead of CSS @import for parallel loading -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Space+Grotesk:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap">
+
         <link rel="preload" href="/src/assets/imgs/hero/HeroScene-mobile.webp" as="image">
         <link rel="preload" href="/src/assets/imgs/hero/HeroScene.webp" as="image">
         <link rel="preload" href="/src/assets/imgs/hero/Astro.webp" as="image">
     </head>
-    <body>
-        <div id="root"></div>
-
-        <!-- Instant pre-loader shown before React mounts -->
+    <body style="background:#1A2773; margin:0;">
+        <!-- Pre-loader BEFORE root so it paints first -->
         <div id="pre-loader" style="
             position: fixed; inset: 0; z-index: 99999;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            background: linear-gradient(135deg, #1A2773, #2a1a5e, #1A2773);
+            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px;
+            background: linear-gradient(160deg, #1A2773 0%, #2a1a5e 40%, #46166C 70%, #1A2773 100%);
         ">
+            <!-- Spinner -->
             <div style="
-                width: 64px; height: 64px;
-                border: 3px solid rgba(183,148,212,0.2);
+                width: 48px; height: 48px;
+                border: 3px solid rgba(183,148,212,0.15);
                 border-top-color: #B794D4;
+                border-right-color: #c593e9;
                 border-radius: 50%;
-                animation: pre-spin 0.8s linear infinite;
+                animation: pre-spin 0.9s linear infinite;
             "></div>
-            <style>@keyframes pre-spin { to { transform: rotate(360deg); } }</style>
+            <!-- Title — uses system font so it's visible before web fonts load -->
+            <div style="
+                font-family: system-ui, -apple-system, sans-serif;
+                font-size: 28px; font-weight: 700; letter-spacing: 1px;
+                background: linear-gradient(90deg, #B794D4, #c593e9, #B794D4);
+                -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+                background-clip: text;
+            ">HackHayward</div>
+            <!-- Subtitle -->
+            <div style="
+                font-family: system-ui, -apple-system, sans-serif;
+                font-size: 11px; letter-spacing: 4px; text-transform: uppercase;
+                color: rgba(197,212,240,0.4);
+                margin-top: -16px;
+            ">Preparing for launch</div>
+            <!-- Stars -->
+            <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none;" id="pre-stars"></div>
+            <style>
+                @keyframes pre-spin { to { transform: rotate(360deg); } }
+                @keyframes pre-twinkle {
+                    0%, 100% { opacity: 0.15; }
+                    50% { opacity: 0.9; }
+                }
+                .pre-star {
+                    position: absolute;
+                    background: white;
+                    border-radius: 50%;
+                    animation: pre-twinkle var(--d) ease-in-out infinite;
+                    animation-delay: var(--dl);
+                }
+            </style>
+            <script>
+                (function(){
+                    var c = document.getElementById('pre-stars');
+                    for(var i = 0; i < 50; i++){
+                        var s = document.createElement('div');
+                        s.className = 'pre-star';
+                        var size = (0.5 + Math.random() * 2.5) + 'px';
+                        s.style.cssText = 'left:' + (Math.random()*100) + '%;top:' + (Math.random()*100) + '%;width:' + size + ';height:' + size + ';--d:' + (2+Math.random()*4) + 's;--dl:' + (Math.random()*4) + 's;';
+                        c.appendChild(s);
+                    }
+                })();
+            </script>
         </div>
 
+        <div id="root"></div>
         <script type="module" src="/src/main.jsx"></script>
     </body>
 </html>

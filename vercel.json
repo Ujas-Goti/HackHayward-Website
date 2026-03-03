@@ -8,7 +8,7 @@
             { "key": "Referrer-Policy", "value": "no-referrer" },
             {
                 "key": "Content-Security-Policy",
-                "value": "default-src 'self'; object-src 'none'; base-uri 'self'; script-src 'self' 'wasm-unsafe-eval' https://*.google-analytics.com https://*.googletagmanager.com; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://*.google-analytics.com https://*.googletagmanager.com; connect-src 'self' blob: https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com;"
+                "value": "default-src 'self'; object-src 'none'; base-uri 'self'; script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval' https://*.google-analytics.com https://*.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://*.google-analytics.com https://*.googletagmanager.com; connect-src 'self' blob: https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com;"
             },
             { "key": "X-XSS-Protection", "value": "1; mode=block" },
             { "key": "Permissions-Policy", "value": "geolocation=()" }
