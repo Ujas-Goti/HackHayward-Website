@@ -47,17 +47,61 @@
         <!-- Instant pre-loader shown before React mounts -->
         <div id="pre-loader" style="
             position: fixed; inset: 0; z-index: 99999;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            background: linear-gradient(135deg, #1A2773, #2a1a5e, #1A2773);
+            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px;
+            background: linear-gradient(160deg, #1A2773 0%, #2a1a5e 40%, #46166C 70%, #1A2773 100%);
         ">
+            <!-- Spinner -->
             <div style="
-                width: 64px; height: 64px;
-                border: 3px solid rgba(183,148,212,0.2);
+                width: 48px; height: 48px;
+                border: 3px solid rgba(183,148,212,0.15);
                 border-top-color: #B794D4;
+                border-right-color: #c593e9;
                 border-radius: 50%;
-                animation: pre-spin 0.8s linear infinite;
+                animation: pre-spin 0.9s linear infinite;
             "></div>
-            <style>@keyframes pre-spin { to { transform: rotate(360deg); } }</style>
+            <!-- Title -->
+            <div style="
+                font-family: 'Exo 2', sans-serif;
+                font-size: 28px; font-weight: 700; letter-spacing: 1px;
+                background: linear-gradient(90deg, #B794D4, #c593e9, #B794D4);
+                -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+                background-clip: text;
+            ">HackHayward</div>
+            <!-- Subtitle -->
+            <div style="
+                font-family: 'Space Grotesk', sans-serif;
+                font-size: 11px; letter-spacing: 4px; text-transform: uppercase;
+                color: rgba(197,212,240,0.4);
+                margin-top: -16px;
+            ">Preparing for launch</div>
+            <!-- Stars -->
+            <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none;" id="pre-stars"></div>
+            <style>
+                @keyframes pre-spin { to { transform: rotate(360deg); } }
+                @keyframes pre-twinkle {
+                    0%, 100% { opacity: 0.15; }
+                    50% { opacity: 0.9; }
+                }
+                .pre-star {
+                    position: absolute;
+                    background: white;
+                    border-radius: 50%;
+                    animation: pre-twinkle var(--d) ease-in-out infinite;
+                    animation-delay: var(--dl);
+                }
+            </style>
+            <script>
+                (function(){
+                    var c = document.getElementById('pre-stars');
+                    for(var i = 0; i < 50; i++){
+                        var s = document.createElement('div');
+                        s.className = 'pre-star';
+                        var size = (0.5 + Math.random() * 2.5) + 'px';
+                        s.style.cssText = 'left:' + (Math.random()*100) + '%;top:' + (Math.random()*100) + '%;width:' + size + ';height:' + size + ';--d:' + (2+Math.random()*4) + 's;--dl:' + (Math.random()*4) + 's;';
+                        c.appendChild(s);
+                    }
+                })();
+            </script>
         </div>
 
         <script type="module" src="/src/main.jsx"></script>

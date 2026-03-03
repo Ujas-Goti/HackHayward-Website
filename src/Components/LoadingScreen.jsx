@@ -8,13 +8,12 @@ export default function LoadingScreen({ onFinished }) {
   const [progress, setProgress] = useState(0);
 
   const stars = useMemo(() =>
-    [...Array(50)].map(() => ({
+    [...Array(70)].map(() => ({
       left: `${Math.random() * 100}%`,
       top: `${Math.random() * 100}%`,
-      duration: 2 + Math.random() * 4,
-      delay: Math.random() * 4,
-      size: 0.5 + Math.random() * 2,
-      opacity: 0.3 + Math.random() * 0.7,
+      duration: 2 + Math.random() * 3,
+      delay: Math.random() * 3,
+      size: 1 + Math.random() * 2.5,
     })), []);
 
   const finish = useCallback(() => {
@@ -73,14 +72,32 @@ export default function LoadingScreen({ onFinished }) {
           transition={{ duration: 0.8, ease: 'easeInOut' }}
         >
           {/* Stars */}
+          <style>{`
+            .loader-star {
+              position: absolute;
+              background: white;
+              border-radius: 50%;
+              animation: loader-twinkle var(--d) ease-in-out infinite;
+              animation-delay: var(--dl);
+            }
+            @keyframes loader-twinkle {
+              0%, 100% { opacity: 0.2; }
+              50% { opacity: 1; }
+            }
+          `}</style>
           <div className="absolute inset-0 pointer-events-none">
             {stars.map((s, i) => (
-              <motion.div
+              <div
                 key={i}
-                className="absolute rounded-full bg-white"
-                style={{ left: s.left, top: s.top, width: s.size, height: s.size }}
-                animate={{ opacity: [s.opacity * 0.3, s.opacity, s.opacity * 0.3] }}
-                transition={{ duration: s.duration, repeat: Infinity, ease: 'easeInOut', delay: s.delay }}
+                className="loader-star"
+                style={{
+                  left: s.left,
+                  top: s.top,
+                  width: `${s.size}px`,
+                  height: `${s.size}px`,
+                  '--d': `${s.duration}s`,
+                  '--dl': `${s.delay}s`,
+                }}
               />
             ))}
           </div>
