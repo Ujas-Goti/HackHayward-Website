@@ -63,7 +63,7 @@ function FaqAccordion(props) {
         },
         {
             question: 'What can be submitted?',
-            answer: 'Any projects, technical or not, created within the hacking event schedule!',
+            answer: 'Any projects created within the hacking event schedule!',
         },
         {
             question: 'What do I need to bring to the event?',
@@ -86,11 +86,7 @@ function FaqAccordion(props) {
         ...(is2026 ? [
             {
                 question: 'What is the Entrepreneurship component at HackHayward 2.0?',
-                answer: 'HackHayward 2.0 introduces an enhanced entrepreneurship component that includes a panel on pitch deck development. In addition, hackathon teams will have dedicated advising time with trained Entrepreneur Ambassadors and mentors. These ambassadors will work with multiple teams to provide guidance on refining pitches, clarifying the problem and solution, articulating impact, identifying customer needs, strengthening the value proposition, and improving overall presentation strategy.',
-            },
-            {
-                question: 'What is an Entrepreneur Ambassador?',
-                answer: 'Entrepreneur Ambassadors are trained mentors who work directly with hackathon teams to help them strengthen their entrepreneurial skills alongside their technical projects, with a particular focus on pitch deck development.',
+                answer: 'HackHayward 2.0 introduces an enhanced entrepreneurship component that includes a panel on pitch deck development. In addition, hackathon teams will have the oppurtunity for advise from Entrepreneur Ambassadors and mentors.',
             },
             {
                 question: 'Do I need business experience to participate?',
