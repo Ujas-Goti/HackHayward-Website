@@ -24,7 +24,7 @@ export const users = [
     {
         name: "Yash Kumars",
         desc: "HackHayward - CSU East Bay",
-        pos: "President",
+        pos: "Executive Director",
         img: Yash,
         badge: "Co-Founder",
         flair: {

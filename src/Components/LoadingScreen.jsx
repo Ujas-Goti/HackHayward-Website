@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import spaceShip from '/src/assets/imgs/Scene5/SpaceShip.webp';
 import UFO from '/src/assets/imgs/Scene5/UFO.webp';
+import PropTypes from 'prop-types';
 
 export default function LoadingScreen({ onFinished }) {
   const [phase, setPhase] = useState('idle'); // idle → launching → done
@@ -59,7 +60,6 @@ export default function LoadingScreen({ onFinished }) {
   }, [finish]);
 
   const isLaunching = phase === 'launching' || phase === 'done';
-  const isDone = phase === 'done';
 
   return (
     <AnimatePresence>
@@ -231,3 +231,7 @@ export default function LoadingScreen({ onFinished }) {
     </AnimatePresence>
   );
 }
+
+LoadingScreen.propTypes = {
+  onFinished: PropTypes.func.isRequired,
+};
