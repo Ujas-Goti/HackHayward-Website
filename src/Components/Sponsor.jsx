@@ -114,7 +114,7 @@ const SponsorCard = ({ sponsor, imageSrc, url, handleClick, rowIndex }) => {
             className="block w-full group perspective-1000"
         >
             <div
-                className={`relative w-full min-h-[180px] flex items-center justify-center py-8 px-6 ${rowIndex === 2 ? 'w-[340px] h-[240px] flex-shrink-0' : ''}`}
+                className={`relative w-full min-h-[180px] flex items-center justify-center py-6 px-4 ${rowIndex === 2 ? 'sm:w-[340px] sm:h-[240px] sm:flex-shrink-0' : ''}`}
                 style={{
                     transform: isHovered 
                         ? `rotateY(${mousePosition.x}deg) rotateX(${-mousePosition.y}deg) translateZ(10px)` 
@@ -191,8 +191,28 @@ export default function Sponsor(props) {
                             Sponsors
                         </motion.h2>
 
-                        {/* Three centered rows for an inverted triangle feel */}
-                        <div className="flex flex-col items-center gap-4 z-10">
+                        {/* Mobile: stacked list (one sponsor per row) */}
+                        <div className="flex flex-col items-center gap-4 z-10 sm:hidden">
+                            {sponsors.map((sponsor, index) => {
+                                const imageSrc = sponsorImages[sponsor.image];
+                                const url = sponsorURLs[sponsor.urlKey];
+                                const rowIndex = Math.floor(index / 3); // keep relative sizing
+                                return (
+                                    <motion.div key={sponsor.key} variants={fadeUp} className="w-full">
+                                        <SponsorCard
+                                            sponsor={sponsor}
+                                            imageSrc={imageSrc}
+                                            url={url}
+                                            handleClick={handleClick}
+                                            rowIndex={rowIndex}
+                                        />
+                                    </motion.div>
+                                );
+                            })}
+                        </div>
+
+                        {/* Desktop / tablet: three centered rows for an inverted triangle feel */}
+                        <div className="hidden sm:flex flex-col items-center gap-4 z-10">
                             {rows.map((row, rowIndex) => (
                                 <motion.div
                                     key={rowIndex}
@@ -209,7 +229,7 @@ export default function Sponsor(props) {
                                             <motion.div
                                                 key={sponsor.key}
                                                 variants={fadeUp}
-                                                className={rowIndex === 2 ? 'w-[340px] flex-shrink-0' : ''}
+                                                className={rowIndex === 2 ? 'sm:w-[340px] sm:flex-shrink-0' : ''}
                                             >
                                                 <SponsorCard
                                                     sponsor={sponsor}
