@@ -25,8 +25,11 @@ import googleWhite from '../assets/imgs/sponsors/white sponsor/google.png';
 import amazonWhite from '../assets/imgs/sponsors/white sponsor/amazon 2.png';
 import cahsiWhite from '../assets/imgs/sponsors/white sponsor/cahsi white.png';
 import ibmWhite from '../assets/imgs/sponsors/white sponsor/ibm.png';
-import cursorWhite from '../assets/imgs/sponsors/white sponsor/cursor.png';
+import cursorWhite from '../assets/imgs/sponsors/white sponsor/LOCKUP_HORIZONTAL_2D_DARK.png';
+import perplexityWhite from '../assets/imgs/sponsors/white sponsor/perplexity-Photoroom.png';
 import omiWhite from '../assets/imgs/sponsors/white sponsor/omi white.png';
+import doorDashWhite from '../assets/imgs/sponsors/white sponsor/DOORDASH-Photoroom.png';
+import asiWhite from '../assets/imgs/sponsors/white sponsor/asi.png';
 import docsWhite from '../assets/imgs/sponsors/white sponsor/csueb docs.png';
 import smithWhite from '../assets/imgs/sponsors/white sponsor/smith center.png';
 import csuebSoeWhite from '../assets/imgs/sponsors/white sponsor/CSUEB_SOE-nobg.png';
@@ -54,6 +57,8 @@ const sponsorURLs = {
     'Amazon': 'https://aws.amazon.com/',
     'Cursor': 'https://www.cursor.com/',
     'OMI': 'https://omi.me/',
+    'DoorDash': 'https://www.doordash.com/',
+    'ASI': 'https://www.csueastbay.edu/asi/',
 }
 
 // Image mapping
@@ -76,7 +81,10 @@ const sponsorImages = {
     'amazon 2.png': amazonWhite,
     'cahsi white.png': cahsiWhite,
     'cursor.png': cursorWhite,
+    'perplexity-Photoroom.png': perplexityWhite,
     'omi white.png': omiWhite,
+    'DOORDASH-Photoroom.png': doorDashWhite,
+    'asi.png': asiWhite,
     'csueb docs.png': docsWhite,
     'smith center.png': smithWhite,
     'CSUEB_SOE-nobg.png': csuebSoeWhite,
@@ -114,7 +122,7 @@ const SponsorCard = ({ sponsor, imageSrc, url, handleClick, rowIndex }) => {
             className="block w-full group perspective-1000"
         >
             <div
-                className={`relative w-full min-h-[180px] flex items-center justify-center py-6 px-4 ${rowIndex === 2 ? 'sm:w-[340px] sm:h-[240px] sm:flex-shrink-0' : ''}`}
+                className={`relative w-full min-h-[180px] flex items-center justify-center py-3 px-4 ${rowIndex === 3 ? 'sm:w-[340px] sm:h-[240px] sm:flex-shrink-0' : ''}`}
                 style={{
                     transform: isHovered 
                         ? `rotateY(${mousePosition.x}deg) rotateX(${-mousePosition.y}deg) translateZ(10px)` 
@@ -135,9 +143,10 @@ const SponsorCard = ({ sponsor, imageSrc, url, handleClick, rowIndex }) => {
                     loading="lazy"
                     className={`h-auto w-auto object-contain transition-transform duration-300 relative z-10 scale-110 group-hover:scale-125 ${
                         sponsor.key === 'CAHSI' ? 'max-h-[210px]' :
-                        sponsor.key === 'IBM' || sponsor.key === 'Cursor' ? 'max-h-[110px]' :
+                        sponsor.key === 'IBM' || sponsor.key === 'Cursor' || sponsor.key === 'Perplexity' ? 'max-h-[110px]' :
                         rowIndex === 0 ? 'max-h-[190px]' :
                         rowIndex === 1 ? 'max-h-[125px]' :
+                        rowIndex === 2 ? 'max-h-[105px]' :
                         'h-[185px] w-auto object-contain object-center'
                     }`}
                 />
@@ -160,11 +169,12 @@ export default function Sponsor(props) {
     const is2026 = year === 2026;
     const currentYearData = yearData[year];
     const sponsors = currentYearData.sponsors || [];
-    // For 2026, treat sponsors as three centered rows (inverted triangle feel)
+    // For 2026, four rows
     const rows = [
-        sponsors.slice(0, 3), // row 1: Google, Amazon, CAHSI
-        sponsors.slice(3, 6), // row 2: IBM, Cursor, OMI
-        sponsors.slice(6),    // row 3: CSUEB DOCS, Smith Center, CSUEB SOE
+        sponsors.slice(0, 3),  // row 1: Google, Amazon, CAHSI
+        sponsors.slice(3, 6),  // row 2: Cursor, IBM, Perplexity
+        sponsors.slice(6, 9),  // row 3: OMI, DoorDash, ASI
+        sponsors.slice(9),     // row 4: CSUEB DOCS, Smith Center, CSUEB SOE
     ];
 
     const handleClick = (platform) => {
@@ -211,12 +221,12 @@ export default function Sponsor(props) {
                             })}
                         </div>
 
-                        {/* Desktop / tablet: three centered rows for an inverted triangle feel */}
-                        <div className="hidden sm:flex flex-col items-center gap-4 z-10">
+                        {/* Desktop / tablet: four centered rows */}
+                        <div className="hidden sm:flex flex-col items-center gap-2 z-10">
                             {rows.map((row, rowIndex) => (
                                 <motion.div
                                     key={rowIndex}
-                                    className={`flex justify-center gap-10 w-full ${rowIndex === 0 ? '' : rowIndex === 1 ? 'max-w-5xl' : 'max-w-4xl'}`}
+                                    className={`flex justify-center gap-10 w-full ${rowIndex === 0 ? '' : rowIndex === 1 ? 'max-w-5xl' : rowIndex === 2 ? 'max-w-5xl' : 'max-w-4xl'}`}
                                     variants={staggerContainer(0.1)}
                                     initial="hidden"
                                     whileInView="visible"
@@ -229,7 +239,7 @@ export default function Sponsor(props) {
                                             <motion.div
                                                 key={sponsor.key}
                                                 variants={fadeUp}
-                                                className={rowIndex === 2 ? 'sm:w-[340px] sm:flex-shrink-0' : ''}
+                                                className={rowIndex === 3 ? 'sm:w-[340px] sm:flex-shrink-0' : ''}
                                             >
                                                 <SponsorCard
                                                     sponsor={sponsor}

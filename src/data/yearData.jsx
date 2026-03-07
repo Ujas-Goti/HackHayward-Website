@@ -32,11 +32,15 @@ export const yearData = {
             { key: 'Google', image: 'google.png', alt: 'Google', urlKey: 'Google', height: 'h-[120px]' },
             { key: 'Amazon', image: 'amazon 2.png', alt: 'Amazon Web Services', urlKey: 'Amazon', height: 'h-[120px]' },
             { key: 'CAHSI', image: 'cahsi white.png', alt: 'CAHSI - Computing Alliance of Hispanic-Serving Institutions', urlKey: 'CAHSI', height: 'h-[120px]' },
-            // Row 2 (~5% smaller)
-            { key: 'IBM', image: 'ibm.png', alt: 'IBM', urlKey: 'IBM', height: 'h-[114px]' },
+            // Row 2
             { key: 'Cursor', image: 'cursor.png', alt: 'Cursor', urlKey: 'Cursor', height: 'h-[114px]' },
+            { key: 'IBM', image: 'ibm.png', alt: 'IBM', urlKey: 'IBM', height: 'h-[114px]' },
+            { key: 'Perplexity', image: 'perplexity-Photoroom.png', alt: 'Perplexity', urlKey: 'Perplexity', height: 'h-[114px]' },
+            // Row 3
             { key: 'OMI', image: 'omi white.png', alt: 'OMI', urlKey: 'OMI', height: 'h-[114px]' },
-            // Row 3 (~5% smaller than row 2)
+            { key: 'DoorDash', image: 'DOORDASH-Photoroom.png', alt: 'DoorDash', urlKey: 'DoorDash', height: 'h-[114px]' },
+            { key: 'ASI', image: 'asi.png', alt: 'Associated Students Inc.', urlKey: 'ASI', height: 'h-[114px]' },
+            // Row 4
             { key: 'CSUEB DOCS', image: 'csueb docs.png', alt: 'CSUEB Department of Computer Science', urlKey: 'CSUEB DOCS', height: 'h-[108px]' },
             { key: 'Smith Center', image: 'smith center.png', alt: 'Smith Center', urlKey: 'Smith Center', height: 'h-[108px]' },
             { key: 'CSUEB SOE', image: 'CSUEB_SOE-nobg.png', alt: 'CSUEB School of Engineering', urlKey: 'CSUEB SOE', height: 'h-[108px]' },
