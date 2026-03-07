@@ -122,7 +122,7 @@ const SponsorCard = ({ sponsor, imageSrc, url, handleClick, rowIndex }) => {
             className="block w-full group perspective-1000"
         >
             <div
-                className={`relative w-full min-h-[180px] flex items-center justify-center py-3 px-4 ${rowIndex === 3 ? 'sm:w-[340px] sm:h-[240px] sm:flex-shrink-0' : ''}`}
+                className={`relative w-full min-h-[180px] flex items-center justify-center py-3 px-4 ${rowIndex === 3 ? 'sm:w-[340px] sm:min-h-[180px] sm:flex-shrink-0' : ''}`}
                 style={{
                     transform: isHovered 
                         ? `rotateY(${mousePosition.x}deg) rotateX(${-mousePosition.y}deg) translateZ(10px)` 
@@ -147,7 +147,7 @@ const SponsorCard = ({ sponsor, imageSrc, url, handleClick, rowIndex }) => {
                         rowIndex === 0 ? 'max-h-[190px]' :
                         rowIndex === 1 ? 'max-h-[125px]' :
                         rowIndex === 2 ? 'max-h-[105px]' :
-                        'h-[185px] w-auto object-contain object-center'
+                        'max-h-[140px] w-auto object-contain object-center'
                     }`}
                 />
             </div>
@@ -256,24 +256,6 @@ export default function Sponsor(props) {
                         </div>
 
                     </div>
-                    <motion.a
-                        href={hasCountdownEnded ? "mailto:contact@hackhayward.com" : "mailto:sponsor@hackhayward.com"}
-                        className={`relative rounded-full p-4 px-8 transition-all duration-300 text-white lg:text-lg text-sm font-grotesk font-medium text-nowrap
-                            hover:scale-105 active:scale-95 z-50
-                            before:absolute before:inset-0 before:rounded-full before:bg-gradient-to-r before:from-white/20 before:to-transparent
-                            before:opacity-0 hover:before:opacity-100 before:transition-opacity
-                            ${is2026
-                                ? 'bg-gradient-to-r from-hack-lavender to-hack-purple hover:from-hack-purple-light hover:to-hack-lavender shadow-[0_0_20px_rgba(183,148,212,0.3)] hover:shadow-[0_0_30px_rgba(183,148,212,0.5)]'
-                                : 'bg-gradient-to-r from-[#c593e9] to-[#b57ed8] hover:from-[#cfb0e8] hover:to-[#c593e9] shadow-[0_0_20px_rgba(197,147,233,0.3)] hover:shadow-[0_0_30px_rgba(197,147,233,0.5)]'
-                            }`}
-                        onClick={() => handleClick(hasCountdownEnded ? 'Contact Us' : 'Sponsor Us')}
-                        variants={fadeUp}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={viewportOnce}
-                    >
-                        <span className="relative z-10">{hasCountdownEnded ? 'Contact Us' : 'Sponsor Us'}</span>
-                    </motion.a>
                 </section>
                 <div className={`opacity-50 absolute bottom-[30%] left-[-8%] max-h-[30%] max-w-[30%] ${is2026 ? 'animate-float' : 'animate-pulse'}`} style={{ animationDuration: '10s' }}>
                     <img src={uranus} loading="lazy" alt="Uranus" className="object-cover" />

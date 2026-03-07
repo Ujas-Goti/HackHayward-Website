@@ -66,8 +66,16 @@ function FaqAccordion(props) {
             answer: 'Any projects created within the hacking event schedule!',
         },
         {
-            question: 'What do I need to bring to the event?',
-            answer: 'Picture ID, clothing (if you plan on staying over), water bottle, personal devices (laptop or PC), and chargers!',
+            question: 'What should I bring to HackHayward?',
+            answer: (
+                <>
+                    Please bring your laptop and charger, phone charger, student ID, and any hardware you plan to use. We also recommend installing any required software in advance.
+                    <br /><br />
+                    As this is a 24-hour overnight event, we will provide a designated nap area for participants. However, we encourage you to bring a sleeping bag or blanket, a small pillow, and a jacket or hoodie for comfort.
+                    <br /><br />
+                    Meals, snacks, WiFi, workspace, and power will be provided — we&apos;ll keep you fueled, connected, and fully charged.
+                </>
+            ),
         },
         {
             question: 'What if I have no experience?',

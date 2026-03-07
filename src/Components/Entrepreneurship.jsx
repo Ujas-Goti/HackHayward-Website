@@ -30,7 +30,39 @@ export default function Entrepreneurship({ year }) {
                     </p>
                 </motion.div>
 
-                <section className="grid xl:grid-cols-2 items-stretch justify-items-center gap-8 text-white max-w-7xl mx-auto">
+                {/* Row 1: 2 new boxes on top */}
+                <section className="grid xl:grid-cols-2 items-stretch gap-8 text-white max-w-7xl mx-auto">
+                    <motion.article variants={fadeUp} className="max-w-xl z-20 bg-[#46166C]/30 backdrop-blur-sm border border-[#B794D4]/20 p-6 rounded-xl hover:border-[#B794D4]/50 hover:bg-[#46166C]/40 transition-all duration-300 h-full">
+                        <div className="flex items-start gap-4">
+                            <div className="text-4xl">🌙</div>
+                            <div>
+                                <h3 className="text-2xl font-bold font-exo2 mb-3 text-white">
+                                    Overnight Hackathon
+                                </h3>
+                                <p className="lg:text-base sm:text-sm font-grotesk text-[#C5D4F0]/80">
+                                    HackHayward runs through the night—a full overnight experience where energy stays high, ideas flow freely, and friendships form over late-night coding sessions. Snacks, swag, and support keep you fueled from start to finish.
+                                </p>
+                            </div>
+                        </div>
+                    </motion.article>
+
+                    <motion.article variants={fadeUp} className="max-w-xl z-20 bg-[#46166C]/30 backdrop-blur-sm border border-[#B794D4]/20 p-6 rounded-xl hover:border-[#B794D4]/50 hover:bg-[#46166C]/40 transition-all duration-300 h-full">
+                        <div className="flex items-start gap-4">
+                            <div className="text-4xl">⚡</div>
+                            <div>
+                                <h3 className="text-2xl font-bold font-exo2 mb-3 text-white">
+                                    24-Hour Innovation Sprint
+                                </h3>
+                                <p className="lg:text-base sm:text-sm font-grotesk text-[#C5D4F0]/80">
+                                    Teams build, prototype, and ship from sunset to sunrise. The immersive 24-hour format pushes participants to think creatively, collaborate under pressure, and turn ideas into working demos.
+                                </p>
+                            </div>
+                        </div>
+                    </motion.article>
+                </section>
+
+                {/* Row 2: Entrepreneur Ambassadors, Addressing Community Needs, Mentorship, Workshops */}
+                <section className="grid xl:grid-cols-2 items-stretch gap-8 text-white max-w-7xl mx-auto">
                     <motion.article variants={fadeUp} className="max-w-xl z-20 bg-[#46166C]/30 backdrop-blur-sm border border-[#B794D4]/20 p-6 rounded-xl hover:border-[#B794D4]/50 hover:bg-[#46166C]/40 transition-all duration-300 h-full">
                         <div className="flex items-start gap-4">
                             <div className="text-4xl">🤝</div>
@@ -53,14 +85,12 @@ export default function Entrepreneurship({ year }) {
                                     Addressing Community Needs
                                 </h3>
                                 <p className="lg:text-base sm:text-sm font-grotesk text-[#C5D4F0]/80">
-                                    Although Cal State East Bay serves an exceptionally diverse student population, many students - especially those from historically underrepresented backgrounds - lack access to mentorship networks, entrepreneurial training, and pathways for translating technical ideas into real-world ventures.
+                                    Although Cal State East Bay serves an exceptionally diverse student population, many students—especially those from historically underrepresented backgrounds—lack access to mentorship networks, entrepreneurial training, and pathways for translating technical ideas into real-world ventures.
                                 </p>
                             </div>
                         </div>
                     </motion.article>
-                </section>
 
-                <section className="grid xl:grid-cols-2 items-stretch gap-8 text-white max-w-7xl mx-auto">
                     <motion.article variants={fadeUp} className="max-w-xl z-20 bg-[#46166C]/30 backdrop-blur-sm border border-[#B794D4]/20 p-6 rounded-xl hover:border-[#B794D4]/50 hover:bg-[#46166C]/40 transition-all duration-300 h-full">
                         <div className="flex items-start gap-4">
                             <div className="text-4xl">🚀</div>
