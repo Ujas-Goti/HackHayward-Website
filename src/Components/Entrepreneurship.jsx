@@ -40,7 +40,7 @@ export default function Entrepreneurship({ year }) {
                                     Overnight Hackathon
                                 </h3>
                                 <p className="lg:text-base sm:text-sm font-grotesk text-[#C5D4F0]/80">
-                                    HackHayward runs through the night—a full overnight experience where energy stays high, ideas flow freely, and friendships form over late-night coding sessions. Snacks, swag, and support keep you fueled from start to finish.
+                                    HackHayward runs through the night for a full overnight experience where energy stays high, ideas flow freely, and friendships form over late-night coding sessions. Snacks, swag, and support keep you fueled from start to finish.
                                 </p>
                             </div>
                         </div>
@@ -71,7 +71,7 @@ export default function Entrepreneurship({ year }) {
                                     Entrepreneur Ambassadors
                                 </h3>
                                 <p className="lg:text-base sm:text-sm font-grotesk text-[#C5D4F0]/80">
-                                    These ambassadors will be available to guide teams in refining their pitches, clarifying the problem and solution, articulating impact, identifying customer needs, strengthening the value proposition, and enhancing presentation strategy—with particular emphasis on pitch deck development.
+                                    These ambassadors will be available to guide teams in refining their pitches, clarifying the problem and solution, articulating impact, identifying customer needs, strengthening the value proposition, and enhancing presentation strategy with particular emphasis on pitch deck development.
                                 </p>
                             </div>
                         </div>
@@ -85,7 +85,7 @@ export default function Entrepreneurship({ year }) {
                                     Addressing Community Needs
                                 </h3>
                                 <p className="lg:text-base sm:text-sm font-grotesk text-[#C5D4F0]/80">
-                                    Although Cal State East Bay serves an exceptionally diverse student population, many students—especially those from historically underrepresented backgrounds—lack access to mentorship networks, entrepreneurial training, and pathways for translating technical ideas into real-world ventures.
+                                    Although Cal State East Bay serves an exceptionally diverse student population, many students, especially those from historically underrepresented backgrounds, lack access to mentorship networks, entrepreneurial training, and pathways for translating technical ideas into real-world ventures.
                                 </p>
                             </div>
                         </div>

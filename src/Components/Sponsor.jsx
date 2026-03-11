@@ -221,25 +221,57 @@ export default function Sponsor(props) {
                             })}
                         </div>
 
-                        {/* Desktop / tablet: four centered rows */}
+                        {/* Desktop / tablet */}
                         <div className="hidden sm:flex flex-col items-center gap-2 z-10">
-                            {rows.map((row, rowIndex) => (
+                            {is2026 ? (
+                                // 2026: four-row structured layout
+                                rows.map((row, rowIndex) => (
+                                    <motion.div
+                                        key={rowIndex}
+                                        className={`flex justify-center gap-10 w-full ${rowIndex === 0 ? '' : rowIndex === 1 ? 'max-w-5xl' : rowIndex === 2 ? 'max-w-5xl' : 'max-w-4xl'}`}
+                                        variants={staggerContainer(0.1)}
+                                        initial="hidden"
+                                        whileInView="visible"
+                                        viewport={viewportOnce}
+                                    >
+                                        {row.map((sponsor) => {
+                                            const imageSrc = sponsorImages[sponsor.image];
+                                            const url = sponsorURLs[sponsor.urlKey];
+                                            return (
+                                                <motion.div
+                                                    key={sponsor.key}
+                                                    variants={fadeUp}
+                                                    className={rowIndex === 3 ? 'sm:w-[340px] sm:flex-shrink-0' : ''}
+                                                >
+                                                    <SponsorCard
+                                                        sponsor={sponsor}
+                                                        imageSrc={imageSrc}
+                                                        url={url}
+                                                        handleClick={handleClick}
+                                                        rowIndex={rowIndex}
+                                                    />
+                                                </motion.div>
+                                            );
+                                        })}
+                                    </motion.div>
+                                ))
+                            ) : (
+                                // 2025: simple centered grid so legacy sponsors always show
                                 <motion.div
-                                    key={rowIndex}
-                                    className={`flex justify-center gap-10 w-full ${rowIndex === 0 ? '' : rowIndex === 1 ? 'max-w-5xl' : rowIndex === 2 ? 'max-w-5xl' : 'max-w-4xl'}`}
+                                    className="flex flex-wrap justify-center gap-10 w-full max-w-5xl"
                                     variants={staggerContainer(0.1)}
                                     initial="hidden"
                                     whileInView="visible"
                                     viewport={viewportOnce}
                                 >
-                                    {row.map((sponsor) => {
+                                    {sponsors.map((sponsor, index) => {
                                         const imageSrc = sponsorImages[sponsor.image];
                                         const url = sponsorURLs[sponsor.urlKey];
+                                        const rowIndex = Math.floor(index / 3);
                                         return (
                                             <motion.div
                                                 key={sponsor.key}
                                                 variants={fadeUp}
-                                                className={rowIndex === 3 ? 'sm:w-[340px] sm:flex-shrink-0' : ''}
                                             >
                                                 <SponsorCard
                                                     sponsor={sponsor}
@@ -252,7 +284,7 @@ export default function Sponsor(props) {
                                         );
                                     })}
                                 </motion.div>
-                            ))}
+                            )}
                         </div>
 
                     </div>
