@@ -86,7 +86,7 @@ function FaqAccordion(props) {
         ...(is2026 ? [
             {
                 question: 'What is the Entrepreneurship component at HackHayward 2.0?',
-                answer: 'HackHayward 2.0 introduces an enhanced entrepreneurship component that begins with a dedicated workshop on pitch deck development led by a Smith Center Fellow. In addition, hackathon teams will have advising time with trained Entrepreneur Ambassadors. These ambassadors—recruited from the Smith Center, the Up-Club, and the College of Business and Economics—will work with multiple teams to provide guidance on refining pitches, clarifying the problem and solution, articulating impact, identifying customer needs, strengthening the value proposition, and improving overall presentation strategy.',
+                answer: 'HackHayward 2.0 introduces an enhanced entrepreneurship component that begins with a dedicated workshop on pitch deck development. Hackathon teams will have advising time with trained Entrepreneur Ambassadors. These ambassadors—recruited from the Up-Club and the College of Business and Economics—will work with multiple teams to provide guidance on refining pitches, clarifying the problem and solution, articulating impact, identifying customer needs, strengthening the value proposition, and improving overall presentation strategy.',
             },
             {
                 question: 'What is an Entrepreneur Ambassador?',
@@ -98,7 +98,7 @@ function FaqAccordion(props) {
             },
             {
                 question: 'What will teams learn in the entrepreneurship workshop?',
-                answer: 'During the dedicated entrepreneurship workshop, teams will explore key concepts that will guide the development of their pitch decks. A Smith Center Fellow will discuss topics such as opportunity discovery, value creation, understanding customer needs, and effectively presenting a solution. Teams can then apply these insights as they craft and refine their pitch decks. The goal is to align technical innovation with a thoughtful and strategic entrepreneurial approach.',
+                answer: 'During the dedicated entrepreneurship workshop, teams will explore key concepts that will guide the development of their pitch decks. Entrepreneur Ambassadors will discuss topics such as opportunity discovery, value creation, understanding customer needs, and effectively presenting a solution. Teams can then apply these insights as they craft and refine their pitch decks. The goal is to align technical innovation with a thoughtful and strategic entrepreneurial approach.',
             },
             {
                 question: 'Will there be technical workshops as well?',

@@ -12,7 +12,6 @@ import csueb_soe from '../assets/imgs/sponsors/CSUEB_SOE.svg';
 
 import aws from '../assets/imgs/sponsors/Amazon_Web_Services_Logo.svg.png';
 import GCP from '../assets/imgs/sponsors/GCP_Cheat_Sheet.png';
-import SCLogo from '../assets/imgs/sponsors/updated_smith_logo.png';
 
 import GroqLogo from '../assets/imgs/sponsors/GroqLogo_Black.svg';
 import PerplexityLogo from '../assets/imgs/sponsors/Perplexity-Logo.jpg';
@@ -32,7 +31,6 @@ const sponsorURLs = {
     'CSUEB SOE': 'https://www.csueastbay.edu/engineering/',
     'AWS': 'https://aws.amazon.com/',
     'GCP': 'https://cloud.google.com/',
-    'Smith Center': 'https://www.csueastbay.edu/smith-center/',
     'Groq': 'https://groq.com/',
     'Perplexity': 'https://www.perplexity.ai/',
     'Redbull': 'https://www.redbull.com/',
@@ -48,7 +46,6 @@ const sponsorImages = {
     'CSUEB_DOCS.svg': csueb_docs,
     'cseb-docs-o_2.png': csueb_docs_2026,
     'CSUEB_SOE.svg': csueb_soe,
-    'updated_smith_logo.png': SCLogo,
     'GroqLogo_Black.svg': GroqLogo,
     'Perplexity-Logo.jpg': PerplexityLogo,
     'redbull.webp': redbull,
@@ -118,7 +115,7 @@ const SponsorCard = ({ sponsor, imageSrc, url, handleClick }) => {
                         alt={sponsor.alt}
                         loading="lazy"
                         className={`${sponsor.height} max-h-[80px] w-auto object-contain transition-transform duration-300 
-                            ${sponsor.key === 'Smith Center' || sponsor.key === 'Perplexity' || sponsor.key === 'Groq' || sponsor.key === 'Redbull' ? 'mt-1' : ''} 
+                            ${sponsor.key === 'Perplexity' || sponsor.key === 'Groq' || sponsor.key === 'Redbull' ? 'mt-1' : ''}
                             ${sponsor.key === 'CSUEB SOE' ? 'select-none' : ''}
                             group-hover:scale-110`}
                     />

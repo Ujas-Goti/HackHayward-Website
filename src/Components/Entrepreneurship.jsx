@@ -26,7 +26,7 @@ export default function Entrepreneurship({ year }) {
                         What&apos;s New in HackHayward 2.0
                     </h2>
                     <p className="lg:text-xl sm:text-lg font-grotesk font-light text-pretty max-w-4xl text-[#C5D4F0]/90">
-                        This year introduces an enhanced entrepreneurship component: a dedicated <span className="font-bold text-[#B794D4]">pitch deck workshop</span> led by a Smith Center Fellow, plus advising time with trained <span className="font-bold text-[#B794D4]">Entrepreneur Ambassadors</span> who work with multiple teams—recruited from the Smith Center, the Up-Club, and the College of Business and Economics.
+                        This year introduces an enhanced entrepreneurship component: a dedicated <span className="font-bold text-[#B794D4]">pitch deck workshop</span> led by trained <span className="font-bold text-[#B794D4]">Entrepreneur Ambassadors</span> who work with multiple teams—recruited from the Up-Club and the College of Business and Economics.
                     </p>
                 </motion.div>
 
@@ -83,7 +83,7 @@ export default function Entrepreneurship({ year }) {
                                     Technical & Entrepreneurial Workshops
                                 </h3>
                                 <p className="lg:text-base sm:text-sm font-grotesk text-[#C5D4F0]/80">
-                                    HackHayward includes <span className="font-semibold text-[#B794D4]">pre-event and on-site technical workshops</span>, covering AI tools, frameworks, and prototyping strategies. During the 24-hour hackathon, each team participates in a dedicated entrepreneurship workshop led by a Smith Center Fellow on <span className="font-semibold text-[#B794D4]">pitch deck development</span>, exploring opportunity discovery, value creation, and effectively presenting a solution.
+                                    HackHayward includes <span className="font-semibold text-[#B794D4]">pre-event and on-site technical workshops</span>, covering AI tools, frameworks, and prototyping strategies. During the 24-hour hackathon, each team participates in a dedicated entrepreneurship workshop led by <span className="font-semibold text-[#B794D4]">Entrepreneur Ambassadors</span> on <span className="font-semibold text-[#B794D4]">pitch deck development</span>, exploring opportunity discovery, value creation, and effectively presenting a solution.
                                 </p>
                             </div>
                         </div>
