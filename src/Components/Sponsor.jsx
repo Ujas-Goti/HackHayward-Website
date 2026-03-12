@@ -11,7 +11,6 @@ import csueb_soe from '../assets/imgs/sponsors/CSUEB_SOE.svg';
 
 import aws from '../assets/imgs/sponsors/Amazon_Web_Services_Logo.svg.png';
 import GCP from '../assets/imgs/sponsors/GCP_Cheat_Sheet.png';
-import SCLogo from '../assets/imgs/sponsors/updated_smith_logo.png';
 
 import GroqLogo from '../assets/imgs/sponsors/GroqLogo_Black.svg';
 import PerplexityLogo from '../assets/imgs/sponsors/Perplexity-Logo.jpg';
@@ -31,7 +30,6 @@ import omiWhite from '../assets/imgs/sponsors/white sponsor/omi white.png';
 import doorDashWhite from '../assets/imgs/sponsors/white sponsor/DOORDASH-Photoroom.png';
 import asiWhite from '../assets/imgs/sponsors/white sponsor/asi.png';
 import docsWhite from '../assets/imgs/sponsors/white sponsor/csueb docs.png';
-import smithWhite from '../assets/imgs/sponsors/white sponsor/smith center.png';
 import csuebSoeWhite from '../assets/imgs/sponsors/white sponsor/CSUEB_SOE-nobg.png';
 
 import ReactGA from 'react-ga4';
@@ -45,7 +43,6 @@ const sponsorURLs = {
     'CSUEB SOE': 'https://www.csueastbay.edu/engineering/',
     'AWS': 'https://aws.amazon.com/',
     'GCP': 'https://cloud.google.com/',
-    'Smith Center': 'https://www.csueastbay.edu/smith-center/',
     'Groq': 'https://groq.com/',
     'Perplexity': 'https://www.perplexity.ai/',
     'Redbull': 'https://www.redbull.com/',
@@ -69,7 +66,6 @@ const sponsorImages = {
     'CSUEB_DOCS.svg': csueb_docs,
     'cseb-docs-o_2.png': csueb_docs_2026,
     'CSUEB_SOE.svg': csueb_soe,
-    'updated_smith_logo.png': SCLogo,
     'GroqLogo_Black.svg': GroqLogo,
     'Perplexity-Logo.jpg': PerplexityLogo,
     'redbull.webp': redbull,
@@ -86,7 +82,6 @@ const sponsorImages = {
     'DOORDASH-Photoroom.png': doorDashWhite,
     'asi.png': asiWhite,
     'csueb docs.png': docsWhite,
-    'smith center.png': smithWhite,
     'CSUEB_SOE-nobg.png': csuebSoeWhite,
 }
 
@@ -174,7 +169,7 @@ export default function Sponsor(props) {
         sponsors.slice(0, 3),  // row 1: Google, Amazon, CAHSI
         sponsors.slice(3, 6),  // row 2: Cursor, IBM, Perplexity
         sponsors.slice(6, 9),  // row 3: OMI, DoorDash, ASI
-        sponsors.slice(9),     // row 4: CSUEB DOCS, Smith Center, CSUEB SOE
+        sponsors.slice(9),     // row 4: CSUEB DOCS, CSUEB SOE
     ];
 
     const handleClick = (platform) => {

@@ -15,7 +15,6 @@ export const yearData = {
             { key: 'Groq', image: 'GroqLogo_Black.svg', alt: 'Groq', urlKey: 'Groq', height: 'h-[60px]' },
             { key: 'CSUEB SOE', image: 'CSUEB_SOE.svg', alt: 'CSUEB School of Engineering', urlKey: 'CSUEB SOE', height: 'h-16' },
             { key: 'CSUEB DOCS', image: 'CSUEB_DOCS.svg', alt: 'CSUEB Department of Computer Science', urlKey: 'CSUEB DOCS', height: 'h-16' },
-            { key: 'Smith Center', image: 'updated_smith_logo.png', alt: 'Smith Center', urlKey: 'Smith Center', height: 'h-[160px]' },
             { key: 'Redbull', image: 'redbull.webp', alt: 'Redbull', urlKey: 'Redbull', height: 'h-[100px]' },
         ],
     },
@@ -42,7 +41,6 @@ export const yearData = {
             { key: 'ASI', image: 'asi.png', alt: 'Associated Students Inc.', urlKey: 'ASI', height: 'h-[114px]' },
             // Row 4
             { key: 'CSUEB DOCS', image: 'csueb docs.png', alt: 'CSUEB Department of Computer Science', urlKey: 'CSUEB DOCS', height: 'h-[108px]' },
-            { key: 'Smith Center', image: 'smith center.png', alt: 'Smith Center', urlKey: 'Smith Center', height: 'h-[108px]' },
             { key: 'CSUEB SOE', image: 'CSUEB_SOE-nobg.png', alt: 'CSUEB School of Engineering', urlKey: 'CSUEB SOE', height: 'h-[108px]' },
         ],
     },

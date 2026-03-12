@@ -113,7 +113,7 @@ export default function Entrepreneurship({ year }) {
                                     Technical & Entrepreneurial Workshops
                                 </h3>
                                 <p className="lg:text-base sm:text-sm font-grotesk text-[#C5D4F0]/80">
-                                    HackHayward includes pre-event and on-site technical workshops, covering AI tools, frameworks, and prototyping strategies. During the 24-hour hackathon, a entrepreneurship panel with industry experts will discuss <span className="font-semibold text-[#B794D4]">pitch deck development</span>, exploring opportunity discovery, value creation, and effectively presenting a solution.
+                                    HackHayward includes pre-event and on-site technical workshops, covering AI tools, frameworks, and prototyping strategies. During the 24-hour hackathon, an entrepreneurship panel with industry experts will discuss <span className="font-semibold text-[#B794D4]">pitch deck development</span>, exploring opportunity discovery, value creation, and effectively presenting a solution.
                                 </p>
                             </div>
                         </div>

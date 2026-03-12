@@ -94,7 +94,7 @@ function FaqAccordion(props) {
         ...(is2026 ? [
             {
                 question: 'What is the Entrepreneurship component at HackHayward 2.0?',
-                answer: 'HackHayward 2.0 introduces an enhanced entrepreneurship component that includes a panel on pitch deck development. In addition, hackathon teams will have the oppurtunity for advise from Entrepreneur Ambassadors and mentors.',
+                answer: 'HackHayward 2.0 introduces an enhanced entrepreneurship component that includes a panel on pitch deck development. In addition, hackathon teams will have the opportunity for advice from Entrepreneur Ambassadors and mentors.',
             },
             {
                 question: 'Do I need business experience to participate?',
