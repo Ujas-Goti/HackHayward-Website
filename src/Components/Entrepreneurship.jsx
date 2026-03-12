@@ -26,11 +26,43 @@ export default function Entrepreneurship({ year }) {
                         What&apos;s New in HackHayward 2.0
                     </h2>
                     <p className="lg:text-xl sm:text-lg font-grotesk font-light text-pretty max-w-4xl text-[#C5D4F0]/90">
-                        This year introduces an enhanced entrepreneurship component: a dedicated <span className="font-bold text-[#B794D4]">pitch deck workshop</span> led by trained <span className="font-bold text-[#B794D4]">Entrepreneur Ambassadors</span> who work with multiple teams—recruited from the Up-Club and the College of Business and Economics.
+                        This year shifts to a focus on entrepreneurship, featuring a special track on AI entrepreneurship. The enhanced component includes dedicated business development discussions centered on pitch deck creation, with entrepreneurial advisors and mentors available throughout the event.
                     </p>
                 </motion.div>
 
-                <section className="grid xl:grid-cols-2 items-stretch justify-items-center gap-8 text-white max-w-7xl mx-auto">
+                {/* Row 1: 2 new boxes on top */}
+                <section className="grid xl:grid-cols-2 items-stretch gap-8 text-white max-w-7xl mx-auto">
+                    <motion.article variants={fadeUp} className="max-w-xl z-20 bg-[#46166C]/30 backdrop-blur-sm border border-[#B794D4]/20 p-6 rounded-xl hover:border-[#B794D4]/50 hover:bg-[#46166C]/40 transition-all duration-300 h-full">
+                        <div className="flex items-start gap-4">
+                            <div className="text-4xl">🌙</div>
+                            <div>
+                                <h3 className="text-2xl font-bold font-exo2 mb-3 text-white">
+                                    Overnight Hackathon
+                                </h3>
+                                <p className="lg:text-base sm:text-sm font-grotesk text-[#C5D4F0]/80">
+                                    HackHayward runs through the night for a full overnight experience where energy stays high, ideas flow freely, and friendships form over late-night coding sessions. Snacks, swag, and support keep you fueled from start to finish.
+                                </p>
+                            </div>
+                        </div>
+                    </motion.article>
+
+                    <motion.article variants={fadeUp} className="max-w-xl z-20 bg-[#46166C]/30 backdrop-blur-sm border border-[#B794D4]/20 p-6 rounded-xl hover:border-[#B794D4]/50 hover:bg-[#46166C]/40 transition-all duration-300 h-full">
+                        <div className="flex items-start gap-4">
+                            <div className="text-4xl">⚡</div>
+                            <div>
+                                <h3 className="text-2xl font-bold font-exo2 mb-3 text-white">
+                                    24-Hour Innovation Sprint
+                                </h3>
+                                <p className="lg:text-base sm:text-sm font-grotesk text-[#C5D4F0]/80">
+                                    Teams build, prototype, and ship from sunset to sunrise. The immersive 24-hour format pushes participants to think creatively, collaborate under pressure, and turn ideas into working demos.
+                                </p>
+                            </div>
+                        </div>
+                    </motion.article>
+                </section>
+
+                {/* Row 2: Entrepreneur Ambassadors, Addressing Community Needs, Mentorship, Workshops */}
+                <section className="grid xl:grid-cols-2 items-stretch gap-8 text-white max-w-7xl mx-auto">
                     <motion.article variants={fadeUp} className="max-w-xl z-20 bg-[#46166C]/30 backdrop-blur-sm border border-[#B794D4]/20 p-6 rounded-xl hover:border-[#B794D4]/50 hover:bg-[#46166C]/40 transition-all duration-300 h-full">
                         <div className="flex items-start gap-4">
                             <div className="text-4xl">🤝</div>
@@ -39,7 +71,7 @@ export default function Entrepreneurship({ year }) {
                                     Entrepreneur Ambassadors
                                 </h3>
                                 <p className="lg:text-base sm:text-sm font-grotesk text-[#C5D4F0]/80">
-                                    These ambassadors work with multiple teams to provide guidance on refining pitches, clarifying the problem and solution, articulating impact, identifying customer needs, strengthening the value proposition, and improving presentation strategy—with a particular focus on pitch deck development.
+                                    These ambassadors will be available to guide teams in refining their pitches, clarifying the problem and solution, articulating impact, identifying customer needs, strengthening the value proposition, and enhancing presentation strategy with particular emphasis on pitch deck development.
                                 </p>
                             </div>
                         </div>
@@ -53,14 +85,12 @@ export default function Entrepreneurship({ year }) {
                                     Addressing Community Needs
                                 </h3>
                                 <p className="lg:text-base sm:text-sm font-grotesk text-[#C5D4F0]/80">
-                                    Although Cal State East Bay serves an exceptionally diverse student population, many students - especially those from historically underrepresented backgrounds - lack access to mentorship networks, entrepreneurial training, and pathways for translating technical ideas into real-world ventures.
+                                    Although Cal State East Bay serves an exceptionally diverse student population, many students, especially those from historically underrepresented backgrounds, lack access to mentorship networks, entrepreneurial training, and pathways for translating technical ideas into real-world ventures.
                                 </p>
                             </div>
                         </div>
                     </motion.article>
-                </section>
 
-                <section className="grid xl:grid-cols-2 items-stretch gap-8 text-white max-w-7xl mx-auto">
                     <motion.article variants={fadeUp} className="max-w-xl z-20 bg-[#46166C]/30 backdrop-blur-sm border border-[#B794D4]/20 p-6 rounded-xl hover:border-[#B794D4]/50 hover:bg-[#46166C]/40 transition-all duration-300 h-full">
                         <div className="flex items-start gap-4">
                             <div className="text-4xl">🚀</div>
@@ -83,7 +113,7 @@ export default function Entrepreneurship({ year }) {
                                     Technical & Entrepreneurial Workshops
                                 </h3>
                                 <p className="lg:text-base sm:text-sm font-grotesk text-[#C5D4F0]/80">
-                                    HackHayward includes <span className="font-semibold text-[#B794D4]">pre-event and on-site technical workshops</span>, covering AI tools, frameworks, and prototyping strategies. During the 24-hour hackathon, each team participates in a dedicated entrepreneurship workshop led by <span className="font-semibold text-[#B794D4]">Entrepreneur Ambassadors</span> on <span className="font-semibold text-[#B794D4]">pitch deck development</span>, exploring opportunity discovery, value creation, and effectively presenting a solution.
+                                    HackHayward includes pre-event and on-site technical workshops, covering AI tools, frameworks, and prototyping strategies. During the 24-hour hackathon, an entrepreneurship panel with industry experts will discuss <span className="font-semibold text-[#B794D4]">pitch deck development</span>, exploring opportunity discovery, value creation, and effectively presenting a solution.
                                 </p>
                             </div>
                         </div>

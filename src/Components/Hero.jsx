@@ -38,8 +38,9 @@ export default function Hero(props) {
     const saturnY = useTransform(scrollYProgress, [0, 1], [0, -120]);
     const jupiterY = useTransform(scrollYProgress, [0, 1], [0, -80]);
     const marsY = useTransform(scrollYProgress, [0, 1], [0, -60]);
-    const textOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-    const textY = useTransform(scrollYProgress, [0, 0.5], [0, 40]);
+    // Keep hero text (and countdown) fully visible while still allowing slight motion
+    const textOpacity = useTransform(scrollYProgress, [0, 1], [1, 1]);
+    const textY = useTransform(scrollYProgress, [0, 1], [0, 30]);
     const astroY = useTransform(scrollYProgress, [0, 1], [0, -50]);
 
     // Modern 2026 Hero Design

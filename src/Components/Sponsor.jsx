@@ -4,8 +4,7 @@ import { yearData } from '../data/yearData';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 
-// import sponsors
-// import sponsors (fixed)
+// 2025 sponsors (colored logos)
 import csueb_docs from '../assets/imgs/sponsors/CSUEB_DOCS.svg';
 import csueb_docs_2026 from '../assets/imgs/sponsors/cseb-docs-o_2.png';
 import csueb_soe from '../assets/imgs/sponsors/CSUEB_SOE.svg';
@@ -17,9 +16,21 @@ import GroqLogo from '../assets/imgs/sponsors/GroqLogo_Black.svg';
 import PerplexityLogo from '../assets/imgs/sponsors/Perplexity-Logo.jpg';
 import redbull from '../assets/imgs/sponsors/redbull.webp';
 
-import ibm from '../assets/imgs/sponsors/ibm.png';
 import cahsi from '../assets/imgs/sponsors/CAHSI.png';
 import toolhouse from '../assets/imgs/sponsors/Toolhouse.png';
+
+// 2026 sponsors (white transparent logos)
+import googleWhite from '../assets/imgs/sponsors/white sponsor/google.png';
+import amazonWhite from '../assets/imgs/sponsors/white sponsor/amazon 2.png';
+import cahsiWhite from '../assets/imgs/sponsors/white sponsor/cahsi white.png';
+import ibmWhite from '../assets/imgs/sponsors/white sponsor/ibm.png';
+import cursorWhite from '../assets/imgs/sponsors/white sponsor/LOCKUP_HORIZONTAL_2D_DARK.png';
+import perplexityWhite from '../assets/imgs/sponsors/white sponsor/perplexity-Photoroom.png';
+import omiWhite from '../assets/imgs/sponsors/white sponsor/omi white.png';
+import doorDashWhite from '../assets/imgs/sponsors/white sponsor/DOORDASH-Photoroom.png';
+import asiWhite from '../assets/imgs/sponsors/white sponsor/asi.png';
+import docsWhite from '../assets/imgs/sponsors/white sponsor/csueb docs.png';
+import csuebSoeWhite from '../assets/imgs/sponsors/white sponsor/CSUEB_SOE-nobg.png';
 
 import ReactGA from 'react-ga4';
 import { motion } from 'framer-motion';
@@ -27,6 +38,7 @@ import { fadeUp, staggerContainer, viewportOnce } from '../utils/scrollAnimation
 
 // sponsor URL links
 const sponsorURLs = {
+    // Legacy / 2025
     'CSUEB DOCS': 'https://cs.csueastbay.edu/',
     'CSUEB SOE': 'https://www.csueastbay.edu/engineering/',
     'AWS': 'https://aws.amazon.com/',
@@ -37,10 +49,18 @@ const sponsorURLs = {
     'IBM': 'https://www.ibm.com/',
     'CAHSI': 'https://cahsi.org/',
     'Toolhouse': 'https://toolhouse.com/',
+    // 2026 new sponsors
+    'Google': 'https://www.google.com/',
+    'Amazon': 'https://aws.amazon.com/',
+    'Cursor': 'https://www.cursor.com/',
+    'OMI': 'https://omi.me/',
+    'DoorDash': 'https://www.doordash.com/',
+    'ASI': 'https://www.csueastbay.edu/asi/',
 }
 
 // Image mapping
 const sponsorImages = {
+    // 2025 mapping (colored)
     'GCP_Cheat_Sheet.png': GCP,
     'Amazon_Web_Services_Logo.svg.png': aws,
     'CSUEB_DOCS.svg': csueb_docs,
@@ -49,16 +69,27 @@ const sponsorImages = {
     'GroqLogo_Black.svg': GroqLogo,
     'Perplexity-Logo.jpg': PerplexityLogo,
     'redbull.webp': redbull,
-    'ibm.png': ibm,
     'CAHSI.png': cahsi,
     'Toolhouse.png': toolhouse,
+    // 2026 mapping (white)
+    'ibm.png': ibmWhite,
+    'google.png': googleWhite,
+    'amazon 2.png': amazonWhite,
+    'cahsi white.png': cahsiWhite,
+    'cursor.png': cursorWhite,
+    'perplexity-Photoroom.png': perplexityWhite,
+    'omi white.png': omiWhite,
+    'DOORDASH-Photoroom.png': doorDashWhite,
+    'asi.png': asiWhite,
+    'csueb docs.png': docsWhite,
+    'CSUEB_SOE-nobg.png': csuebSoeWhite,
 }
 
 Sponsor.propTypes = {
     year: PropTypes.number,
 };
 
-const SponsorCard = ({ sponsor, imageSrc, url, handleClick }) => {
+const SponsorCard = ({ sponsor, imageSrc, url, handleClick, rowIndex }) => {
     const [isHovered, setIsHovered] = useState(false);
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
@@ -74,8 +105,6 @@ const SponsorCard = ({ sponsor, imageSrc, url, handleClick }) => {
         setMousePosition({ x: 0, y: 0 });
     };
 
-    const padding = sponsor.padding || 'p-4';
-
     return (
         <a 
             href={url} 
@@ -86,40 +115,36 @@ const SponsorCard = ({ sponsor, imageSrc, url, handleClick }) => {
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
             className="block w-full group perspective-1000"
-            style={{
-                transform: isHovered 
-                    ? `rotateY(${mousePosition.x}deg) rotateX(${-mousePosition.y}deg) translateZ(20px)` 
-                    : 'none',
-                transition: 'transform 0.1s ease-out'
-            }}
         >
             <div
-                className={`relative ${padding} rounded-2xl w-full h-[150px] flex items-center justify-center overflow-hidden
-                    bg-white/5 backdrop-blur-xl
-                    border border-[#B794D4]/30
-                    shadow-[0_18px_45px_rgba(0,0,0,0.45)]
-                    transition-all duration-300 ease-out
-                    before:absolute before:inset-0 before:rounded-2xl before:bg-gradient-to-br before:from-[#B794D4]/40 before:via-[#46166C]/30 before:to-transparent
-                    before:opacity-0 before:transition-opacity before:duration-300
-                    group-hover:before:opacity-100 group-hover:border-[#B794D4]
-                    group-hover:shadow-[0_0_30px_rgba(183,148,212,0.45),0_0_60px_rgba(70,22,108,0.3)]
-                    active:scale-95`}
+                className={`relative w-full min-h-[180px] flex items-center justify-center py-3 px-4 ${rowIndex === 3 ? 'sm:w-[340px] sm:min-h-[180px] sm:flex-shrink-0' : ''}`}
+                style={{
+                    transform: isHovered 
+                        ? `rotateY(${mousePosition.x}deg) rotateX(${-mousePosition.y}deg) translateZ(10px)` 
+                        : 'none',
+                    transition: 'transform 0.1s ease-out',
+                }}
             >
-                {/* Soft inner glass layer */}
-                <div className="absolute inset-[1px] rounded-[1rem] bg-gradient-to-br from-white/15 via-white/8 to-transparent z-0" />
-                
-                {/* Logo plate to keep dark text readable on any background */}
-                <div className="relative z-10 flex items-center justify-center rounded-xl bg-white px-6 py-4 shadow-inner shadow-black/10 border border-black/5 max-h-[120px] w-full mx-4">
-                    <img
-                        src={imageSrc}
-                        alt={sponsor.alt}
-                        loading="lazy"
-                        className={`${sponsor.height} max-h-[80px] w-auto object-contain transition-transform duration-300 
-                            ${sponsor.key === 'Perplexity' || sponsor.key === 'Groq' || sponsor.key === 'Redbull' ? 'mt-1' : ''}
-                            ${sponsor.key === 'CSUEB SOE' ? 'select-none' : ''}
-                            group-hover:scale-110`}
-                    />
-                </div>
+                {/* Hover-only border – no clipping container */}
+                <div
+                    className="pointer-events-none absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-[#B794D4]/50 group-hover:shadow-[0_0_24px_rgba(183,148,212,0.3)] transition-all duration-300"
+                    aria-hidden="true"
+                />
+
+                {/* Logo: row sizes with per-sponsor overrides */}
+                <img
+                    src={imageSrc}
+                    alt={sponsor.alt}
+                    loading="lazy"
+                    className={`h-auto w-auto object-contain transition-transform duration-300 relative z-10 scale-110 group-hover:scale-125 ${
+                        sponsor.key === 'CAHSI' ? 'max-h-[210px]' :
+                        sponsor.key === 'IBM' || sponsor.key === 'Cursor' || sponsor.key === 'Perplexity' ? 'max-h-[110px]' :
+                        rowIndex === 0 ? 'max-h-[190px]' :
+                        rowIndex === 1 ? 'max-h-[125px]' :
+                        rowIndex === 2 ? 'max-h-[105px]' :
+                        'max-h-[140px] w-auto object-contain object-center'
+                    }`}
+                />
             </div>
         </a>
     );
@@ -130,6 +155,7 @@ SponsorCard.propTypes = {
     imageSrc: PropTypes.string.isRequired,
     url: PropTypes.string.isRequired,
     handleClick: PropTypes.func.isRequired,
+    rowIndex: PropTypes.number,
 };
 
 export default function Sponsor(props) {
@@ -138,6 +164,13 @@ export default function Sponsor(props) {
     const is2026 = year === 2026;
     const currentYearData = yearData[year];
     const sponsors = currentYearData.sponsors || [];
+    // For 2026, four rows
+    const rows = [
+        sponsors.slice(0, 3),  // row 1: Google, Amazon, CAHSI
+        sponsors.slice(3, 6),  // row 2: Cursor, IBM, Perplexity
+        sponsors.slice(6, 9),  // row 3: OMI, DoorDash, ASI
+        sponsors.slice(9),     // row 4: CSUEB DOCS, CSUEB SOE
+    ];
 
     const handleClick = (platform) => {
         ReactGA.event({
@@ -151,7 +184,7 @@ export default function Sponsor(props) {
     return (
         <>
             <div className="relative flex justify-center py-16">
-                <section className="flex flex-col items-center justify-items-center gap-10 text-white max-w-screen-lg px-4">
+                <section className="flex flex-col items-center justify-items-center gap-10 text-white max-w-7xl px-4">
                     <div className="text-white text-center font-exo2 flex flex-col gap-9">
                         <motion.h2
                             className="text-5xl text-balance font-bold shadow-text-sm text-white"
@@ -163,53 +196,76 @@ export default function Sponsor(props) {
                             Sponsors
                         </motion.h2>
 
-                        {/* Sponsor logos laid out in a modern responsive layout */}
-                        <div className="flex flex-col gap-10">
-                            {/* Top two rows: 3x2 grid using first 6 sponsors */}
-                            <motion.div
-                                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto z-10"
-                                variants={staggerContainer(0.1)}
-                                initial="hidden"
-                                whileInView="visible"
-                                viewport={viewportOnce}
-                            >
-                                {sponsors.slice(0, 6).map((sponsor) => {
-                                    const imageSrc = sponsorImages[sponsor.image];
-                                    const url = sponsorURLs[sponsor.urlKey];
+                        {/* Mobile: stacked list (one sponsor per row) */}
+                        <div className="flex flex-col items-center gap-4 z-10 sm:hidden">
+                            {sponsors.map((sponsor, index) => {
+                                const imageSrc = sponsorImages[sponsor.image];
+                                const url = sponsorURLs[sponsor.urlKey];
+                                const rowIndex = Math.floor(index / 3); // keep relative sizing
+                                return (
+                                    <motion.div key={sponsor.key} variants={fadeUp} className="w-full">
+                                        <SponsorCard
+                                            sponsor={sponsor}
+                                            imageSrc={imageSrc}
+                                            url={url}
+                                            handleClick={handleClick}
+                                            rowIndex={rowIndex}
+                                        />
+                                    </motion.div>
+                                );
+                            })}
+                        </div>
 
-                                    return (
-                                        <motion.div
-                                            key={sponsor.key}
-                                            variants={fadeUp}
-                                        >
-                                            <SponsorCard
-                                                sponsor={sponsor}
-                                                imageSrc={imageSrc}
-                                                url={url}
-                                                handleClick={handleClick}
-                                            />
-                                        </motion.div>
-                                    );
-                                })}
-                            </motion.div>
-
-                            {/* Bottom row: remaining sponsors centered */}
-                            {sponsors.length > 6 && (
+                        {/* Desktop / tablet */}
+                        <div className="hidden sm:flex flex-col items-center gap-2 z-10">
+                            {is2026 ? (
+                                // 2026: four-row structured layout
+                                rows.map((row, rowIndex) => (
+                                    <motion.div
+                                        key={rowIndex}
+                                        className={`flex justify-center gap-10 w-full ${rowIndex === 0 ? '' : rowIndex === 1 ? 'max-w-5xl' : rowIndex === 2 ? 'max-w-5xl' : 'max-w-4xl'}`}
+                                        variants={staggerContainer(0.1)}
+                                        initial="hidden"
+                                        whileInView="visible"
+                                        viewport={viewportOnce}
+                                    >
+                                        {row.map((sponsor) => {
+                                            const imageSrc = sponsorImages[sponsor.image];
+                                            const url = sponsorURLs[sponsor.urlKey];
+                                            return (
+                                                <motion.div
+                                                    key={sponsor.key}
+                                                    variants={fadeUp}
+                                                    className={rowIndex === 3 ? 'sm:w-[340px] sm:flex-shrink-0' : ''}
+                                                >
+                                                    <SponsorCard
+                                                        sponsor={sponsor}
+                                                        imageSrc={imageSrc}
+                                                        url={url}
+                                                        handleClick={handleClick}
+                                                        rowIndex={rowIndex}
+                                                    />
+                                                </motion.div>
+                                            );
+                                        })}
+                                    </motion.div>
+                                ))
+                            ) : (
+                                // 2025: simple centered grid so legacy sponsors always show
                                 <motion.div
-                                    className="flex justify-center gap-6 max-w-3xl mx-auto z-10 flex-wrap"
+                                    className="flex flex-wrap justify-center gap-10 w-full max-w-5xl"
                                     variants={staggerContainer(0.1)}
                                     initial="hidden"
                                     whileInView="visible"
                                     viewport={viewportOnce}
                                 >
-                                    {sponsors.slice(6).map((sponsor) => {
+                                    {sponsors.map((sponsor, index) => {
                                         const imageSrc = sponsorImages[sponsor.image];
                                         const url = sponsorURLs[sponsor.urlKey];
-
+                                        const rowIndex = Math.floor(index / 3);
                                         return (
                                             <motion.div
                                                 key={sponsor.key}
-                                                className="w-full sm:w-[260px]"
                                                 variants={fadeUp}
                                             >
                                                 <SponsorCard
@@ -217,6 +273,7 @@ export default function Sponsor(props) {
                                                     imageSrc={imageSrc}
                                                     url={url}
                                                     handleClick={handleClick}
+                                                    rowIndex={rowIndex}
                                                 />
                                             </motion.div>
                                         );
@@ -226,24 +283,6 @@ export default function Sponsor(props) {
                         </div>
 
                     </div>
-                    <motion.a
-                        href={hasCountdownEnded ? "mailto:contact@hackhayward.com" : "mailto:sponsor@hackhayward.com"}
-                        className={`relative rounded-full p-4 px-8 transition-all duration-300 text-white lg:text-lg text-sm font-grotesk font-medium text-nowrap
-                            hover:scale-105 active:scale-95 z-50
-                            before:absolute before:inset-0 before:rounded-full before:bg-gradient-to-r before:from-white/20 before:to-transparent
-                            before:opacity-0 hover:before:opacity-100 before:transition-opacity
-                            ${is2026
-                                ? 'bg-gradient-to-r from-hack-lavender to-hack-purple hover:from-hack-purple-light hover:to-hack-lavender shadow-[0_0_20px_rgba(183,148,212,0.3)] hover:shadow-[0_0_30px_rgba(183,148,212,0.5)]'
-                                : 'bg-gradient-to-r from-[#c593e9] to-[#b57ed8] hover:from-[#cfb0e8] hover:to-[#c593e9] shadow-[0_0_20px_rgba(197,147,233,0.3)] hover:shadow-[0_0_30px_rgba(197,147,233,0.5)]'
-                            }`}
-                        onClick={() => handleClick(hasCountdownEnded ? 'Contact Us' : 'Sponsor Us')}
-                        variants={fadeUp}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={viewportOnce}
-                    >
-                        <span className="relative z-10">{hasCountdownEnded ? 'Contact Us' : 'Sponsor Us'}</span>
-                    </motion.a>
                 </section>
                 <div className={`opacity-50 absolute bottom-[30%] left-[-8%] max-h-[30%] max-w-[30%] ${is2026 ? 'animate-float' : 'animate-pulse'}`} style={{ animationDuration: '10s' }}>
                     <img src={uranus} loading="lazy" alt="Uranus" className="object-cover" />

@@ -54,7 +54,7 @@ export const users2026 = [
             {
                 name: "Yash Kumar",
                 desc: "HackHayward - CSU East Bay",
-                pos: "Executive Board Advisor",
+                pos: "Executive Director",
                 img: Yash,
                 badge: "Co-Founder",
                 linkedin: "https://www.linkedin.com/in/ykumar7/",

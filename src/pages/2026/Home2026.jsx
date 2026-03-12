@@ -79,6 +79,16 @@ export default function Home2026() {
                         <Entrepreneurship year={selectedYear} />
                     </section>
                     </LazySection>
+                    {/* sponsor */}
+                    <LazySection>
+                    <section
+                        className="pt-16 pb-16 p-10 bg-[#1A2773]/50 overflow-hidden"
+                        id="sponsors"
+                        data-scroll-section
+                    >
+                        <Sponsor year={selectedYear} />
+                    </section>
+                    </LazySection>
                     {/* about us */}
                     <LazySection>
                     <section
@@ -89,13 +99,7 @@ export default function Home2026() {
                         <AboutUs year={selectedYear} yearData={currentYearData} />
                     </section>
                     </LazySection>
-                    {/* FAQ */}
-                    <LazySection>
-                    <section className="p-10 bg-[#1A2773]/50 overflow-hidden" id="faq" data-scroll-section>
-                        <FAQ register={register} year={selectedYear} yearData={currentYearData} />
-                    </section>
-                    </LazySection>
-                    {/* Teams (orgs, speakers, judges, etc.) */}
+                    {/* Teams (Meet the Team) */}
                     <LazySection>
                     <section
                         className="border-t-4 border-[#46166C]/50 overflow-hidden relative bg-gradient-to-b from-[#1A2773]/30 to-[#46166C]/20"
@@ -105,14 +109,10 @@ export default function Home2026() {
                         <Teams title="Meet the Teams" year={selectedYear} showSpeakers={false} />
                     </section>
                     </LazySection>
-                    {/* sponsor */}
+                    {/* FAQ */}
                     <LazySection>
-                    <section
-                        className="pb-16 p-10 bg-[#1A2773]/50 overflow-hidden"
-                        id="sponsors"
-                        data-scroll-section
-                    >
-                        <Sponsor year={selectedYear} />
+                    <section className="p-10 bg-[#1A2773]/50 overflow-hidden" id="faq" data-scroll-section>
+                        <FAQ register={register} year={selectedYear} yearData={currentYearData} />
                     </section>
                     </LazySection>
                     {/* Scene */}

@@ -63,11 +63,19 @@ function FaqAccordion(props) {
         },
         {
             question: 'What can be submitted?',
-            answer: 'Any projects, technical or not, created within the hacking event schedule!',
+            answer: 'Any projects created within the hacking event schedule!',
         },
         {
-            question: 'What do I need to bring to the event?',
-            answer: 'Picture ID, clothing (if you plan on staying over), water bottle, personal devices (laptop or PC), and chargers!',
+            question: 'What should I bring to HackHayward?',
+            answer: (
+                <>
+                    Please bring your laptop and charger, phone charger, student ID, and any hardware you plan to use. We also recommend installing any required software in advance.
+                    <br /><br />
+                    As this is a 24-hour overnight event, we will provide a designated nap area for participants. However, we encourage you to bring a sleeping bag or blanket, a small pillow, and a jacket or hoodie for comfort.
+                    <br /><br />
+                    Meals, snacks, WiFi, workspace, and power will be provided — we&apos;ll keep you fueled, connected, and fully charged.
+                </>
+            ),
         },
         {
             question: 'What if I have no experience?',
@@ -86,22 +94,14 @@ function FaqAccordion(props) {
         ...(is2026 ? [
             {
                 question: 'What is the Entrepreneurship component at HackHayward 2.0?',
-                answer: 'HackHayward 2.0 introduces an enhanced entrepreneurship component that begins with a dedicated workshop on pitch deck development. Hackathon teams will have advising time with trained Entrepreneur Ambassadors. These ambassadors—recruited from the Up-Club and the College of Business and Economics—will work with multiple teams to provide guidance on refining pitches, clarifying the problem and solution, articulating impact, identifying customer needs, strengthening the value proposition, and improving overall presentation strategy.',
-            },
-            {
-                question: 'What is an Entrepreneur Ambassador?',
-                answer: 'Entrepreneur Ambassadors are trained mentors who work directly with hackathon teams to help them strengthen their entrepreneurial skills alongside their technical projects, with a particular focus on advising for pitch deck development.',
+                answer: 'HackHayward 2.0 introduces an enhanced entrepreneurship component that includes a panel on pitch deck development. In addition, hackathon teams will have the opportunity for advice from Entrepreneur Ambassadors and mentors.',
             },
             {
                 question: 'Do I need business experience to participate?',
-                answer: 'Not at all! The Entrepreneur Ambassadors are here to help teams of all backgrounds. Whether you\'re a technical wizard or new to entrepreneurship, the ambassadors will be there for advice. This is a learning opportunity for everyone!',
+                answer: 'Not at all! HackHayward will offer valuable learning opportunities through our guest speakers, a special panel on pitch development, and dedicated advising from our Entrepreneur Ambassadors and mentors.',
             },
             {
-                question: 'What will teams learn in the entrepreneurship workshop?',
-                answer: 'During the dedicated entrepreneurship workshop, teams will explore key concepts that will guide the development of their pitch decks. Entrepreneur Ambassadors will discuss topics such as opportunity discovery, value creation, understanding customer needs, and effectively presenting a solution. Teams can then apply these insights as they craft and refine their pitch decks. The goal is to align technical innovation with a thoughtful and strategic entrepreneurial approach.',
-            },
-            {
-                question: 'Will there be technical workshops as well?',
+                question: 'Will there be technical workshops?',
                 answer: 'Yes! HackHayward includes both pre-event and on-site technical workshops covering AI tools, frameworks, and prototyping strategies. You\'ll receive both technical mentorship and entrepreneurial coaching throughout the event.',
             },
         ] : []),
