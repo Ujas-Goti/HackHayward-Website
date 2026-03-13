@@ -16,7 +16,7 @@ function NavButtons() {
     
     // Base links without Live
     const baseLinks = [{ text: 'About' }, { text: 'FAQ' }, { text: 'Teams' }, { text: 'Sponsors' }];
-    const baseLinks2026 = [{ text: 'About' }, { text: 'Entrepreneurship' }, { text: 'FAQ' }, { text: 'Teams' }, { text: 'Sponsors' }, { text: 'Sponsor Us', path: '/sponsor-us' }];
+    const baseLinks2026 = [{ text: 'About' }, { text: 'Entrepreneurship' }, { text: 'FAQ' }, { text: 'Teams' }, { text: 'Sponsors' }, { text: 'Sponsor Us', path: '/sponsor-us' }, { text: 'Live Schedule', path: '#', isLiveSchedule: true }];
     
     // Determine which links to show based on current page
     let links = [];
@@ -58,7 +58,18 @@ function NavButtons() {
         <>
             {links.map((link, index) => (
                 <li key={index} className="px-2 lg:hover:scale-105 transition-all duration-200">
-                    {link.path ? (
+                    {link.isLiveSchedule ? (
+                        <a
+                            href="#"
+                            className="flex items-center gap-1.5 text-lg font-grotesk font-bold bg-[#46166C] hover:bg-[#5a1d8a] text-white py-1.5 px-4 rounded-full transition-all duration-200"
+                        >
+                            <div className="relative flex h-2 w-2">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-hack-lavender opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-2 w-2 bg-hack-lavender"></span>
+                            </div>
+                            Live Schedule
+                        </a>
+                    ) : link.path ? (
                         <Link
                             to={link.path}
                             className={`text-white/90 hover:text-white text-lg font-grotesk font-medium flex items-center ${is2026Page ? 'hover:text-hack-lavender' : ''}`}
