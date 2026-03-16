@@ -19,18 +19,29 @@ const PageLoader = () => (
 )
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(() => {
+    if (typeof window === 'undefined') return true
+    return sessionStorage.getItem('hh_loader_seen') !== '1'
+  })
+
+  const handleLoaderFinished = () => {
+    if (typeof window !== 'undefined') {
+      sessionStorage.setItem('hh_loader_seen', '1')
+    }
+    setIsLoading(false)
+  }
 
   return (
     <>
-      {isLoading && <LoadingScreen onFinished={() => setIsLoading(false)} />}
+      {isLoading && <LoadingScreen onFinished={handleLoaderFinished} />}
       <CountdownProvider>
         <BrowserRouter>
           <Suspense fallback={<PageLoader />}>
             <Routes>
               <Route path="/" element={<Home2026 />} />
               <Route path="/sponsor-us" element={<SponsorUs2026 />} />
-              <Route path="/live" element={<Dashboard2025 />} />
+              <Route path="/live" element={<Dashboard2026 />} />
+              <Route path="/live-2025" element={<Dashboard2025 />} />
               <Route path="/live-2026" element={<Dashboard2026 />} />
               <Route path="/past-years" element={<Home2025 />} />
             </Routes>

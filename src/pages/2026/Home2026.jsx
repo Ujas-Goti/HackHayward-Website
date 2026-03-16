@@ -80,41 +80,43 @@ export default function Home2026() {
                     </section>
                     </LazySection>
                     {/* sponsor */}
-                    <LazySection>
-                    <section
-                        className="pt-16 pb-16 p-10 bg-[#1A2773]/50 overflow-hidden"
-                        id="sponsors"
-                        data-scroll-section
-                    >
-                        <Sponsor year={selectedYear} />
-                    </section>
-                    </LazySection>
+                    <div id="sponsors" data-scroll-section>
+                        <LazySection>
+                        <section
+                            className="pt-16 pb-16 p-10 bg-[#1A2773]/50 overflow-hidden"
+                        >
+                            <Sponsor year={selectedYear} />
+                        </section>
+                        </LazySection>
+                    </div>
                     {/* about us */}
-                    <LazySection>
-                    <section
-                        className="pt-16 p-10 bg-gradient-to-r from-[#1A2773]/30 via-[#46166C]/20 to-[#1A2773]/30 max-w-screen-2xl:overflow-hidden"
-                        id="about"
-                        data-scroll-section
-                    >
-                        <AboutUs year={selectedYear} yearData={currentYearData} />
-                    </section>
-                    </LazySection>
+                    <div id="about" data-scroll-section>
+                        <LazySection>
+                        <section
+                            className="pt-16 p-10 bg-gradient-to-r from-[#1A2773]/30 via-[#46166C]/20 to-[#1A2773]/30 max-w-screen-2xl:overflow-hidden"
+                        >
+                            <AboutUs year={selectedYear} yearData={currentYearData} />
+                        </section>
+                        </LazySection>
+                    </div>
                     {/* Teams (Meet the Team) */}
-                    <LazySection>
-                    <section
-                        className="border-t-4 border-[#46166C]/50 overflow-hidden relative bg-gradient-to-b from-[#1A2773]/30 to-[#46166C]/20"
-                        id="teams"
-                        data-scroll-section
-                    >
-                        <Teams title="Meet the Teams" year={selectedYear} showSpeakers={false} />
-                    </section>
-                    </LazySection>
+                    <div id="teams" data-scroll-section>
+                        <LazySection>
+                        <section
+                            className="border-t-4 border-[#46166C]/50 overflow-hidden relative bg-gradient-to-b from-[#1A2773]/30 to-[#46166C]/20"
+                        >
+                            <Teams title="Meet the Teams" year={selectedYear} showSpeakers={false} />
+                        </section>
+                        </LazySection>
+                    </div>
                     {/* FAQ */}
-                    <LazySection>
-                    <section className="p-10 bg-[#1A2773]/50 overflow-hidden" id="faq" data-scroll-section>
-                        <FAQ register={register} year={selectedYear} yearData={currentYearData} />
-                    </section>
-                    </LazySection>
+                    <div id="faq" data-scroll-section>
+                        <LazySection>
+                        <section className="p-10 bg-[#1A2773]/50 overflow-hidden">
+                            <FAQ register={register} year={selectedYear} yearData={currentYearData} />
+                        </section>
+                        </LazySection>
+                    </div>
                     {/* Scene */}
                     <LazySection>
                     <section className="overflow-hidden" data-scroll-section>

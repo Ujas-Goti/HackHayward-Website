@@ -73,8 +73,8 @@ export default function Hero(props) {
                 </div>
 
                 {/* Main content */}
-                <div className="relative z-10 min-h-screen flex items-center">
-                    <div className="w-full px-6 lg:px-16 xl:px-24 pt-20 lg:pt-16 pb-12">
+                <div className="relative z-10 min-h-screen flex items-start 2xl:items-center">
+                    <div className="w-full px-6 lg:px-16 xl:px-24 pt-36 sm:pt-40 md:pt-44 lg:pt-44 xl:pt-44 2xl:pt-16 pb-12">
                         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 xl:gap-24 items-center max-w-screen-2xl mx-auto">
                             {/* Left side - Text content */}
                             <motion.div
@@ -123,20 +123,20 @@ export default function Hero(props) {
                                     </p>
                                     <div className="flex gap-4 max-lg:justify-center flex-wrap">
                                         <a
-                                            className="bg-[#B794D4] hover:bg-[#c593e9] text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 shadow-lg shadow-[#46166C]/50 hover:shadow-[#B794D4]/50 hover:shadow-xl hover:scale-105"
+                                            className="bg-[#B794D4] hover:bg-[#c593e9] text-white font-semibold py-3 px-10 min-w-[190px] text-center rounded-full transition-all duration-300 shadow-lg shadow-[#46166C]/50 hover:shadow-[#B794D4]/50 hover:shadow-xl hover:scale-105"
                                             target="_blank"
                                             href={props.register}
                                             onClick={() => handleClick('Register')}
                                         >
                                             Register
                                         </a>
-                                        <a
-                                            className="bg-transparent border-2 border-[#B794D4] text-[#B794D4] hover:bg-[#B794D4] hover:text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 hover:scale-105"
-                                            href="#why-sponsor"
-                                            onClick={() => handleClick('Sponsor Us')}
+                                        <Link
+                                            className="bg-[#B794D4]/10 backdrop-blur-md border-2 border-[#B794D4] text-[#B794D4] hover:bg-[#B794D4] hover:text-white font-semibold py-3 px-10 min-w-[190px] text-center rounded-full transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 shadow-[0_0_16px_rgba(183,148,212,0.35)] hover:shadow-[0_0_28px_rgba(183,148,212,0.55)]"
+                                            to="/live"
+                                            onClick={() => handleClick('Live Dashboard')}
                                         >
-                                            Sponsor Us
-                                        </a>
+                                            Live Dashboard
+                                        </Link>
                                     </div>
                                 </div>
                                 
@@ -229,7 +229,7 @@ export default function Hero(props) {
                             <Link
                                 className="bg-[#c593e9] hover:bg-[#cfb0e8] text-white lg:h-16 lg:px-14 h-12 px-7
                                 transition-all duration-300 max-lg:text-sm rounded-full animate-flip-up text-center flex items-center"
-                                to="/live"
+                                to="/live-2025"
                                 onClick={() => handleClick('View Live Dashboard')}
                             >
                                 <div className="flex items-center gap-2">

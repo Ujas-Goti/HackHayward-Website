@@ -45,7 +45,7 @@ export default function Dashboard2026() {
     if (measurementId) {
       ReactGA.send({
         hitType: 'pageview',
-        page: '/live-2026',
+        page: '/live',
         title: 'Live Dashboard 2026',
       });
     }
@@ -55,18 +55,23 @@ export default function Dashboard2026() {
   const textShadowStyle = {
     textShadow: '0 2px 4px rgba(0, 0, 0, 0.7), 0 1px 2px rgba(0, 0, 0, 0.5)'
   };
+  const cardClass = "bg-gradient-to-br from-[#0b1238]/70 via-[#101b52]/60 to-[#1b1459]/55 backdrop-blur-xl p-6 rounded-xl border border-[#B794D4]/35 shadow-[0_20px_45px_-20px_rgba(0,0,0,0.85),0_0_24px_rgba(183,148,212,0.18)] hover:shadow-[0_24px_55px_-18px_rgba(0,0,0,0.9),0_0_35px_rgba(183,148,212,0.3)] hover:border-[#B794D4]/55 transition-all duration-300";
+  const actionButtonClass = "bg-gradient-to-r from-[#B794D4] to-[#8F6BC6] hover:from-[#c7a9df] hover:to-[#a387d2] rounded-full p-3 transition text-white lg:text-lg text-sm font-grotesk font-medium text-nowrap m-3 opacity-55 cursor-not-allowed shadow-[0_0_18px_rgba(183,148,212,0.32)]";
 
   return (
     <>
       <header id="home" className="overflow-x-hidden">
         <NavBar />
       </header>
-      <div className="bg-gradient-to-br from-[#120815] via-[#1b0f23] to-[#120815]">
-        <main className="mainBackground bg-contain bg-repeat-y overflow-x-hidden">
-          <section className="pt-36 px-4 md:px-10 bg-gradient-to-br from-[#1a0f1a] via-[#30252d] to-[#1a0f1a] text-white relative pb-2 overflow-hidden">
+      <div className="bg-gradient-to-b from-[#0a123d] via-[#1A2773] to-[#130b3f]">
+        <main className="overflow-x-hidden">
+          <section className="pt-36 px-4 md:px-10 bg-gradient-to-b from-[#1A2773]/55 via-[#22175f]/45 to-[#0d1440]/65 text-white relative pb-2 overflow-hidden">
             {/* Futuristic background effects */}
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#c593e9]/10 to-transparent animate-pulse"></div>
-            <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(197,147,233,0.1),transparent_70%)]"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#B794D4]/10 to-transparent animate-pulse"></div>
+            <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(183,148,212,0.15),transparent_70%)]"></div>
+            <div className="absolute inset-0 opacity-20 bg-[linear-gradient(rgba(183,148,212,0.12)_1px,transparent_1px),linear-gradient(90deg,rgba(183,148,212,0.12)_1px,transparent_1px)] bg-[size:34px_34px] pointer-events-none"></div>
+            <div className="absolute top-[-10%] left-[20%] w-[320px] h-[320px] bg-[#7b5ac8]/25 blur-[110px] rounded-full pointer-events-none"></div>
+            <div className="absolute bottom-[-5%] right-[15%] w-[360px] h-[360px] bg-[#4ea2ff]/20 blur-[130px] rounded-full pointer-events-none"></div>
             
             {/* Uranus positioned behind the rotating text */}
             <div className="absolute opacity-50 top-[10%] right-[-5%] max-h-[40%] max-w-[40%] z-0">
@@ -77,12 +82,16 @@ export default function Dashboard2026() {
                   className="object-cover" />
             </div>
             
-            <h1 className="text-4xl md:text-5xl font-bold font-exo2 text-center mb-12 animate-fade-up relative z-10 max-w-4xl mx-auto text-white drop-shadow-[0_0_20px_rgba(197,147,233,0.6),0_0_40px_rgba(197,147,233,0.4)]" style={textShadowStyle}>
+            <h1 className="text-4xl md:text-5xl font-bold font-exo2 text-center mb-12 animate-fade-up relative z-10 max-w-4xl mx-auto text-white drop-shadow-[0_0_20px_rgba(183,148,212,0.6),0_0_40px_rgba(183,148,212,0.4)]" style={textShadowStyle}>
+              <span className="inline-flex items-center gap-2 px-4 py-1 rounded-full text-sm font-grotesk bg-[#0f1f63]/70 border border-[#B794D4]/60 text-[#D7E4FF] mb-5">
+                <span className="h-2.5 w-2.5 rounded-full bg-[#8BFFB0] animate-pulse" />
+                2026 Live Command Center
+              </span>
               <div className="flex flex-col md:flex-row items-center justify-center gap-2">
-                <span className="inline-block">HackHayward 2.0&apos;s</span>
+                <span className="inline-block">HackHayward 2026&apos;s</span>
                 <RotatingText
                   texts={rotatingWords}
-                  mainClassName="px-4 md:px-4 text-[#c593e9] overflow-hidden py-1 inline-flex justify-center rounded-xl relative mt-2 md:mt-0"
+                  mainClassName="px-4 md:px-4 text-[#B794D4] overflow-hidden py-1 inline-flex justify-center rounded-xl relative mt-2 md:mt-0"
                   staggerFrom={"last"}
                   initial={{ y: "100%" }}
                   animate={{ y: "0%" }}
@@ -100,7 +109,7 @@ export default function Dashboard2026() {
               {/* Main content grid */}
               <div className="grid grid-cols-1 gap-6 mb-6 relative z-10">
                 {/* Top Section - Badge Preview */}
-                <div className="bg-gradient-to-br from-black/40 via-black/30 to-black/40 backdrop-blur-md p-6 rounded-lg border border-[#c593e9]/30 shadow-[0_0_20px_rgba(197,147,233,0.3),0_15px_30px_-10px_rgba(0,0,0,0.7)] hover:shadow-[0_0_30px_rgba(197,147,233,0.5),0_20px_35px_-5px_rgba(197,147,233,0.3)] transition-shadow duration-300">
+                <div className={cardClass}>
                   <Suspense fallback={<LanyardFallback />}>
                     <ErrorBoundary FallbackComponent={LanyardFallback}>
                       <LanyardPreview year={2026} />
@@ -111,14 +120,14 @@ export default function Dashboard2026() {
                 {/* Bottom Section - Event Info (columns on desktop) */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-6">
                   {/* Left Column - Event Schedule (wider) */}
-                  <div className="bg-gradient-to-br from-black/40 via-black/30 to-black/40 backdrop-blur-md p-6 rounded-lg border border-[#c593e9]/30 shadow-[0_0_20px_rgba(197,147,233,0.3),0_15px_30px_-10px_rgba(0,0,0,0.7)] hover:shadow-[0_0_30px_rgba(197,147,233,0.5),0_20px_35px_-5px_rgba(197,147,233,0.3)] transition-shadow duration-300 h-full order-2 md:order-1">
+                  <div className={`${cardClass} h-full order-2 md:order-1`}>
                     <EventSchedule year={2026} />
                   </div>
                   
                   {/* Right Column - Next Event and Countdown stacked */}
                   <div className="flex flex-col gap-6 md:gap-6 order-1 md:order-2">
                       {/* Time Remaining - Fixed height */}
-                      <div className="bg-gradient-to-br from-black/40 via-black/30 to-black/40 backdrop-blur-md p-6 rounded-lg border border-[#c593e9]/30 shadow-[0_0_20px_rgba(197,147,233,0.3),0_15px_30px_-10px_rgba(0,0,0,0.7)] hover:shadow-[0_0_30px_rgba(197,147,233,0.5),0_20px_35px_-5px_rgba(197,147,233,0.3)] transition-shadow duration-300 h-[180px] overflow-hidden">
+                      <div className={`${cardClass} h-[180px] overflow-hidden`}>
                         <DashCountdown 
                           targetDate={submissionDeadline} 
                           eventStartDate={eventStartDate} 
@@ -126,19 +135,19 @@ export default function Dashboard2026() {
                       </div>
                       
                       {/* Next Event - Increased min-height to prevent shadow cutoff */}
-                      <div className="bg-gradient-to-br from-black/40 via-black/30 to-black/40 backdrop-blur-md p-6 rounded-lg border border-[#c593e9]/30 shadow-[0_0_20px_rgba(197,147,233,0.3),0_15px_30px_-10px_rgba(0,0,0,0.7)] hover:shadow-[0_0_30px_rgba(197,147,233,0.5),0_20px_35px_-5px_rgba(197,147,233,0.3)] transition-shadow duration-300 min-h-[200px] overflow-hidden">
+                      <div className={`${cardClass} min-h-[200px] overflow-hidden`}>
                         <NextEvent year={2026} />
                       </div>
                       {/* Hacker Devpost */}
-                      <div className="bg-gradient-to-br from-black/40 via-black/30 to-black/40 backdrop-blur-md p-6 rounded-lg border border-[#c593e9]/30 shadow-[0_0_20px_rgba(197,147,233,0.3),0_15px_30px_-10px_rgba(0,0,0,0.7)] hover:shadow-[0_0_30px_rgba(197,147,233,0.5),0_20px_35px_-5px_rgba(197,147,233,0.3)] transition-shadow duration-300 min-h-[200px] overflow-hidden">
+                      <div className={`${cardClass} min-h-[200px] overflow-hidden`}>
                           <div className="h-full flex flex-col justify-center">
-                            <h2 className="text-2xl font-bold font-exo2 mb-3 shadow-text text-white drop-shadow-[0_0_10px_rgba(197,147,233,0.5)]">Submit Your Project</h2>
+                            <h2 className="text-2xl font-bold font-exo2 mb-3 shadow-text text-white drop-shadow-[0_0_10px_rgba(183,148,212,0.5)]">Submit Your Project</h2>
                               <div className="pb-1">
                                 <h3 className="text-white/80 drop-shadow-sm mb-2">Ready to showcase your hack? Submit your project on Devpost!</h3>
                                 <div className='flex justify-end'> 
                                   <a
                                     href="#"
-                                    className="bg-gradient-to-r from-[#c593e9] to-[#a06bc9] hover:from-[#cfb0e8] hover:to-[#b88dd4] rounded-full p-3 transition text-white lg:text-lg text-sm font-grotesk font-medium text-nowrap m-3 opacity-50 cursor-not-allowed shadow-[0_0_15px_rgba(197,147,233,0.3)]"
+                                    className={actionButtonClass}
                                     onClick={(e) => e.preventDefault()}
                                   >
                                     To Be Decided
@@ -149,15 +158,15 @@ export default function Dashboard2026() {
                         </div>
                         
                       {/* Hacker Guide */}
-                      <div className="bg-gradient-to-br from-black/40 via-black/30 to-black/40 backdrop-blur-md p-6 rounded-lg border border-[#c593e9]/30 shadow-[0_0_20px_rgba(197,147,233,0.3),0_15px_30px_-10px_rgba(0,0,0,0.7)] hover:shadow-[0_0_30px_rgba(197,147,233,0.5),0_20px_35px_-5px_rgba(197,147,233,0.3)] transition-shadow duration-300 min-h-[200px] overflow-hidden">
+                      <div className={`${cardClass} min-h-[200px] overflow-hidden`}>
                         <div className="h-full flex flex-col justify-center">
-                          <h2 className="text-2xl font-bold font-exo2 mb-3 shadow-text text-white drop-shadow-[0_0_10px_rgba(197,147,233,0.5)]">Hacker Guide</h2>
+                          <h2 className="text-2xl font-bold font-exo2 mb-3 shadow-text text-white drop-shadow-[0_0_10px_rgba(183,148,212,0.5)]">Hacker Guide</h2>
                             <div className=" pb-1">
                               <h3 className=" text-white/80 drop-shadow-sm mb-2">Need a quick boost? Head over to our ultimate guide!</h3>
                               <div className='flex justify-end'> 
                                 <a
                                   href="#"
-                                  className="bg-gradient-to-r from-[#c593e9] to-[#a06bc9] hover:from-[#cfb0e8] hover:to-[#b88dd4] rounded-full p-3 transition text-white lg:text-lg text-sm font-grotesk font-medium text-nowrap m-3 opacity-50 cursor-not-allowed shadow-[0_0_15px_rgba(197,147,233,0.3)]"
+                                  className={actionButtonClass}
                                   onClick={(e) => e.preventDefault()}
                                 >
                                   To Be Decided
@@ -178,7 +187,7 @@ export default function Dashboard2026() {
           </section>
         </main>
       </div>
-      <footer className="bg-[rgb(48,37,45)] border-t-8 border-[#c593e9] overflow-hidden">
+      <footer className="bg-[#131c54] border-t-4 border-[#46166C] overflow-hidden">
         <Footer register={register} />
       </footer>
     </>

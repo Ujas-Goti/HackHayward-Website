@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import logo from '/src/assets/imgs/others/Monotone Logo.webp';
 import ReactGA from 'react-ga4';
 import { useCountdown } from '../context/CountdownContext';
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 
 
@@ -48,25 +48,6 @@ function SocialButtons() {
                     >
                         <link.icon className="h-12 w-auto" />
                     </a>
-                </li>
-            ))}
-        </>
-    );
-}
-
-function NavButtons() {
-    const links = [{ text: 'About' }, { text: 'FAQ' }, { text: 'Teams' }, { text: 'Sponsors' }];
-
-    return (
-        <>
-            {links.map((link, index) => (
-                <li key={index} className="lg:hover:scale-110 transition">
-                    <Link
-                        to={`/#${link.text.toLowerCase().replaceAll(' ', '-')}`}
-                        className="text-white lg:text-lg text-sm font-grotesk font-bold text-nowrap whitespace-nowrap"
-                    >
-                        {link.text}
-                    </Link>
                 </li>
             ))}
         </>
@@ -146,9 +127,6 @@ export default function Footer(props) {
                 </div>
                 {/* Nav Buttons and Register */}
                 <nav className="flex items-center gap-4">
-                    <ul className="flex flex-row gap-4 items-center">
-                        <NavButtons />
-                    </ul>
                     {!hasCountdownEnded && !isLiveDashboard && (
                         <a
                             href={props.register}

@@ -10,8 +10,8 @@ import ShinyText from './ShinyText';
 function NavButtons() {
     const location = useLocation();
     const navigate = useNavigate();
-    const is2026Page = location.pathname === '/' || location.pathname === '/live-2026' || location.pathname === '/sponsor-us';
-    const is2025Page = location.pathname === '/past-years' || location.pathname === '/live';
+    const is2026Page = location.pathname === '/' || location.pathname === '/live' || location.pathname === '/live-2026' || location.pathname === '/sponsor-us';
+    const is2025Page = location.pathname === '/past-years' || location.pathname === '/live-2025';
     const isSponsorUsPage = location.pathname === '/sponsor-us';
     
     // Base links without Live
@@ -21,8 +21,8 @@ function NavButtons() {
     // Determine which links to show based on current page
     let links = [];
     if (is2026Page) {
-        // On 2026 page: show main sections and Past Year, include Entrepreneurship link
-        links = [...baseLinks2026, { text: 'Past Year', path: '/past-years' }];
+        // On 2026 page: show main sections and 2025 link, include Entrepreneurship link
+        links = [...baseLinks2026, { text: '2025', path: '/past-years' }];
     } else if (is2025Page) {
         // On 2025 page: show main sections and link back to 2026
         links = [...baseLinks, { text: '2026', path: '/' }];
@@ -34,23 +34,22 @@ function NavButtons() {
     // Handle section link click - instant scroll for speed
     const handleSectionClick = (e, sectionId) => {
         e.preventDefault();
-        
+
+        const scrollWithOffset = () => {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                const yOffset = 110; // approx navbar height
+                const y = element.getBoundingClientRect().top + window.scrollY - yOffset;
+                window.scrollTo({ top: y, behavior: 'smooth' });
+            }
+        };
+
         if (isSponsorUsPage) {
             // Navigate to home page first, then scroll to section
             navigate('/');
-            // Wait for navigation to complete, then scroll
-            setTimeout(() => {
-                const element = document.getElementById(sectionId);
-                if (element) {
-                    element.scrollIntoView({ behavior: 'instant', block: 'start' });
-                }
-            }, 100);
+            setTimeout(scrollWithOffset, 200);
         } else {
-            // Already on the page, just scroll instantly
-            const element = document.getElementById(sectionId);
-            if (element) {
-                element.scrollIntoView({ behavior: 'instant', block: 'start' });
-            }
+            scrollWithOffset();
         }
     };
 
@@ -106,7 +105,7 @@ function NavButtons() {
 
 function BackButton({ isMobile = false }) {
     const location = useLocation();
-    const is2026Page = location.pathname === '/live-2026';
+    const is2026Page = location.pathname === '/live' || location.pathname === '/live-2026';
     // Determine which home page to go back to based on current dashboard
     const homePath = is2026Page ? '/' : '/past-years';
     
@@ -129,8 +128,8 @@ BackButton.propTypes = {
 
 export default function NavBar() {
     const location = useLocation();
-    const isLivePage = location.pathname === '/live' || location.pathname === '/live-2026';
-    const is2026Page = location.pathname === '/' || location.pathname === '/live-2026' || location.pathname === '/sponsor-us';
+    const isLivePage = location.pathname === '/live' || location.pathname === '/live-2025' || location.pathname === '/live-2026';
+    const is2026Page = location.pathname === '/' || location.pathname === '/live' || location.pathname === '/live-2026' || location.pathname === '/sponsor-us';
 
     return (
         <>

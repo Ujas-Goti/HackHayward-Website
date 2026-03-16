@@ -11,6 +11,7 @@ import csueb_soe from '../assets/imgs/sponsors/CSUEB_SOE.svg';
 
 import aws from '../assets/imgs/sponsors/Amazon_Web_Services_Logo.svg.png';
 import GCP from '../assets/imgs/sponsors/GCP_Cheat_Sheet.png';
+import SCLogo from '../assets/imgs/sponsors/updated_smith_logo.png';
 
 import GroqLogo from '../assets/imgs/sponsors/GroqLogo_Black.svg';
 import PerplexityLogo from '../assets/imgs/sponsors/Perplexity-Logo.jpg';
@@ -28,6 +29,7 @@ import cursorWhite from '../assets/imgs/sponsors/white sponsor/LOCKUP_HORIZONTAL
 import perplexityWhite from '../assets/imgs/sponsors/white sponsor/perplexity-Photoroom.png';
 import omiWhite from '../assets/imgs/sponsors/white sponsor/omi white.png';
 import doorDashWhite from '../assets/imgs/sponsors/white sponsor/DOORDASH-Photoroom.png';
+import warpWhite from '../assets/imgs/sponsors/white sponsor/Warp.png';
 import asiWhite from '../assets/imgs/sponsors/white sponsor/asi.png';
 import docsWhite from '../assets/imgs/sponsors/white sponsor/csueb docs.png';
 import csuebSoeWhite from '../assets/imgs/sponsors/white sponsor/CSUEB_SOE-nobg.png';
@@ -45,6 +47,7 @@ const sponsorURLs = {
     'GCP': 'https://cloud.google.com/',
     'Groq': 'https://groq.com/',
     'Perplexity': 'https://www.perplexity.ai/',
+    'Smith Center': 'https://www.csueastbay.edu/smith-center/',
     'Redbull': 'https://www.redbull.com/',
     'IBM': 'https://www.ibm.com/',
     'CAHSI': 'https://cahsi.org/',
@@ -56,6 +59,7 @@ const sponsorURLs = {
     'OMI': 'https://omi.me/',
     'DoorDash': 'https://www.doordash.com/',
     'ASI': 'https://www.csueastbay.edu/asi/',
+    'Warp': 'https://www.warp.dev/',
 }
 
 // Image mapping
@@ -66,6 +70,7 @@ const sponsorImages = {
     'CSUEB_DOCS.svg': csueb_docs,
     'cseb-docs-o_2.png': csueb_docs_2026,
     'CSUEB_SOE.svg': csueb_soe,
+    'updated_smith_logo.png': SCLogo,
     'GroqLogo_Black.svg': GroqLogo,
     'Perplexity-Logo.jpg': PerplexityLogo,
     'redbull.webp': redbull,
@@ -80,6 +85,7 @@ const sponsorImages = {
     'perplexity-Photoroom.png': perplexityWhite,
     'omi white.png': omiWhite,
     'DOORDASH-Photoroom.png': doorDashWhite,
+    'Warp.png': warpWhite,
     'asi.png': asiWhite,
     'csueb docs.png': docsWhite,
     'CSUEB_SOE-nobg.png': csuebSoeWhite,
@@ -138,7 +144,9 @@ const SponsorCard = ({ sponsor, imageSrc, url, handleClick, rowIndex }) => {
                     loading="lazy"
                     className={`h-auto w-auto object-contain transition-transform duration-300 relative z-10 scale-110 group-hover:scale-125 ${
                         sponsor.key === 'CAHSI' ? 'max-h-[210px]' :
-                        sponsor.key === 'IBM' || sponsor.key === 'Cursor' || sponsor.key === 'Perplexity' ? 'max-h-[110px]' :
+                        sponsor.key === 'Warp' ? 'max-h-[70px]' :
+                        sponsor.key === 'Perplexity' ? 'max-h-[150px]' :
+                        sponsor.key === 'IBM' || sponsor.key === 'Cursor' ? 'max-h-[110px]' :
                         rowIndex === 0 ? 'max-h-[190px]' :
                         rowIndex === 1 ? 'max-h-[125px]' :
                         rowIndex === 2 ? 'max-h-[105px]' :
@@ -196,24 +204,55 @@ export default function Sponsor(props) {
                             Sponsors
                         </motion.h2>
 
-                        {/* Mobile: stacked list (one sponsor per row) */}
+                        {/* Mobile: stacked list */}
                         <div className="flex flex-col items-center gap-4 z-10 sm:hidden">
-                            {sponsors.map((sponsor, index) => {
-                                const imageSrc = sponsorImages[sponsor.image];
-                                const url = sponsorURLs[sponsor.urlKey];
-                                const rowIndex = Math.floor(index / 3); // keep relative sizing
-                                return (
-                                    <motion.div key={sponsor.key} variants={fadeUp} className="w-full">
-                                        <SponsorCard
-                                            sponsor={sponsor}
-                                            imageSrc={imageSrc}
-                                            url={url}
-                                            handleClick={handleClick}
-                                            rowIndex={rowIndex}
-                                        />
-                                    </motion.div>
-                                );
-                            })}
+                            {is2026 ? (
+                                sponsors.map((sponsor, index) => {
+                                    const imageSrc = sponsorImages[sponsor.image];
+                                    const url = sponsorURLs[sponsor.urlKey];
+                                    const rowIndex = Math.floor(index / 3);
+                                    return (
+                                        <motion.div key={sponsor.key} variants={fadeUp} className="w-full">
+                                            <SponsorCard
+                                                sponsor={sponsor}
+                                                imageSrc={imageSrc}
+                                                url={url}
+                                                handleClick={handleClick}
+                                                rowIndex={rowIndex}
+                                            />
+                                        </motion.div>
+                                    );
+                                })
+                            ) : (
+                                sponsors.map((sponsor) => {
+                                    const imageSrc = sponsorImages[sponsor.image];
+                                    const url = sponsorURLs[sponsor.urlKey];
+                                    return (
+                                        <motion.a
+                                            key={sponsor.key}
+                                            href={url}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            onClick={() => handleClick(sponsor.urlKey)}
+                                            variants={fadeUp}
+                                            className="w-full max-w-[340px] bg-white rounded-xl p-4 flex items-center justify-center shadow-md"
+                                        >
+                                            <img
+                                                src={imageSrc}
+                                                alt={sponsor.alt}
+                                                loading="lazy"
+                                                className={`object-contain ${
+                                                    sponsor.key === 'AWS' ? 'max-h-[56px]' :
+                                                    sponsor.key === 'Smith Center' ? 'max-h-[52px]' :
+                                                    sponsor.key === 'CSUEB DOCS' || sponsor.key === 'CSUEB SOE' ? 'max-h-[48px]' :
+                                                    sponsor.key === 'Groq' ? 'max-h-[58px]' :
+                                                    'max-h-[60px]'
+                                                }`}
+                                            />
+                                        </motion.a>
+                                    );
+                                })
+                            )}
                         </div>
 
                         {/* Desktop / tablet */}
@@ -223,7 +262,7 @@ export default function Sponsor(props) {
                                 rows.map((row, rowIndex) => (
                                     <motion.div
                                         key={rowIndex}
-                                        className={`flex justify-center gap-10 w-full ${rowIndex === 0 ? '' : rowIndex === 1 ? 'max-w-5xl' : rowIndex === 2 ? 'max-w-5xl' : 'max-w-4xl'}`}
+                                        className={`flex justify-center w-full ${rowIndex === 3 ? 'gap-2 max-w-2xl' : rowIndex === 0 ? 'gap-10' : rowIndex === 1 ? 'gap-10 max-w-5xl' : 'gap-10 max-w-5xl'}`}
                                         variants={staggerContainer(0.1)}
                                         initial="hidden"
                                         whileInView="visible"
@@ -251,34 +290,50 @@ export default function Sponsor(props) {
                                     </motion.div>
                                 ))
                             ) : (
-                                // 2025: simple centered grid so legacy sponsors always show
-                                <motion.div
-                                    className="flex flex-wrap justify-center gap-10 w-full max-w-5xl"
-                                    variants={staggerContainer(0.1)}
-                                    initial="hidden"
-                                    whileInView="visible"
-                                    viewport={viewportOnce}
-                                >
-                                    {sponsors.map((sponsor, index) => {
-                                        const imageSrc = sponsorImages[sponsor.image];
-                                        const url = sponsorURLs[sponsor.urlKey];
-                                        const rowIndex = Math.floor(index / 3);
-                                        return (
-                                            <motion.div
-                                                key={sponsor.key}
-                                                variants={fadeUp}
-                                            >
-                                                <SponsorCard
-                                                    sponsor={sponsor}
-                                                    imageSrc={imageSrc}
-                                                    url={url}
-                                                    handleClick={handleClick}
-                                                    rowIndex={rowIndex}
-                                                />
-                                            </motion.div>
-                                        );
-                                    })}
-                                </motion.div>
+                                // 2025: white-tile layout (2,2,3) like previous year design
+                                [
+                                    sponsors.slice(0, 2),
+                                    sponsors.slice(2, 4),
+                                    sponsors.slice(4),
+                                ].map((legacyRow, legacyRowIndex) => (
+                                    <motion.div
+                                        key={legacyRowIndex}
+                                        className={`flex justify-center gap-6 w-full ${legacyRowIndex === 2 ? 'max-w-6xl' : 'max-w-4xl'}`}
+                                        variants={staggerContainer(0.1)}
+                                        initial="hidden"
+                                        whileInView="visible"
+                                        viewport={viewportOnce}
+                                    >
+                                        {legacyRow.map((sponsor) => {
+                                            const imageSrc = sponsorImages[sponsor.image];
+                                            const url = sponsorURLs[sponsor.urlKey];
+                                            return (
+                                                <motion.a
+                                                    key={sponsor.key}
+                                                    href={url}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    onClick={() => handleClick(sponsor.urlKey)}
+                                                    variants={fadeUp}
+                                                    className="w-[320px] h-[110px] bg-white rounded-xl p-4 flex items-center justify-center shadow-md hover:shadow-lg transition-shadow duration-200"
+                                                >
+                                                    <img
+                                                        src={imageSrc}
+                                                        alt={sponsor.alt}
+                                                        loading="lazy"
+                                                        className={`object-contain ${
+                                                            sponsor.key === 'AWS' ? 'max-h-[62px]' :
+                                                            sponsor.key === 'Smith Center' ? 'max-h-[56px]' :
+                                                            sponsor.key === 'CSUEB DOCS' || sponsor.key === 'CSUEB SOE' ? 'max-h-[52px]' :
+                                                            sponsor.key === 'Groq' ? 'max-h-[66px]' :
+                                                            'max-h-[64px]'
+                                                        }`}
+                                                    />
+                                                </motion.a>
+                                            );
+                                        })}
+                                    </motion.div>
+                                ))
                             )}
                         </div>
 

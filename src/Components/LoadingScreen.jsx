@@ -9,7 +9,7 @@ export default function LoadingScreen({ onFinished }) {
   const [progress, setProgress] = useState(0);
 
   const stars = useMemo(() =>
-    [...Array(70)].map(() => ({
+    [...Array(45)].map(() => ({
       left: `${Math.random() * 100}%`,
       top: `${Math.random() * 100}%`,
       duration: 2 + Math.random() * 3,
@@ -19,8 +19,8 @@ export default function LoadingScreen({ onFinished }) {
 
   const finish = useCallback(() => {
     setPhase('launching');
-    setTimeout(() => setPhase('done'), 1400);
-    setTimeout(() => onFinished(), 2000);
+    setTimeout(() => setPhase('done'), 600);
+    setTimeout(() => onFinished(), 900);
   }, [onFinished]);
 
   useEffect(() => {
@@ -49,14 +49,20 @@ export default function LoadingScreen({ onFinished }) {
       }, 30);
     };
 
+    const onWindowLoad = () => setTimeout(onReady, 120);
+
     if (document.readyState === 'complete') {
-      setTimeout(onReady, 1400);
+      setTimeout(onReady, 120);
     } else {
-      window.addEventListener('load', () => setTimeout(onReady, 600));
+      window.addEventListener('load', onWindowLoad);
     }
 
-    const safetyTimeout = setTimeout(() => { clearInterval(interval); finish(); }, 8000);
-    return () => { clearInterval(interval); clearTimeout(safetyTimeout); };
+    const safetyTimeout = setTimeout(() => { clearInterval(interval); finish(); }, 4500);
+    return () => {
+      clearInterval(interval);
+      clearTimeout(safetyTimeout);
+      window.removeEventListener('load', onWindowLoad);
+    };
   }, [finish]);
 
   const isLaunching = phase === 'launching' || phase === 'done';

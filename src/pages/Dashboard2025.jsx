@@ -55,8 +55,8 @@ export default function Dashboard2025() {
     if (measurementId) {
       ReactGA.send({
         hitType: 'pageview',
-        page: '/live',
-        title: 'Live Dashboard',
+        page: '/live-2025',
+        title: 'Live Dashboard 2025',
       });
     }
   }, []);

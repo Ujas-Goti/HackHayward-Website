@@ -13,9 +13,9 @@ export const yearData = {
             { key: 'AWS', image: 'Amazon_Web_Services_Logo.svg.png', alt: 'Powered by AWS', urlKey: 'AWS', height: 'h-[80px]', padding: 'p-5' },
             { key: 'Perplexity', image: 'Perplexity-Logo.jpg', alt: 'Perplexity', urlKey: 'Perplexity', height: 'h-[120px]' },
             { key: 'Groq', image: 'GroqLogo_Black.svg', alt: 'Groq', urlKey: 'Groq', height: 'h-[60px]' },
-            { key: 'CSUEB SOE', image: 'CSUEB_SOE.svg', alt: 'CSUEB School of Engineering', urlKey: 'CSUEB SOE', height: 'h-16' },
             { key: 'CSUEB DOCS', image: 'CSUEB_DOCS.svg', alt: 'CSUEB Department of Computer Science', urlKey: 'CSUEB DOCS', height: 'h-16' },
-            { key: 'Redbull', image: 'redbull.webp', alt: 'Redbull', urlKey: 'Redbull', height: 'h-[100px]' },
+            { key: 'Smith Center', image: 'updated_smith_logo.png', alt: 'The Smith Center', urlKey: 'Smith Center', height: 'h-16' },
+            { key: 'CSUEB SOE', image: 'CSUEB_SOE.svg', alt: 'CSUEB School of Engineering', urlKey: 'CSUEB SOE', height: 'h-16' },
         ],
     },
     2026: {
@@ -38,9 +38,10 @@ export const yearData = {
             // Row 3
             { key: 'OMI', image: 'omi white.png', alt: 'OMI', urlKey: 'OMI', height: 'h-[114px]' },
             { key: 'DoorDash', image: 'DOORDASH-Photoroom.png', alt: 'DoorDash', urlKey: 'DoorDash', height: 'h-[114px]' },
-            { key: 'ASI', image: 'asi.png', alt: 'Associated Students Inc.', urlKey: 'ASI', height: 'h-[114px]' },
+            { key: 'Warp', image: 'Warp.png', alt: 'Warp Terminal', urlKey: 'Warp', height: 'h-[114px]' },
             // Row 4
             { key: 'CSUEB DOCS', image: 'csueb docs.png', alt: 'CSUEB Department of Computer Science', urlKey: 'CSUEB DOCS', height: 'h-[108px]' },
+            { key: 'ASI', image: 'asi.png', alt: 'Associated Students Inc.', urlKey: 'ASI', height: 'h-[108px]' },
             { key: 'CSUEB SOE', image: 'CSUEB_SOE-nobg.png', alt: 'CSUEB School of Engineering', urlKey: 'CSUEB SOE', height: 'h-[108px]' },
         ],
     },

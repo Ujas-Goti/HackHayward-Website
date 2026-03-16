@@ -20,7 +20,7 @@ export default function LanyardPreview({ year = 2025 }) {
         Here&apos;s a preview of your {badgeText} event badge. Drag to interact.
       </p>
       
-      <div className="h-[400px] bg-gradient-to-b from-[#30252d]/50 to-[#261e24]/50 rounded-lg">
+      <div className={`${is2026 ? 'h-[450px]' : 'h-[400px]'} bg-gradient-to-b from-[#30252d]/50 to-[#261e24]/50 rounded-lg`}>
         <Suspense fallback={
           <div className="w-full h-full flex items-center justify-center">
             <div className="text-center">
