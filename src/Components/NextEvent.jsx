@@ -8,31 +8,20 @@ NextEvent.propTypes = {
 };
 
 export default function NextEvent({ year = 2025 }) {
-  // For 2026, show "To Be Decided" message
-  if (year === 2026) {
-    return (
-      <div className="h-full flex flex-col justify-center">
-        <h2 className="text-xl sm:text-2xl font-bold font-exo2 mb-3 shadow-text">Next Up</h2>
-        <div className="bg-black/20 p-6 rounded-md text-center">
-          <p className="text-white/80 drop-shadow-sm">Event details to be announced soon!</p>
-        </div>
-      </div>
-    );
-  }
-
   // Logic to find the next upcoming event
   const findNextEvent = () => {
     const now = new Date();
+    const yearEvents = scheduleData.filter((event) => (event.year || 2025) === year);
     
     // Sort events by their timestamp and find the next one that hasn't started yet
-    const sortedEvents = [...scheduleData].sort((a, b) => {
-      const aTime = new Date(`${a.day}, 2025 ${a.time}`);
-      const bTime = new Date(`${b.day}, 2025 ${b.time}`);
+    const sortedEvents = [...yearEvents].sort((a, b) => {
+      const aTime = new Date(`${a.day}, ${a.year || year} ${a.time}`);
+      const bTime = new Date(`${b.day}, ${b.year || year} ${b.time}`);
       return aTime - bTime;
     });
     
     return sortedEvents.find(event => {
-      const eventTime = new Date(`${event.day}, 2025 ${event.time}`);
+      const eventTime = new Date(`${event.day}, ${event.year || year} ${event.time}`);
       return eventTime > now;
     });
   };
@@ -62,7 +51,7 @@ export default function NextEvent({ year = 2025 }) {
                 textShadow: '0 0 10px rgba(197, 147, 233, 0.6), 0 0 5px rgba(197, 147, 233, 0.4)'
               }}
             >
-              {nextEvent.time} • {nextEvent.location}
+              {nextEvent.displayTime || nextEvent.time} • {nextEvent.location}
             </span>
             <h3 className="text-xl font-bold mt-1 truncate drop-shadow-md shadow-text">{nextEvent.title}</h3>
           </div>

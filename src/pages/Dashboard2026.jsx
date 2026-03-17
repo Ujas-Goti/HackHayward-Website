@@ -35,7 +35,7 @@ const LanyardFallback = () => (
 export default function Dashboard2026() {
   const register = "https://gdg.community.dev/events/details/google-gdg-on-campus-california-state-university-east-bay-hayward-united-states-presents-build-with-ai-hackhayward/";
   const eventStartDate = "2026-03-21T08:00:00"; // Event start date
-  const submissionDeadline = "2026-03-22T10:00:00"; // Submission deadline
+  const submissionDeadline = "2026-03-22T08:00:00"; // Submission deadline
   
   // Words for the rotating text
   const rotatingWords = ["Live", "Happening", "Now", "Hacking", "Cooking", "Creating", "Innovating", "Building", "Collabing", "Learning", "Tinkering", "Vibing", "Slaying", "Bussin'", "Chilling"];
@@ -105,11 +105,11 @@ export default function Dashboard2026() {
               </div>
             </h1>
             
-            <div className="max-w-4xl mx-auto">
+            <div className="max-w-5xl mx-auto">
               {/* Main content grid */}
               <div className="grid grid-cols-1 gap-6 mb-6 relative z-10">
                 {/* Top Section - Badge Preview */}
-                <div className={cardClass}>
+                <div className={`${cardClass} max-w-4xl mx-auto w-full`}>
                   <Suspense fallback={<LanyardFallback />}>
                     <ErrorBoundary FallbackComponent={LanyardFallback}>
                       <LanyardPreview year={2026} />
@@ -118,7 +118,7 @@ export default function Dashboard2026() {
                 </div>
                 
                 {/* Bottom Section - Event Info (columns on desktop) */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-[1.15fr_0.85fr] gap-6 md:gap-6">
                   {/* Left Column - Event Schedule (wider) */}
                   <div className={`${cardClass} h-full order-2 md:order-1`}>
                     <EventSchedule year={2026} />

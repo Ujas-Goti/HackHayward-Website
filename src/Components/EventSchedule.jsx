@@ -10,12 +10,19 @@ EventSchedule.propTypes = {
 };
 
 export default function EventSchedule({ year = 2025 }) {
-  const [selectedDay, setSelectedDay] = useState("March 1");
+  const getDefaultDay = () => (year === 2026 ? "March 21" : "March 1");
+  const [selectedDay, setSelectedDay] = useState(getDefaultDay);
   const [currentEvent, setCurrentEvent] = useState(null);
   const [isHovered, setIsHovered] = useState(false);
+  const yearEvents = scheduleData.filter(event => (event.year || 2025) === year);
+  const availableDays = [...new Set(yearEvents.map(event => event.day))];
 
   // Filter events for the selected day
-  const dayEvents = scheduleData.filter(event => event.day === selectedDay);
+  const dayEvents = yearEvents.filter(event => event.day === selectedDay);
+
+  const parseEventDate = (event) => {
+    return new Date(`${event.day}, ${event.year || year} ${event.time}`);
+  };
 
   // Find current event based on time
   useEffect(() => {
@@ -28,25 +35,20 @@ export default function EventSchedule({ year = 2025 }) {
       // const testTime = new Date("March 1, 2025 12:30 PM");
       // now.setHours(testTime.getHours(), testTime.getMinutes());
       
-      console.log(`Current time: ${now.toLocaleString()}`);
-      
       // Check each event to see if current time falls within its duration
       let foundEvent = null;
       
       for (const event of dayEvents) {
         // Create start date for the event
-        const eventStart = new Date(`${event.day}, 2025 ${event.time}`);
+        const eventStart = parseEventDate(event);
         
         // Create end date based on duration (or default 1 hour)
         const eventEnd = new Date(eventStart);
         eventEnd.setMinutes(eventStart.getMinutes() + (event.duration || 60));
         
-        console.log(`Event: ${event.title}, Start: ${eventStart.toLocaleString()}, End: ${eventEnd.toLocaleString()}`);
-        
         // Check if current time is within event duration
         if (now >= eventStart && now < eventEnd) {
           foundEvent = event;
-          console.log(`Found current event: ${event.title}`);
           break;
         }
       }
@@ -54,24 +56,23 @@ export default function EventSchedule({ year = 2025 }) {
       // If no current event found, find the next upcoming event
       if (!foundEvent) {
         const upcomingEvents = dayEvents.filter(event => {
-          const eventStart = new Date(`${event.day}, 2025 ${event.time}`);
+          const eventStart = parseEventDate(event);
           return eventStart > now;
         });
         
         // Sort by closest start time
         upcomingEvents.sort((a, b) => {
-          const startA = new Date(`${a.day}, 2025 ${a.time}`);
-          const startB = new Date(`${b.day}, 2025 ${b.time}`);
+          const startA = parseEventDate(a);
+          const startB = parseEventDate(b);
           return startA - startB;
         });
         
         // If there are upcoming events today, highlight the next one
         if (upcomingEvents.length > 0) {
           foundEvent = upcomingEvents[0];
-          console.log(`No current event, highlighting next event: ${foundEvent.title}`);
-        } else if (selectedDay === "March 1") {
+        } else if (selectedDay === availableDays[0] && availableDays.length > 1) {
           // If we're on day 1 with no upcoming events, suggest day 2
-          setSelectedDay("March 2");
+          setSelectedDay(availableDays[1]);
           return; // This will trigger the effect again with day 2 selected
         }
       }
@@ -84,19 +85,6 @@ export default function EventSchedule({ year = 2025 }) {
     
     return () => clearInterval(intervalId);
   }, [selectedDay, dayEvents]);
-
-  // For 2026, show "To Be Decided" message
-  if (year === 2026) {
-    return (
-      <div className="font-grotesk">
-        <h2 className="text-2xl sm:text-3xl font-bold font-exo2 mb-6" style={{ textShadow: '0 2px 4px rgba(0, 0, 0, 0.7), 0 1px 2px rgba(0, 0, 0, 0.5)' }}>Event Schedule</h2>
-        <div className="bg-black/20 p-8 rounded-md text-center">
-          <p className="text-xl text-white/80 drop-shadow-sm">Schedule details to be announced soon!</p>
-          <p className="text-sm text-white/60 mt-2 drop-shadow-sm">Stay tuned for updates.</p>
-        </div>
-      </div>
-    );
-  }
 
   // For 2025, show "Event ended" message
   if (year === 2025) {
@@ -112,40 +100,21 @@ export default function EventSchedule({ year = 2025 }) {
 
   // Get display text for selected day
   const getDayDisplayText = (day) => {
-    return day === "March 1" ? "Day 1" : "Day 2";
+    if (day === availableDays[0]) return "Day 1";
+    if (day === availableDays[1]) return "Day 2";
+    return day;
   };
 
-  // Helper function to get map URL for locations
-  const getLocationMapUrl = (location) => {
-    // Map of locations to their map URLs
-    const locationMaps = {
-      "Core 1st floor Entrance area": "https://bit.ly/CoreBuildingMap",
-      "Core 178/179 Entrepreneurship Hub": "https://bit.ly/CoreBuildingMap",
-      "Core Multiple work rooms 1st and 3rd floor": "https://bit.ly/CoreBuildingMap",
-      "Core 176": "https://bit.ly/CoreBuildingMap",
-      "Dinning Commons": "https://bit.ly/DinningCommons",
-      "Valley Business Technical (VBT) Building": "https://bit.ly/VBTmap",
-      "VBT Building Room 124": "https://bit.ly/VBTmap",
-      "VBT Building 1st floor": "https://bit.ly/VBTmap"
-    };
-
-    // Try to find a specific match
-    if (locationMaps[location]) {
-      return locationMaps[location];
-    }
-
-    // If not found but contains "Core", return the Core building map
-    if (location.includes("Core")) {
-      return "https://bit.ly/CoreBuildingMap";
-    }
-
-    // If not found but contains "VBT", return the VBT building map
-    if (location.includes("VBT")) {
-      return "https://bit.ly/VBTmap";
-    }
-
-    // Default URL for unknown locations (could be campus map)
-    return "https://bit.ly/CampusMap";
+  // Location label normalization for room naming consistency
+  const formatLocationLabel = (location = "") => {
+    return location
+      .replace("178 (networking) 179 (team formation)", "Room 178 (networking), Room 179 (team formation)")
+      .replace("178, 179", "Room 178/179")
+      .replace("178/179", "Room 178/179")
+      .replace(" 338", " Room 338")
+      .replace(/^176$/, "Room 176")
+      .replace(/^178$/, "Room 178")
+      .replace(/^338$/, "Room 338");
   };
 
   // Extract URL from description if it exists
@@ -169,18 +138,18 @@ export default function EventSchedule({ year = 2025 }) {
         {/* Tab buttons for desktop only - hidden on tablet and mobile */}
         <div className="hidden lg:flex font-grotesk overflow-hidden rounded-full">
           <a
-            onClick={() => setSelectedDay("March 1")}
+            onClick={() => setSelectedDay(availableDays[0])}
             className={`w-[110px] text-center p-2.5 transition text-sm cursor-pointer slash-r2
-              ${selectedDay === "March 1" 
+              ${selectedDay === availableDays[0]
                 ? "bg-white text-black hover:bg-[#e9e9e9] font-bold" 
                 : "bg-[#c593e9] text-white hover:bg-[#cfb0e8] font-medium"}`}
           >
             Day 1
           </a>
           <a
-            onClick={() => setSelectedDay("March 2")}
+            onClick={() => setSelectedDay(availableDays[1])}
             className={`w-[110px] text-center p-2.5 transition text-sm cursor-pointer slash-l2 -ml-4
-              ${selectedDay === "March 2" 
+              ${selectedDay === availableDays[1]
                 ? "bg-white text-black hover:bg-[#e9e9e9] font-bold" 
                 : "bg-[#c593e9] text-white hover:bg-[#cfb0e8] font-medium"}`}
           >
@@ -206,8 +175,8 @@ export default function EventSchedule({ year = 2025 }) {
               />
             </div>
             <ul tabIndex={0} className="dropdown-content menu bg-[#261e24] shadow-drop-sm shadow rounded-box z-[1] w-32 p-2">
-              <li><a onClick={() => setSelectedDay("March 1")}>Day 1</a></li>
-              <li><a onClick={() => setSelectedDay("March 2")}>Day 2</a></li>
+              <li><a onClick={() => setSelectedDay(availableDays[0])}>Day 1</a></li>
+              <li><a onClick={() => setSelectedDay(availableDays[1])}>Day 2</a></li>
             </ul>
           </div>
         </div>
@@ -224,22 +193,11 @@ export default function EventSchedule({ year = 2025 }) {
             }`}
           >
             <div className="flex justify-between items-center">
-              <p className="text-lg font-bold drop-shadow-sm">{event.time}</p>
+              <p className="text-lg font-bold drop-shadow-sm">{event.displayTime || event.time}</p>
               <div className="flex items-center">
                 <p className="text-sm bg-black/30 px-2 py-1 rounded drop-shadow-sm flex items-center">
-                  {event.location}
-                  {event.location !== "Submit Online" && event.location !== "Submission Closed" && (
-                    <a 
-                      href={getLocationMapUrl(event.location)} 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="ml-1.5 text-[#c593e9] hover:text-white transition-colors"
-                      title={`View map for ${event.location}`}
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <FaMapMarkerAlt className="inline-block" />
-                    </a>
-                  )}
+                  <FaMapMarkerAlt className="mr-1.5 text-[#c593e9]" aria-hidden="true" />
+                  {formatLocationLabel(event.location)}
                 </p>
               </div>
             </div>
