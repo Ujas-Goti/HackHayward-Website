@@ -56,7 +56,7 @@ export default function Dashboard2026() {
     textShadow: '0 2px 4px rgba(0, 0, 0, 0.7), 0 1px 2px rgba(0, 0, 0, 0.5)'
   };
   const cardClass = "bg-gradient-to-br from-[#0b1238]/70 via-[#101b52]/60 to-[#1b1459]/55 backdrop-blur-xl p-6 rounded-xl border border-[#B794D4]/35 shadow-[0_20px_45px_-20px_rgba(0,0,0,0.85),0_0_24px_rgba(183,148,212,0.18)] hover:shadow-[0_24px_55px_-18px_rgba(0,0,0,0.9),0_0_35px_rgba(183,148,212,0.3)] hover:border-[#B794D4]/55 transition-all duration-300";
-  const actionButtonClass = "bg-gradient-to-r from-[#B794D4] to-[#8F6BC6] hover:from-[#c7a9df] hover:to-[#a387d2] rounded-full p-3 transition text-white lg:text-lg text-sm font-grotesk font-medium text-nowrap m-3 opacity-55 cursor-not-allowed shadow-[0_0_18px_rgba(183,148,212,0.32)]";
+  const actionButtonClass = "bg-gradient-to-r from-[#B794D4] to-[#8F6BC6] hover:from-[#c7a9df] hover:to-[#a387d2] rounded-full p-3 transition text-white lg:text-lg text-sm font-grotesk font-medium text-nowrap m-3 shadow-[0_0_18px_rgba(183,148,212,0.32)]";
 
   return (
     <>
@@ -146,11 +146,12 @@ export default function Dashboard2026() {
                                 <h3 className="text-white/80 drop-shadow-sm mb-2">Ready to showcase your hack? Submit your project on Devpost!</h3>
                                 <div className='flex justify-end'> 
                                   <a
-                                    href="#"
+                                    href="https://hackhayward26.devpost.com/"
                                     className={actionButtonClass}
-                                    onClick={(e) => e.preventDefault()}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                   >
-                                    To Be Decided
+                                    Submit Here
                                   </a>
                                 </div>
                               </div>
@@ -165,11 +166,12 @@ export default function Dashboard2026() {
                               <h3 className=" text-white/80 drop-shadow-sm mb-2">Need a quick boost? Head over to our ultimate guide!</h3>
                               <div className='flex justify-end'> 
                                 <a
-                                  href="#"
+                                  href="https://docs.google.com/document/d/1i9__mQ-vykpTxxp9raZcctVVRqiL4kbM1wiJb7lvKok/edit?usp=sharing"
                                   className={actionButtonClass}
-                                  onClick={(e) => e.preventDefault()}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
                                 >
-                                  To Be Decided
+                                  Click Here!
                                 </a>
                               </div>
                             </div>

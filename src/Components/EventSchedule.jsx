@@ -203,7 +203,7 @@ export default function EventSchedule({ year = 2025 }) {
             </div>
             <h3 className="text-xl font-bold mt-1" style={textShadowStyle}>{event.title}</h3>
             {event.description && (
-              <p className="mt-2 text-white/80 drop-shadow-sm">
+              <p className={`mt-2 drop-shadow-sm ${event.description.toLowerCase().includes("*hard deadline") ? "text-red-400 font-semibold" : "text-white/80"}`}>
                 {event.description.replace(/\(https?:\/\/[^\s)]+\)/, '')}
                 {extractUrlFromDescription(event.description) && (
                   <a 
