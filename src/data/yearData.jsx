@@ -34,6 +34,7 @@ export const yearData = {
             // Row 2
             { key: 'Cursor', image: 'cursor.png', alt: 'Cursor', urlKey: 'Cursor', height: 'h-[114px]' },
             { key: 'IBM', image: 'ibm.png', alt: 'IBM', urlKey: 'IBM', height: 'h-[114px]' },
+            { key: 'ElevenLabs', image: 'eleven.png', alt: 'ElevenLabs', urlKey: 'ElevenLabs', height: 'h-[114px]' },
             { key: 'Perplexity', image: 'perplexity-Photoroom.png', alt: 'Perplexity', urlKey: 'Perplexity', height: 'h-[114px]' },
             // Row 3
             { key: 'OMI', image: 'omi white.png', alt: 'OMI', urlKey: 'OMI', height: 'h-[114px]' },

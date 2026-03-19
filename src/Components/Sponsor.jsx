@@ -30,7 +30,8 @@ import perplexityWhite from '../assets/imgs/sponsors/white sponsor/perplexity-Ph
 import omiWhite from '../assets/imgs/sponsors/white sponsor/omi white.png';
 import doorDashWhite from '../assets/imgs/sponsors/white sponsor/DOORDASH-Photoroom.png';
 import warpWhite from '../assets/imgs/sponsors/white sponsor/Warp.png';
-import basementWhite from '../assets/imgs/sponsors/white sponsor/Basement_Logo2025_Screen 1 (1).png';
+import basementWhite from '../assets/imgs/sponsors/white sponsor/redbull.png';
+import elevenWhite from '../assets/imgs/sponsors/white sponsor/eleven.png';
 import asiWhite from '../assets/imgs/sponsors/white sponsor/asi.png';
 import docsWhite from '../assets/imgs/sponsors/white sponsor/csueb docs.png';
 import csuebSoeWhite from '../assets/imgs/sponsors/white sponsor/CSUEB_SOE-nobg.png';
@@ -59,6 +60,7 @@ const sponsorURLs = {
     'Cursor': 'https://www.cursor.com/',
     'OMI': 'https://omi.me/',
     'DoorDash': 'https://www.doordash.com/',
+    'ElevenLabs': 'https://elevenlabs.io/',
     'ASI': 'https://www.csueastbay.edu/asi/',
     'Warp': 'https://www.warp.dev/',
 }
@@ -88,6 +90,7 @@ const sponsorImages = {
     'DOORDASH-Photoroom.png': doorDashWhite,
     'Warp.png': warpWhite,
     'Basement_Logo2025_Screen 1 (1).png': basementWhite,
+    'eleven.png': elevenWhite,
     'asi.png': asiWhite,
     'csueb docs.png': docsWhite,
     'CSUEB_SOE-nobg.png': csuebSoeWhite,
@@ -149,10 +152,9 @@ const SponsorCard = ({ sponsor, imageSrc, url, handleClick, rowIndex }) => {
                         sponsor.key === 'RedBull Basement' ? 'max-h-[170px]' :
                         sponsor.key === 'OMI' ? 'max-h-[130px]' :
                         sponsor.key === 'Warp' ? 'max-h-[70px]' :
-                        sponsor.key === 'Perplexity' ? 'max-h-[150px]' :
-                        sponsor.key === 'IBM' || sponsor.key === 'Cursor' ? 'max-h-[110px]' :
+                        sponsor.key === 'IBM' ? 'max-h-[72px]' :
+                        ['Cursor', 'ElevenLabs', 'Perplexity'].includes(sponsor.key) ? 'max-h-[300px]' :
                         rowIndex === 0 ? 'max-h-[190px]' :
-                        rowIndex === 1 ? 'max-h-[125px]' :
                         rowIndex === 2 ? 'max-h-[105px]' :
                         'max-h-[140px] w-auto object-contain object-center'
                     }`}
@@ -178,10 +180,10 @@ export default function Sponsor(props) {
     const sponsors = currentYearData.sponsors || [];
     // For 2026, four rows
     const rows = [
-        sponsors.slice(0, 3),  // row 1: Google, Amazon, CAHSI
-        sponsors.slice(3, 6),  // row 2: Cursor, IBM, Perplexity
-        sponsors.slice(6, 10), // row 3: OMI, DoorDash, Warp, RedBull Basement
-        sponsors.slice(10),    // row 4: CSUEB DOCS, ASI, CSUEB SOE
+        sponsors.slice(0, 3),   // row 1: Google, Amazon, CAHSI
+        sponsors.slice(3, 7),   // row 2: Cursor, IBM, ElevenLabs, Perplexity
+        sponsors.slice(7, 11),  // row 3: OMI, DoorDash, RedBull Basement, Warp
+        sponsors.slice(11),     // row 4: CSUEB DOCS, ASI, CSUEB SOE
     ];
 
     const handleClick = (platform) => {
@@ -266,7 +268,15 @@ export default function Sponsor(props) {
                                 rows.map((row, rowIndex) => (
                                     <motion.div
                                         key={rowIndex}
-                                        className={`flex justify-center w-full ${rowIndex === 3 ? 'gap-2 max-w-2xl' : rowIndex === 2 ? 'gap-6 max-w-6xl' : rowIndex === 0 ? 'gap-10' : 'gap-10 max-w-5xl'}`}
+                                        className={`flex justify-center w-full ${
+                                            rowIndex === 3
+                                                ? 'gap-1 max-w-2xl'
+                                                : rowIndex === 2
+                                                    ? 'gap-6 max-w-6xl'
+                                                    : rowIndex === 1
+                                                        ? 'gap-6 max-w-7xl'
+                                                        : 'gap-10'
+                                        }`}
                                         variants={staggerContainer(0.1)}
                                         initial="hidden"
                                         whileInView="visible"
@@ -279,7 +289,13 @@ export default function Sponsor(props) {
                                                 <motion.div
                                                     key={sponsor.key}
                                                     variants={fadeUp}
-                                                    className={rowIndex === 3 ? 'sm:w-[340px] sm:flex-shrink-0' : ''}
+                                                    className={
+                                                        rowIndex === 3
+                                                            ? 'sm:w-[340px] sm:flex-shrink-0'
+                                                            : rowIndex === 1
+                                                                ? 'sm:w-[320px] sm:flex-shrink-0'
+                                                                : ''
+                                                    }
                                                 >
                                                     <SponsorCard
                                                         sponsor={sponsor}
@@ -343,7 +359,7 @@ export default function Sponsor(props) {
 
                     </div>
                 </section>
-                <div className={`opacity-50 absolute bottom-[30%] left-[-8%] max-h-[30%] max-w-[30%] ${is2026 ? 'animate-float' : 'animate-pulse'}`} style={{ animationDuration: '10s' }}>
+                <div className={`opacity-50 absolute bottom-[24%] left-[-8%] max-h-[30%] max-w-[30%] ${is2026 ? 'animate-float' : 'animate-pulse'}`} style={{ animationDuration: '10s' }}>
                     <img src={uranus} loading="lazy" alt="Uranus" className="object-cover" />
                 </div>
                 
