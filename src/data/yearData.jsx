@@ -38,6 +38,7 @@ export const yearData = {
             // Row 3
             { key: 'OMI', image: 'omi white.png', alt: 'OMI', urlKey: 'OMI', height: 'h-[114px]' },
             { key: 'DoorDash', image: 'DOORDASH-Photoroom.png', alt: 'DoorDash', urlKey: 'DoorDash', height: 'h-[114px]' },
+            { key: 'RedBull Basement', image: 'Basement_Logo2025_Screen 1 (1).png', alt: 'Red Bull Basement', urlKey: 'Redbull', height: 'h-[114px]' },
             { key: 'Warp', image: 'Warp.png', alt: 'Warp Terminal', urlKey: 'Warp', height: 'h-[114px]' },
             // Row 4
             { key: 'CSUEB DOCS', image: 'csueb docs.png', alt: 'CSUEB Department of Computer Science', urlKey: 'CSUEB DOCS', height: 'h-[108px]' },

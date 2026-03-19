@@ -22,7 +22,7 @@ function SocialButtons() {
         {
             icon: BiLogoDiscord,
             name: 'Discord',
-            href: 'https://discord.com/invite/eMHWYfMKDd',
+            href: 'https://discord.gg/zYyK2xeG6j',
         },
         {
             icon: BiLogoInstagram,

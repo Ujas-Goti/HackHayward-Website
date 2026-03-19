@@ -30,6 +30,7 @@ import perplexityWhite from '../assets/imgs/sponsors/white sponsor/perplexity-Ph
 import omiWhite from '../assets/imgs/sponsors/white sponsor/omi white.png';
 import doorDashWhite from '../assets/imgs/sponsors/white sponsor/DOORDASH-Photoroom.png';
 import warpWhite from '../assets/imgs/sponsors/white sponsor/Warp.png';
+import basementWhite from '../assets/imgs/sponsors/white sponsor/Basement_Logo2025_Screen 1 (1).png';
 import asiWhite from '../assets/imgs/sponsors/white sponsor/asi.png';
 import docsWhite from '../assets/imgs/sponsors/white sponsor/csueb docs.png';
 import csuebSoeWhite from '../assets/imgs/sponsors/white sponsor/CSUEB_SOE-nobg.png';
@@ -86,6 +87,7 @@ const sponsorImages = {
     'omi white.png': omiWhite,
     'DOORDASH-Photoroom.png': doorDashWhite,
     'Warp.png': warpWhite,
+    'Basement_Logo2025_Screen 1 (1).png': basementWhite,
     'asi.png': asiWhite,
     'csueb docs.png': docsWhite,
     'CSUEB_SOE-nobg.png': csuebSoeWhite,
@@ -144,6 +146,8 @@ const SponsorCard = ({ sponsor, imageSrc, url, handleClick, rowIndex }) => {
                     loading="lazy"
                     className={`h-auto w-auto object-contain transition-transform duration-300 relative z-10 scale-110 group-hover:scale-125 ${
                         sponsor.key === 'CAHSI' ? 'max-h-[210px]' :
+                        sponsor.key === 'RedBull Basement' ? 'max-h-[170px]' :
+                        sponsor.key === 'OMI' ? 'max-h-[130px]' :
                         sponsor.key === 'Warp' ? 'max-h-[70px]' :
                         sponsor.key === 'Perplexity' ? 'max-h-[150px]' :
                         sponsor.key === 'IBM' || sponsor.key === 'Cursor' ? 'max-h-[110px]' :
@@ -176,8 +180,8 @@ export default function Sponsor(props) {
     const rows = [
         sponsors.slice(0, 3),  // row 1: Google, Amazon, CAHSI
         sponsors.slice(3, 6),  // row 2: Cursor, IBM, Perplexity
-        sponsors.slice(6, 9),  // row 3: OMI, DoorDash, ASI
-        sponsors.slice(9),     // row 4: CSUEB DOCS, CSUEB SOE
+        sponsors.slice(6, 10), // row 3: OMI, DoorDash, Warp, RedBull Basement
+        sponsors.slice(10),    // row 4: CSUEB DOCS, ASI, CSUEB SOE
     ];
 
     const handleClick = (platform) => {
@@ -262,7 +266,7 @@ export default function Sponsor(props) {
                                 rows.map((row, rowIndex) => (
                                     <motion.div
                                         key={rowIndex}
-                                        className={`flex justify-center w-full ${rowIndex === 3 ? 'gap-2 max-w-2xl' : rowIndex === 0 ? 'gap-10' : rowIndex === 1 ? 'gap-10 max-w-5xl' : 'gap-10 max-w-5xl'}`}
+                                        className={`flex justify-center w-full ${rowIndex === 3 ? 'gap-2 max-w-2xl' : rowIndex === 2 ? 'gap-6 max-w-6xl' : rowIndex === 0 ? 'gap-10' : 'gap-10 max-w-5xl'}`}
                                         variants={staggerContainer(0.1)}
                                         initial="hidden"
                                         whileInView="visible"
